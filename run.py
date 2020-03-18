@@ -1,8 +1,8 @@
-import sys
-import cc3d 
 from os.path import join
-from cc3d.CompuCellSetup.CC3DCaller import CC3DCaller
 import json
+import cc3d 
+from cc3d.CompuCellSetup.CC3DCaller import CC3DCaller
+from analysis import tools
 
 def run():
     simulation_fname = join('.', 'cc3d', 'sim.cc3d')
@@ -15,6 +15,9 @@ def run():
     data = cc3d_caller.run()
     with open('output/data.json', 'w') as f:
         json.dump(data, f)
+
+    # save screenshots
+    tools.make_gif()
 
 if __name__ == '__main__':
     run()
