@@ -57,7 +57,7 @@ class LateralInhibition(SteppableBasePy):
                     csas[n.type] += csa
                 elif n.type == Type.RED:
                     csas[n.type] += csa
-                    points += csa*n.dict['pts']/n.surface
+                    points -= csa*n.dict['pts']/n.surface
             # update signaling (ie, points) for the cell
             signaling = self.params['signaling']
             if cell.type == Type.GREEN or cell.type == Type.RED:
