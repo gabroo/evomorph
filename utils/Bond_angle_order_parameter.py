@@ -38,7 +38,7 @@ def dist(a,b):
     return np.linalg.norm(ba)
 
 
-def Bond_angle_order(lattice):
+def Bond_angle_order(lattice,nearest_neighbors=6):
     nnAngl=[]
     order_contrib=[]
     triang = sp.spatial.Delaunay(lattice)
@@ -48,7 +48,7 @@ def Bond_angle_order(lattice):
             angle=angl(lattice[nn[i]],lattice[k])
             nnAngl.append(angle)
             z=1j
-            order_contrib+=[ np.exp(6*z*angle)/len(nn) ]
+            order_contrib+=[ np.exp(nearest_neighbors*z*angle)/len(nn) ]
     tot=np.sum(order_contrib)
     tot=tot/len(lattice)
     tot= np.abs(tot)
@@ -57,7 +57,7 @@ def Bond_angle_order(lattice):
 # boundary cells have non-consistent nearest neighbor angles contributing to the deviation from 
 # an order parameter of 1
 
-def Bond_angle_order_no_boundary(lattice):
+def Bond_angle_order_no_boundary(lattice,nearest_neighbors=6):
     nnAngl=[]
     order_contrib=[]
     triang = sp.spatial.Delaunay(lattice)
@@ -78,7 +78,7 @@ def Bond_angle_order_no_boundary(lattice):
             angle=angl(lattice[nn[i]],lattice[k])
             nnAngl.append(angle)
             z=1j
-            order_contrib+=[ np.exp(6*z*angle)/len(nn) ]
+            order_contrib+=[ np.exp(nearest_neighbors*z*angle)/len(nn) ]
     tot=np.sum(order_contrib)
     tot=tot/(len(lattice)-boundary_cells)
     tot= np.abs(tot)
