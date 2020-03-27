@@ -23,6 +23,8 @@ class LateralInhibition(SteppableBasePy):
     def __init__(self, frequency=1, params_path=''):
         super().__init__(frequency)
         self.params = load_json(params_path)
+        print(type(self.params))
+        print(self.params['simulation'])
         if not self.params:
             raise ValueError('error: returned parameters are empty (check the path)')
         self.cell_types = [Type.GREEN, Type.RED, Type.MEDIUM]
@@ -33,7 +35,7 @@ class LateralInhibition(SteppableBasePy):
         for cell in self.cell_list:
             # TODO better way to access these values
             r = random.gauss(self.params['shape']['rad_avg'], self.params['shape']['rad_std'])
-            cell.lambdaSurface = 2.5 # FIXME magic number
+            cell.lambdaSurface = 2.5 # FIXME magic numbers
             cell.lambdaVolume = 2.5
             cell.targetVolume = sphere_vol(r)
             cell.targetSurface = sphere_sa(r)
@@ -75,13 +77,14 @@ class LateralInhibition(SteppableBasePy):
                 cell.lambdaSurface = 2.2
                 cell.lambdaVolume = 2.2
                 cell.fluctAmpl = motility['constant'] + motility['factor']*(motility['adhesion']*csas[Type.MEDIUM] + adhesion['gg']*csas[Type.GREEN] + adhesion['gr']*csas[Type.RED])/cell.surface
-                self.data.append([t, 'green', cell.dict['pts']])
+                if t == self.t_max-1:
+                    self.data.append([cell.xCOM, cell.yCOM])
         
             elif cell.type == Type.RED:
                 cell.lambdaSurface = 2.2
                 cell.lambdaVolume = 2.2
                 cell.fluctAmpl = motility['constant'] + motility['factor']*(motility['adhesion']*csas[Type.MEDIUM] + adhesion['gr']*csas[Type.GREEN] + adhesion['rr']*csas[Type.RED])/cell.surface
-                self.data.append([t, 'red', cell.dict['pts']])
+                #self.data.append([t, 'red', cell.dict['pts']])
     
     def finish(self):
         pg = CompuCellSetup.persistent_globals

@@ -7,7 +7,7 @@ TODO:
 '''
 import math
 import numpy as np
-import scipy as sp
+from scipy.spatial import Delaunay
 
 def mitosis_force_min(alpha):
 	'''
@@ -57,7 +57,7 @@ def dist(a,b):
 def bond_angle_order(lattice,nearest_neighbors=6):
     nnAngl=[]
     order_contrib=[]
-    triang = sp.spatial.Delaunay(lattice)
+    triang = Delaunay(lattice)
     x=[r[0] for r in lattice]
     y=[r[1] for r in lattice]
     max_x=np.max(x)
@@ -79,4 +79,4 @@ def bond_angle_order(lattice,nearest_neighbors=6):
     tot=np.sum(order_contrib)
     tot=tot/(len(lattice)-boundary_cells)
     tot= np.abs(tot)
-    return tot, nnAngl
+    return tot #, nnAngl

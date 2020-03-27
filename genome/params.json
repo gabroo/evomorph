@@ -1,6 +1,6 @@
 {
     "simulation": {
-        "t_max": 500000,
+        "t_max": 10000,
         "n_cores": 8
     },
 

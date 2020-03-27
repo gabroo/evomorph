@@ -1,7 +1,7 @@
 <CompuCell3D>
     <Potts>
         <Dimensions x="100" y="100" z="5" />
-        <Steps>20000</Steps>
+        <Steps>10000</Steps>
         <Flip2DimRatio>1</Flip2DimRatio>
         <Boundary_x>Periodic</Boundary_x>
         <Boundary_y>Periodic</Boundary_y>
