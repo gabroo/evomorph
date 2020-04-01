@@ -38,6 +38,7 @@ def run_sims(sim_paths, generation):
     data = []
     for _ in range(len(sim_paths)):
         data.append(results.get())
+    json.dump(data, open(os.path.join(output_folder, 'data.json'), 'w'))
     return np.array(data)
 
 def generate_sim_files(betas, epsilons):

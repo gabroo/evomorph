@@ -55,6 +55,8 @@ def dist(a,b):
     return np.linalg.norm(ba)
 
 def bond_angle_order(lattice,nearest_neighbors=6):
+    if len(lattice) < nearest_neighbors+1: # need at least a point and its neighbors :)
+        return 0
     nnAngl=[]
     order_contrib=[]
     triang = Delaunay(lattice)

@@ -1,6 +1,7 @@
 import os
 import threading
 import argparse
+import json
 
 import numpy as np
 
@@ -32,7 +33,7 @@ def cycle(n, g):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Optimizes `n` simulations in a ParticleSwarmOptimizer for up to `g` iterations.')
-    parser.add_argument('--n', metavar='n', type=int, nargs=1, default=20, help='Number of simulations to optimize (default is 25)')
-    parser.add_argument('--g', metavar='g', type=int, nargs=1, default=20, help='Number of iterations to optimize for (default is 10)')
+    parser.add_argument('--n', metavar='n', type=int, nargs=1, default=1, help='Number of simulations to optimize (default is 25)')
+    parser.add_argument('--g', metavar='g', type=int, nargs=1, default=0, help='Number of iterations to optimize for (default is 10)')
     args = parser.parse_args()
     cycle(args.n, args.g)

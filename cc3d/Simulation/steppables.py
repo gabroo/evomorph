@@ -5,7 +5,7 @@ import numpy as np
 from cc3d.core.PySteppables import SteppableBasePy
 from cc3d import CompuCellSetup
 from utils.config import load_json
-from utils.calculations import sphere_vol, sphere_sa
+from utils.calculations import sphere_vol, sphere_sa, bond_angle_order
 
 class Type:
     MEDIUM = 0
@@ -47,12 +47,18 @@ class LateralInhibition(SteppableBasePy):
 
     # updates cell attributes at each timestep `t`
     def step(self, t):
+
+        # data collection
+        coms = {'green': [], 'red': []}
+        total_csa = 0
         for cell in self.cell_list:
             points = 0
             csas = {tp: 0 for tp in self.cell_types}
             neighbors = self.get_cell_neighbor_data_list(cell)
             # n: neighbor, csa: common surface area
             for n, csa in neighbors:
+                if n.type != cell.type: # want to maximize heterogenous csa
+                    total_csa += csa
                 if n is None: # medium
                     csas[Type.MEDIUM] += csa
                 elif n.type == Type.GREEN:
@@ -77,14 +83,16 @@ class LateralInhibition(SteppableBasePy):
                 cell.lambdaSurface = 2.2
                 cell.lambdaVolume = 2.2
                 cell.fluctAmpl = motility['constant'] + motility['factor']*(motility['adhesion']*csas[Type.MEDIUM] + adhesion['gg']*csas[Type.GREEN] + adhesion['gr']*csas[Type.RED])/cell.surface
-                if t == self.t_max-1:
-                    self.data.append([cell.xCOM, cell.yCOM])
+                coms['green'].append([cell.xCOM, cell.yCOM])
         
             elif cell.type == Type.RED:
                 cell.lambdaSurface = 2.2
                 cell.lambdaVolume = 2.2
                 cell.fluctAmpl = motility['constant'] + motility['factor']*(motility['adhesion']*csas[Type.MEDIUM] + adhesion['gr']*csas[Type.GREEN] + adhesion['rr']*csas[Type.RED])/cell.surface
-                #self.data.append([t, 'red', cell.dict['pts']])
+                coms['red'].append([cell.xCOM, cell.yCOM])
+        # compute and write fitness values
+        bond_order = (bond_angle_order(coms['green']) + bond_angle_order(coms['red']))/2
+        self.data.append([t, bond_order, total_csa])
     
     def finish(self):
         pg = CompuCellSetup.persistent_globals

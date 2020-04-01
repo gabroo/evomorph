@@ -31,11 +31,11 @@ class ParticleSwarmOptimizer():
     def solve(self):
         self.evaluate(initial=True)
         self.update_velocity_position()
-        for i in range(self.max_gen+1):
+        for i in range(self.max_gen):
             self.update_velocity_position()
             self.evaluate()
             if self.verbose:
-                self.log_result(i)
+                self.log_result(i+1)
             
     
     def evaluate(self,initial=False):
