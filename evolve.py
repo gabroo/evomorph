@@ -14,15 +14,15 @@ def fitness(betas, epsilons):
     global G
     sim_files = generate_sim_files(betas, epsilons)
     data = run_sims(sim_files, G)
-    clean_sims()
-    order_scores = []
-    for d in data:
-        coms = d['result']
-        score = bond_angle_order(coms)
-        order_scores.append(score)
-    print(order_scores)
-    G += 1
-    return np.array(order_scores, dtype=float)
+    #clean_sims()
+    #order_scores = []
+    #for d in data:
+        #coms = d['result']
+        #score = bond_angle_order(coms)
+        #order_scores.append(score)
+    #print(order_scores)
+    #G += 1
+    return 1#np.array(order_scores, dtype=float)
 
 def cycle(n, g):
     x = ['beta', 'epsilon']
