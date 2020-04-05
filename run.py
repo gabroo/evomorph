@@ -16,7 +16,7 @@ def run_sims(sim_paths, generation):
 
     tasks = multiprocessing.JoinableQueue()
     results = multiprocessing.Queue()
-    n_workers = 8 # try this?
+    n_workers = len(sim_paths) # try this?
     n_consumers = multiprocessing.cpu_count()
     print(f'Creating {n_consumers} consumers')
     workers = [CC3DCallerWorker(tasks, results) for i in range(n_workers)]

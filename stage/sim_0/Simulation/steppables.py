@@ -49,7 +49,7 @@ class LateralInhibition(SteppableBasePy):
     def step(self, t):
 
         # data collection
-        coms = {'green': [], 'red': []}
+        #coms = {'green': [], 'red': []}
         total_csa = 0
         for cell in self.cell_list:
             points = 0
@@ -83,16 +83,16 @@ class LateralInhibition(SteppableBasePy):
                 cell.lambdaSurface = 2.2
                 cell.lambdaVolume = 2.2
                 cell.fluctAmpl = motility['constant'] + motility['factor']*(motility['adhesion']*csas[Type.MEDIUM] + adhesion['gg']*csas[Type.GREEN] + adhesion['gr']*csas[Type.RED])/cell.surface
-                coms['green'].append([cell.xCOM, cell.yCOM])
+                #coms['green'].append([cell.xCOM, cell.yCOM])
         
             elif cell.type == Type.RED:
                 cell.lambdaSurface = 2.2
                 cell.lambdaVolume = 2.2
                 cell.fluctAmpl = motility['constant'] + motility['factor']*(motility['adhesion']*csas[Type.MEDIUM] + adhesion['gr']*csas[Type.GREEN] + adhesion['rr']*csas[Type.RED])/cell.surface
-                coms['red'].append([cell.xCOM, cell.yCOM])
+                #coms['red'].append([cell.xCOM, cell.yCOM])
         # compute and write fitness values
         #bond_order = (bond_angle_order(coms['green']) + bond_angle_order(coms['red']))/2
-        self.data.append([t, coms])
+        self.data.append([t, total_csa])
     
     def finish(self):
         pg = CompuCellSetup.persistent_globals

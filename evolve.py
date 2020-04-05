@@ -32,8 +32,9 @@ def cycle(n, g):
     optimizer.solve()
 
 if __name__ == '__main__':
+    n_default, g_default = (20, 0)
     parser = argparse.ArgumentParser(description='Optimizes `n` simulations in a ParticleSwarmOptimizer for up to `g` iterations.')
-    parser.add_argument('--n', metavar='n', type=int, nargs=1, default=1, help='Number of simulations to optimize (default is 25)')
-    parser.add_argument('--g', metavar='g', type=int, nargs=1, default=0, help='Number of iterations to optimize for (default is 10)')
+    parser.add_argument('--n', metavar='n', type=int, nargs=1, default=n_default, help=f'Number of simulations to optimize (default is {n_default})')
+    parser.add_argument('--g', metavar='g', type=int, nargs=1, default=g_default, help=f'Number of iterations to optimize for (default is {g_default})')
     args = parser.parse_args()
     cycle(args.n, args.g)
