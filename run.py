@@ -41,15 +41,15 @@ def run_sims(sim_paths, generation):
     json.dump(data, open(os.path.join(output_folder, 'data.json'), 'w'))
     return np.array(data)
 
-def generate_sim_files(betas, epsilons):
+def generate_sim_files(betas):
     stage_path = Path('.').resolve()/'stage'
     os.makedirs(stage_path, exist_ok=True)
     sim_files = []
     # TODO how to handle this ...
-    for i, (beta, epsilon) in enumerate(zip(betas, epsilons)):
+    for i, beta in enumerate(betas):
         params_template = json.loads(open('genome/params.json').read())
         params_template['signaling']['halfexpress'] = float(beta)
-        params_template['signaling']['sharpness'] = float(epsilon)
+        #params_template['signaling']['sharpness'] = float(epsilon)
         sim_dir_path = stage_path/f'sim_{i}'
         os.makedirs(sim_dir_path, exist_ok=True)
         print(f'Spawning {sim_dir_path} files in stage {stage_path}')

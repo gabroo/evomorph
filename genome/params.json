@@ -18,7 +18,7 @@
     "signaling": {
         "magnitude": 1,
         "halfexpress": -92.1181,
-        "sharpness": 52.6389,
+        "sharpness": 1000,
         "decay": 25000,
         "threshold": 5263
     },

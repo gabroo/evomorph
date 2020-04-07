@@ -1,0 +1,11 @@
+<CompuCell3DLatticeData Version="1.0">
+   <Dimensions x="100" y="100" z="5"/>
+   <Lattice Type="Square"/>
+   <Output CoreFileName="Step" Directory=".\output\gen_0\sim_48\LatticeData" Frequency="1" NumberOfSteps="5000"/>
+   <CellType TypeId="0" TypeName="Medium"/>
+   <CellType TypeId="2" TypeName="G"/>
+   <CellType TypeId="4" TypeName="R"/>
+   <Fields>
+      <Field Name="Cell_Field" Type="CellField"/>
+   </Fields>
+</CompuCell3DLatticeData>

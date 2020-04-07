@@ -1,0 +1,4 @@
+<Simulation version="3.6.1">
+  <XMLScript Type="XMLScript">simulation/config.xml</XMLScript>
+  <PythonScript>simulation/sim.py</PythonScript>
+</Simulation>
