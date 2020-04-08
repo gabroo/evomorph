@@ -1,6 +1,14 @@
+# vim
 *.swp
+
+# vscode
 .vscode
 *.code-workspace
+
+# python
+.ipynb_checkpoints
+__pycache__
+
+# my stuff
 saved_outputs
-**/.ipynb_checkpoints
 stage
