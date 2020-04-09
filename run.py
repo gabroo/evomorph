@@ -86,5 +86,5 @@ def clean_sims():
 
 if __name__ == '__main__':
     # tests of run_sim
-    for i in range(3):
+    for i in range(4):
         run_sim(f'./tests/{i}/sim.cc3d', 1)
