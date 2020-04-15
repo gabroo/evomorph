@@ -23,10 +23,11 @@ def run_sim(sim_path, n_runs):
     cc3d_caller = CC3DCaller(
         cc3d_sim_fname=sim_path,
         screenshot_output_frequency=100, #FIXME magic number
-        output_dir=output_folder
+        output_dir=output_folder,
+        result_identifier_tag=n_runs
     )
     data.append(cc3d_caller.run())
-    data_file = open(os.path.join(output_folder, 'data.json'))
+    data_file = open(os.path.join(output_folder, 'data.json'), 'w')
     data_file.write(json.dumps(data))
 
 def run_sims(sim_paths, generation):
