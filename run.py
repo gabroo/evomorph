@@ -86,6 +86,4 @@ def clean_sims():
     shutil.rmtree('stage')
 
 if __name__ == '__main__':
-    # tests of run_sim
-    for i in range(4):
-        run_sim(f'./tests/{i}/sim.cc3d', 1)
+    run_sim('tests/0/sim.cc3d', 1)
