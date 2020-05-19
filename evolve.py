@@ -12,9 +12,9 @@ from utils.optimize import ParticleSwarmOptimizer as PSO
 G = 0
 def fitness(betas, epsilons):
     global G
-    sim_files, params = generate_sim_files(betas, epsilons)
+    sim_files, params = generate_sim_files(betas)
     data = run_sims(sim_files, G)
-    clean_sims()
+    #clean_sims()
     #order_scores = []
     #for d in data:
         #coms = d['result']
@@ -22,7 +22,7 @@ def fitness(betas, epsilons):
         #order_scores.append(score)
     #print(order_scores)
     #G += 1
-    return 1#np.array(order_scores, dtype=float)
+    return np.array([1.0]*len(data), dtype=float)
 
 def cycle(n, g):
     x = ['beta', 'epsilon']

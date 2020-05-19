@@ -64,18 +64,18 @@ def generate_sim_files(betas):
     param_files = []
     # TODO how to handle this ...
     for i, beta in enumerate(betas):
-        params_template = json.loads(open('genome/params.json').read())
+        params_template = json.loads(open('templates/genome.json').read())
         params_template['signaling']['halfexpress'] = float(beta)
         #params_template['signaling']['sharpness'] = float(epsilon)
         sim_dir_path = stage_path/f'sim_{i}'
         os.makedirs(sim_dir_path, exist_ok=True)
         print(f'Spawning {sim_dir_path} files in stage {stage_path}')
         if not (sim_dir_path/'Simulation').exists():
-            shutil.copytree('cc3d/Simulation', sim_dir_path/'Simulation')
+            shutil.copytree('templates/Simulation', sim_dir_path/'Simulation')
         if not (sim_dir_path/'screenshot_data').exists():
-            shutil.copytree('cc3d/screenshot_data', sim_dir_path/'screenshot_data')
+            shutil.copytree('templates/screenshot_data', sim_dir_path/'screenshot_data')
         cc3d_path = sim_dir_path/'sim.cc3d'
-        shutil.copyfile('cc3d/sim.cc3d', cc3d_path)
+        shutil.copyfile('templates/sim.cc3d', cc3d_path)
         sim_files.append(cc3d_path)
         genome_path = sim_dir_path/'Simulation'/'genome.json'
         open(genome_path, 'w').write(json.dumps(params_template))

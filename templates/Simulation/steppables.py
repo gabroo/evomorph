@@ -51,7 +51,7 @@ class LateralInhibition(SteppableBasePy):
         coms = {'green': [], 'red': []}
         points_green, points_red = (0, 0)
         n_green, n_red = (0, 0)
-        total_csa = 0
+        total_csa, total_red = (0, 0)
         for cell in self.cell_list:
             points = 0
             csas = {tp: 0 for tp in self.cell_types}
@@ -65,6 +65,7 @@ class LateralInhibition(SteppableBasePy):
                 elif n.type == Type.GREEN:
                     csas[n.type] += csa
                 elif n.type == Type.RED:
+                    total_red += csa
                     csas[n.type] += csa
                     points += csa*n.dict['pts']/n.surface
             # update signaling (ie, points) for the cell
@@ -97,7 +98,7 @@ class LateralInhibition(SteppableBasePy):
                 points_red += cell.dict['pts']
                 n_red += 1
 
-        self.data.append([t, coms, total_csa, points_green/n_green, points_red/n_red])
+        self.data.append([t, coms, total_csa, total_csa/total_red, points_green/n_green, points_red/n_red])
     
     def finish(self):
         pg = CompuCellSetup.persistent_globals
