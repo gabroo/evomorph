@@ -10,7 +10,7 @@ import numpy as np
 
 from cc3d.CompuCellSetup.CC3DCaller import CC3DCaller, CC3DCallerWorker
 
-def run_sim(sim_path, n_runs):
+def run_sim(sim_path, n_runs, output_folder=None):
     '''
     Runs a single simulation file a specified number of times. Output folder is at the same leve of the specified cc3d file.
 
@@ -18,7 +18,8 @@ def run_sim(sim_path, n_runs):
         sim_path - path to `.cc3d` file of the simulation
         n_runs - # of times to run the simulation
     '''
-    output_folder = os.path.join(os.path.dirname(sim_path), 'output')
+    if output_folder is None:
+      output_folder = os.path.join(os.path.dirname(sim_path), 'output')
     data = []
     cc3d_caller = CC3DCaller(
         cc3d_sim_fname=sim_path,
@@ -86,4 +87,4 @@ def clean_sims():
     shutil.rmtree('stage')
 
 if __name__ == '__main__':
-    run_sim('test/0/sim.cc3d', 1)
+    run_sim('test/sim.cc3d', 1)
