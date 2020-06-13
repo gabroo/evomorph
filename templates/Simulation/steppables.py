@@ -1,11 +1,14 @@
 import sys
 import math
 import random
+
 import numpy as np
+
 from cc3d.core.PySteppables import SteppableBasePy
 from cc3d import CompuCellSetup
+
 from utils.config import load_json
-from utils.calculations import sphere_vol, sphere_sa, bond_angle_order
+from utils.calculations import sphere_vol, sphere_sa
 
 class Type:
     MEDIUM = 0
@@ -41,7 +44,7 @@ class LateralInhibition(SteppableBasePy):
             cell.targetSurface = sphere_sa(r)
             cell.dict['pts'] = 0
 
-            # red cells start activated
+            # red cells start activated (pts is how red it is)
             if cell.type == Type.RED:
                 cell.dict['pts'] = 7000
 
@@ -51,7 +54,7 @@ class LateralInhibition(SteppableBasePy):
         coms = {'green': [], 'red': []}
         points_green, points_red = (0, 0)
         n_green, n_red = (0, 0)
-        total_csa, total_red = (0, 0)
+        csa_het, csa_red = (0, 0)
         for cell in self.cell_list:
             points = 0
             csas = {tp: 0 for tp in self.cell_types}
@@ -59,19 +62,19 @@ class LateralInhibition(SteppableBasePy):
             # n: neighbor, csa: common surface area
             for n, csa in neighbors:
                 if n.type != cell.type: # want to maximize heterogenous csa
-                    total_csa += csa
+                    csa_het += csa
                 if n is None: # medium
                     csas[Type.MEDIUM] += csa
                 elif n.type == Type.GREEN:
                     csas[n.type] += csa
                 elif n.type == Type.RED:
-                    total_red += csa
                     csas[n.type] += csa
                     points += csa*n.dict['pts']/n.surface
             # update signaling (ie, points) for the cell
             signaling = self.params['signaling']
             if cell.type == Type.GREEN or cell.type == Type.RED:
                 # notes: this sigmoid should decrease over the x axis (points). ensure that [sharpness] > 0
+                # ie, if everything is positive just use 1/(a+e^((x-b)/s)) <- downward facing sigmoid
                 d_rep = (1/(signaling['magnitude']+math.exp((points-signaling['halfexpress'])/signaling['sharpness']))) - (cell.dict['pts']/signaling['decay'])
                 cell.dict['pts'] += d_rep
                 # TODO simple threshold for this example 
@@ -96,9 +99,11 @@ class LateralInhibition(SteppableBasePy):
                 cell.fluctAmpl = motility['constant'] + motility['factor']*(motility['adhesion']*csas[Type.MEDIUM] + adhesion['gr']*csas[Type.GREEN] + adhesion['rr']*csas[Type.RED])/cell.surface
                 coms['red'].append([cell.xCOM, cell.yCOM])
                 points_red += cell.dict['pts']
+                csa_red += cell.surface
                 n_red += 1
 
-        self.data.append([t, coms, total_csa, total_csa/total_red, points_green/n_green, points_red/n_red])
+        fitness = csa_het/csa_red
+        self.data.append([t, fitness])
     
     def finish(self):
         pg = CompuCellSetup.persistent_globals

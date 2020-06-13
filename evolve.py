@@ -7,7 +7,7 @@ import numpy as np
 
 from run import generate_sim_files, run_sims, clean_sims
 from utils.calculations import bond_angle_order
-from utils.optimize import ParticleSwarmOptimizer as PSO
+from utils.optimize import GravitationalSearchOptimizer as GSO
 
 G = 0
 def fitness(betas, epsilons):
@@ -33,7 +33,7 @@ def cycle(n, g):
 
 if __name__ == '__main__':
     n_default, g_default = (100, 0)
-    parser = argparse.ArgumentParser(description='Optimizes `n` simulations in a ParticleSwarmOptimizer for up to `g` iterations.')
+    parser = argparse.ArgumentParser(description='Optimizes `n` simulations for up to `g` iterations.')
     parser.add_argument('--n', metavar='n', type=int, nargs=1, default=n_default, help=f'Number of simulations to optimize (default is {n_default})')
     parser.add_argument('--g', metavar='g', type=int, nargs=1, default=g_default, help=f'Number of iterations to optimize for (default is {g_default})')
     args = parser.parse_args()

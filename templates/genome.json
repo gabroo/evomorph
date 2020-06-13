@@ -1,7 +1,7 @@
 {
     "simulation": {
         "t_max": 5000,
-        "n_cores": 8
+        "n_cores": 128
     },
 
     "shape": {

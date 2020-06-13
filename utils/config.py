@@ -10,13 +10,27 @@ TODO:
 
 import json
 
-def load_json(file):
+def load_json(f, format='json'):
   '''
-  Returns data encoded in `file` or False on exception. Assumes JSON format.
+  Load data from a file.
+
+  args
+    `f` (str): file to load
+
+  kwargs
+    `format` (str): file format
+      - accepted formats: 'json'
+
   '''
   try:
-    with open(file, 'r') as f:
+    with open(f, 'r') as f:
       data = json.load(f)
       return data
   except FileNotFoundError:
     return False
+
+def add_key(f, key, val):
+  '''
+  Adds 
+  '''
+  pass
