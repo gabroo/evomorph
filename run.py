@@ -1,3 +1,4 @@
+print('harmless imports...')
 import os
 from pathlib import Path
 import glob
@@ -5,9 +6,13 @@ import shutil
 import tempfile
 import json
 import multiprocessing
+import builtins
+
+import
 
 import numpy as np
 
+print('uh oh')
 from cc3d.CompuCellSetup.CC3DCaller import CC3DCaller, CC3DCallerWorker
 
 def run_sim(sim_path, n_runs, output_folder=None):
@@ -96,10 +101,16 @@ def generate_sim_files(betas, stage_path=Path('.').resolve()/'stage'):
 def clean(d):
   shutil.rmtree(d)
 
+def print(*args):
+  builtins.print(f'{__file__}//', end='\t')
+  builtins.print(*args)
+
 if __name__ == '__main__':
+  print('in run.py main')
   betas = np.random.uniform(low=-2000, high=2000, size=(3,))
   generate_sim_files(betas)
   sim_files, params = generate_sim_files(betas)
+  print('running sim')
   data = run_sims(sim_files)
   data.save(Path('.').resolve()/'output'/'data')
   clean(Path('.').resolve()/'stage')
