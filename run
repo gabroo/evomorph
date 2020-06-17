@@ -1,0 +1,15 @@
+#!/usr/bin/bash
+printf 'setting paths ... '
+source /usr/usc/python/3.7.4/setup.sh
+export PREFIX_CC3D=../cc3d_420
+export PYTHON_INSTALL_PATH=${PREFIX_CC3D}/Python37
+#export PATH=${PYTHON_INSTALL_PATH}/bin:$PATH
+export CPP=${PREFIX_CC3D}/lib/site-packages/cc3d/cpp
+export PYTHONPATH=${PREFIX_CC3D}/lib/site-packages:${PYTHON_INSTALL_PATH}/lib/python3.7/site-packages
+export LD_LIBRARY_PATH=${PREFIX_CC3D}/lib/:${CPP}/lib:${CPP}/CompuCell3DPlugins:${CPP}/CompuCell3DSteppables:$LD_LIBRARY_PATH
+printf 'done.\n'
+printf 'using %s\n' $(which python3)
+printf 'starting job ...\n'
+python3 run.py
+printf 'done.\n'
+printf 'exiting.\n'
