@@ -1,2 +1,0 @@
-output/data.json filter=lfs diff=lfs merge=lfs -text
-test/0/output/data.json filter=lfs diff=lfs merge=lfs -text

@@ -1,6 +1,3 @@
-# vim
-*.swp
-
 # vscode
 .vscode
 *.code-workspace
@@ -9,6 +6,6 @@
 .ipynb_checkpoints
 __pycache__
 
-# my stuff
+# evomorph
 output
 stage
