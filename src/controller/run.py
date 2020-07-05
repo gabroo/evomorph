@@ -28,7 +28,7 @@ def run_sim(sim_path, n_runs, output_folder=None):
   data = []
   cc3d_caller = CC3DCaller(
     cc3d_sim_fname=sim_path,
-    screenshot_output_frequency=100, #FIXME magic number
+    screenshot_output_frequency=1, #FIXME magic number
     output_dir=output_folder,
     result_identifier_tag=n_runs
   )
