@@ -1,0 +1,44 @@
+<CompuCell3D>
+  <Potts>
+    <Dimensions x="100" y="100" z="5" />
+    <Steps>100</Steps>
+    <Flip2DimRatio>1</Flip2DimRatio>
+    <Boundary_x>Periodic</Boundary_x>
+    <Boundary_y>Periodic</Boundary_y>
+    <RandomSeed>10491</RandomSeed>
+    <NeighborOrder>3</NeighborOrder>
+  </Potts>
+  <Plugin Name="CellType">
+    <CellType TypeName="Medium" TypeId="0" />
+    <CellType TypeName="G" TypeId="2" />
+    <CellType TypeName="R" TypeId="4" />
+  </Plugin>
+  <Plugin Name="Volume"/>
+  <Plugin Name="Surface"/>
+  <Plugin Name="CenterOfMass"/>
+  <Plugin Name="NeighborTracker"/>
+  <Plugin Name="PixelTracker"/>
+  <Plugin Name="ConnectivityGlobal">
+    <FastAlgorithm />
+    <ConnectivityOn Type="G"/>
+    <ConnectivityOn Type="R"/>
+  </Plugin>
+  <Plugin Name="Contact">
+    <Energy Type1="Medium" Type2="Medium">0</Energy>
+    <Energy Type1="Medium" Type2="G">26</Energy>
+    <Energy Type1="Medium" Type2="R">26</Energy>
+    <Energy Type1="G" Type2="G">49</Energy>
+    <Energy Type1="G" Type2="R">49</Energy>
+    <Energy Type1="R" Type2="R">49</Energy>
+    <NeighborOrder>4</NeighborOrder>
+  </Plugin>
+  <Steppable Type="UniformInitializer">
+    <Region>
+      <BoxMin x="0" y="0" z="0"/>
+      <BoxMax x="100" y="100" z="5"/>
+      <Gap>0</Gap>
+      <Width>5</Width>
+      <Types>G,R</Types>
+    </Region>
+  </Steppable>
+</CompuCell3D>
