@@ -8,7 +8,7 @@ TODO:
 
 import math
 import numpy as np
-from scipy.spatial import Delaunay
+#from scipy.spatial import Delaunay
 
 def mitosis_force_min(alpha):
     """

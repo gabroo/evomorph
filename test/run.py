@@ -8,8 +8,6 @@ import json
 import multiprocessing
 import builtins
 
-import
-
 import numpy as np
 
 print('uh oh')
@@ -107,10 +105,5 @@ def print(*args):
 
 if __name__ == '__main__':
   print('in run.py main')
-  betas = np.random.uniform(low=-2000, high=2000, size=(3,))
-  generate_sim_files(betas)
-  sim_files, params = generate_sim_files(betas)
-  print('running sim')
-  data = run_sims(sim_files)
-  data.save(Path('.').resolve()/'output'/'data')
-  clean(Path('.').resolve()/'stage')
+  run_sim('./sim.cc3d', 1)
+  print('done with run_sim()')

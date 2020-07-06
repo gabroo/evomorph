@@ -2,6 +2,8 @@ import sys
 import math
 import random
 
+from pathlib import Path
+
 import numpy as np
 
 from cc3d.core.PySteppables import SteppableBasePy
@@ -25,7 +27,7 @@ class Screenshots(SteppableBasePy):
 class LateralInhibition(SteppableBasePy):
     def __init__(self, frequency=1, params_path=''):
         super().__init__(frequency)
-        self.params = load_json(params_path)
+        self.params = load_json(str(Path('.').resolve()/params_path))
         print(type(self.params))
         print(self.params['simulation'])
         if not self.params:
@@ -77,7 +79,7 @@ class LateralInhibition(SteppableBasePy):
                 # ie, if everything is positive just use 1/(a+e^((x-b)/s)) <- downward facing sigmoid
                 d_rep = (1/(signaling['magnitude']+math.exp((points-signaling['halfexpress'])/signaling['sharpness']))) - (cell.dict['pts']/signaling['decay'])
                 cell.dict['pts'] += d_rep
-                # TODO simple threshold for this example 
+                # TODO simple threshold for this example
                 if cell.dict['pts'] >= signaling['threshold']:
                     cell.type = Type.RED # 4
                 else:
@@ -92,7 +94,7 @@ class LateralInhibition(SteppableBasePy):
                 coms['green'].append([cell.xCOM, cell.yCOM])
                 points_green += cell.dict['pts']
                 n_green += 1
-        
+
             elif cell.type == Type.RED:
                 cell.lambdaSurface = 2.2
                 cell.lambdaVolume = 2.2
@@ -104,7 +106,7 @@ class LateralInhibition(SteppableBasePy):
 
         fitness = csa_het/csa_red
         self.data.append([t, fitness])
-    
+
     def finish(self):
         pg = CompuCellSetup.persistent_globals
         pg.return_object = self.data

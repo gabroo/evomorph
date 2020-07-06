@@ -10,7 +10,7 @@ TODO:
 
 import json
 
-def load_json(f, format='json'):
+def load_json(p, format='json'):
   '''
   Load data from a file.
 
@@ -22,8 +22,9 @@ def load_json(f, format='json'):
       - accepted formats: 'json'
 
   '''
+  print('loading ', p)
   try:
-    with open(f, 'r') as f:
+    with open(p, 'r') as f:
       data = json.load(f)
       return data
   except FileNotFoundError:
@@ -31,6 +32,6 @@ def load_json(f, format='json'):
 
 def add_key(f, key, val):
   '''
-  Adds 
+  Adds
   '''
   pass
