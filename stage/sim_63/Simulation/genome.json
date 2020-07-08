@@ -1,1 +1,0 @@
-{"simulation": {"t_max": 5000, "n_cores": 128}, "shape": {"rad_avg": 3, "rad_std": 0.5}, "motility": {"adhesion": 52, "constant": 100, "factor": 0.5}, "signaling": {"magnitude": 1, "halfexpress": -1088.972148098243, "sharpness": 1000, "decay": 25000, "threshold": 5263}, "adhesion": {"gg": 49, "gr": 49, "rr": 49}, "tunables": ["ligand_basal"]}
