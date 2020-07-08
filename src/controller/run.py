@@ -8,8 +8,6 @@ import json
 import multiprocessing
 import builtins
 
-import
-
 import numpy as np
 
 print('uh oh')
@@ -52,7 +50,7 @@ def run_sims(sim_paths, output_folder=Path('.').resolve()/'output'/'run'):
     sim_out = output_folder/f'sim_{i}'
     cc3d_caller = CC3DCaller(
       cc3d_sim_fname=path,
-      screenshot_output_frequency=100, #FIXME magic number
+      screenshot_output_frequency=1000, #FIXME magic number
       output_dir=str(sim_out),
       result_identifier_tag=i
     )
@@ -107,7 +105,7 @@ def print(*args):
 
 if __name__ == '__main__':
   print('in run.py main')
-  betas = np.random.uniform(low=-2000, high=2000, size=(3,))
+  betas = np.random.uniform(low=0, high=4000, size=(100,))
   generate_sim_files(betas)
   sim_files, params = generate_sim_files(betas)
   print('running sim')

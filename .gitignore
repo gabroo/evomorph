@@ -7,5 +7,10 @@
 __pycache__
 
 # evomorph
-#output
-#stage
+output
+stage
+test
+
+# singularity
+*.sif
+*.img
