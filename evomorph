@@ -1,15 +1,70 @@
-#!/usr/bin/bash
-printf 'setting paths ... '
-source /usr/usc/python/3.7.4/setup.sh
-export PREFIX_CC3D=../cc3d_420
-export PYTHON_INSTALL_PATH=${PREFIX_CC3D}/Python37
-#export PATH=${PYTHON_INSTALL_PATH}/bin:$PATH
-export CPP=${PREFIX_CC3D}/lib/site-packages/cc3d/cpp
-export PYTHONPATH=${PREFIX_CC3D}/lib/site-packages:${PYTHON_INSTALL_PATH}/lib/python3.7/site-packages
-export LD_LIBRARY_PATH=${PREFIX_CC3D}/lib/:${CPP}/lib:${CPP}/CompuCell3DPlugins:${CPP}/CompuCell3DSteppables:$LD_LIBRARY_PATH
-printf 'done.\n'
-printf 'using %s\n' $(which python3)
-printf 'starting job ...\n'
-python3 run.py
-printf 'done.\n'
-printf 'exiting.\n'
+#!/bin/bash
+#SBATCH -c16
+#SBATCH -t12:00:00
+
+# colors
+NC='\033[0m'
+BRED='\033[1;31m'
+RED='\033[0;31m'
+BGREEN='\033[1;32m'
+GREEN='\033[0;32m'
+BROWN='\033[0;33m'
+BLUE='\033[0;34m'
+PURPLE='\033[0;35m'
+
+# meta
+VERSION=0.1
+
+# functions
+print()
+{
+  echo -e ${@}
+}
+
+start()
+{
+  print "\v"
+  print "${BRED}evo${BGREEN}morph${NC}"
+}
+
+help()
+{
+  print
+  print "usage"
+  print "`tput bold`> evomorph [script]`tput sgr0`"
+  print "  runs [script] with a Python interpreter that includes CompuCell3D"
+  print
+  print "`tput bold`> evomorph -v`tput sgr0`"
+  print "  prints version info"
+  print
+  print "`tput bold`> evomorph`tput sgr0`"
+  print "  prints this help message"
+}
+
+version()
+{
+  print "version ${VERSION}"
+}
+
+leave()
+{
+  print "\v"
+  exit $1
+}
+
+# script
+start
+
+if [ $# == 0 ]; then
+  help
+  leave 0;
+fi
+
+if [ $1 == "-v" ]; then
+  version
+  leave 0;
+fi
+
+cd /scratch2/sajeevsa/evomorph
+singularity exec simbox.sif python3 $@
+leave 0

@@ -1,4 +1,3 @@
-print('harmless imports...')
 import os
 from pathlib import Path
 import glob
@@ -6,12 +5,15 @@ import shutil
 import tempfile
 import json
 import multiprocessing
+import concurrent.futures
 import builtins
+import argparse
 
 import numpy as np
 
-print('uh oh')
 from cc3d.CompuCellSetup.CC3DCaller import CC3DCaller, CC3DCallerWorker
+
+#from viz import make_gif
 
 def run_sim(sim_path, n_runs, output_folder=None):
   '''
@@ -34,81 +36,114 @@ def run_sim(sim_path, n_runs, output_folder=None):
   data_file = open(os.path.join(output_folder, 'data.json'), 'w')
   data_file.write(json.dumps(data))
 
-def run_sims(sim_paths, output_folder=Path('.').resolve()/'output'/'run'):
+def run_sims(sim_paths, n_workers, output_folder):
   os.makedirs(output_folder,exist_ok=True)
   tasks = multiprocessing.JoinableQueue()
   results = multiprocessing.Queue()
-  n_workers = len(sim_paths) # try this?
-  n_consumers = multiprocessing.cpu_count()
+  print(f'using {n_workers} workers')
   workers = [CC3DCallerWorker(tasks, results) for i in range(n_workers)]
   genomes = {}
+  datas = {}
 
   for w in workers:
     w.start()
 
   for i, path in enumerate(sim_paths):
-    sim_out = output_folder/f'sim_{i}'
+    sim_out = output_folder/f'sim_{i:03}'
     cc3d_caller = CC3DCaller(
       cc3d_sim_fname=path,
-      screenshot_output_frequency=1000, #FIXME magic number
+      screenshot_output_frequency=500, #FIXME magic number (this actually doesn't do anything...)
       output_dir=str(sim_out),
       result_identifier_tag=i
     )
     tasks.put(cc3d_caller)
     # preserve genome
     genomes[Path(path).parent/'Simulation'/'genome.json'] = sim_out/'genome.json'
+    # preserve data FIXME this is horrible
+    datas[Path(path).parent/'Simulation'/'data.json'] = sim_out/'data.json'
 
   for i in range(n_workers):
     tasks.put(None) # "poison pill"
   tasks.join() # wait for all tasks to complete
-  data = []
-  for _ in range(len(sim_paths)):
-    data.append(results.get())
-  json.dump(data, open(os.path.join(output_folder, 'data.json'), 'w'))
 
   # write genomes
-  for src, dst in genomes:
+  for src, dst in genomes.items():
     shutil.copy(src, dst)
 
-  return np.array(data)
+  # write datas
+  for src, dst in datas.items():
+    shutil.copy(src, dst)
+
+  return 1
 
 def generate_sim_files(betas, stage_path=Path('.').resolve()/'stage'):
   os.makedirs(stage_path, exist_ok=True)
   sim_files = []
   param_files = []
-  # TODO how to handle this ...
-  for i, beta in enumerate(betas):
+
+  def gen_dir(i):
     params_template = json.loads(open('templates/genome.json').read())
-    params_template['signaling']['halfexpress'] = float(beta)
-    #params_template['signaling']['sharpness'] = float(epsilon)
-    sim_dir_path = stage_path/f'sim_{i}'
+    params_template['signaling']['halfexpress'] = float(betas[i])
+    sim_dir_path = stage_path/f'sim_{i:03}'
     os.makedirs(sim_dir_path, exist_ok=True)
-    print(f'Spawning {sim_dir_path} files in stage {stage_path}')
+    print('.', end='')
     if not (sim_dir_path/'Simulation').exists():
       shutil.copytree('templates/Simulation', sim_dir_path/'Simulation')
     if not (sim_dir_path/'screenshot_data').exists():
       shutil.copytree('templates/screenshot_data', sim_dir_path/'screenshot_data')
     cc3d_path = sim_dir_path/'sim.cc3d'
     shutil.copyfile('templates/sim.cc3d', cc3d_path)
-    sim_files.append(cc3d_path)
     genome_path = sim_dir_path/'Simulation'/'genome.json'
     open(genome_path, 'w').write(json.dumps(params_template))
-    param_files.append(genome_path)
+    return cc3d_path, genome_path
+
+  with concurrent.futures.ThreadPoolExecutor(max_workers=ncores) as executor:
+    fs = [executor.submit(gen_dir, i) for i in range(len(betas))]
+    for f in concurrent.futures.as_completed(fs):
+      tp = f.result()
+      sim_files.append(tp[0])
+      param_files.append(tp[1])
+
+
   return sim_files, param_files
 
 def clean(d):
   shutil.rmtree(d)
 
-def print(*args):
-  builtins.print(f'{__file__}//', end='\t')
-  builtins.print(*args)
+#def print(*args):
+#  builtins.print(f'{__file__}//', end='\t')
+#  builtins.print(*args)
 
 if __name__ == '__main__':
-  print('in run.py main')
-  betas = np.random.uniform(low=0, high=4000, size=(100,))
-  generate_sim_files(betas)
+  parser = argparse.ArgumentParser(description='run a bunch of simulations')
+  parser.add_argument('nsims', metavar='n', type=int, nargs='?', default=1, help='number of sims')
+  args = parser.parse_args()
+  nsims = args.nsims
+  # sbatch -c16 -t12:00:00 ...
+  ncores = os.environ.get('SLURM_CPUS_PER_TASK')
+  output_folder=Path('.').resolve()/'output'
+  if ncores is None:
+    ncores = multiprocessing.cpu_count() # backup to this in case
+  else:
+    ncores = int(ncores)
+  print (f'running {nsims} sims on {ncores} CPUs')
+  betas = np.random.uniform(low=-10000, high=10000, size=(nsims,))
+  print(f'this is what {nsims} dots looks like:')
+  print(''.join(['.' for i in range(nsims)]))
+  print('generating files')
   sim_files, params = generate_sim_files(betas)
   print('running sim')
-  data = run_sims(sim_files)
-  data.save(Path('.').resolve()/'output'/'data')
+  res = run_sims(sim_files, ncores, output_folder)
+  if res == 1:
+    print('res okay!')
+  else:
+    print('res NOT ok!!')
+  print('cleaning up')
   clean(Path('.').resolve()/'stage')
+#  np.save(Path('.').resolve()/'output'/'data', data, allow_pickle=True)
+#  print('making gifs ...')
+#  with concurrent.futures.ProcessPoolExecutor(max_workers=ncores) as executor:
+#    for i in range(len(sim_files)):
+#      base = output_folder/f'sim_{i:03}'
+#      executor.submit(make_gif(str(base/'screenshots'), str(base/'movie.gif')))
+  print('done')
