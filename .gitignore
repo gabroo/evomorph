@@ -17,3 +17,6 @@ test
 
 # slurm
 slurm*.out
+
+# mac
+.DS_STORE
