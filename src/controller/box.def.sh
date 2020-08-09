@@ -23,7 +23,7 @@ From: ubuntu:focal
   conda config --set channel_priority false
 
 # install dependencies
-  conda install -c conda-forge pandas jinja2 pyqt pyqtgraph deprecated qscintilla2 chardet swig=3 cmake=3.13.4
+  conda install -c conda-forge pandas jinja2 pyqt pyqtgraph deprecated qscintilla2 chardet imageio swig=3 cmake=3.13.4
   conda install -c conda-forge/label/vtk_dev vtk=9.0.0.rc3=with_osmesa_py37h43e0876_0
   conda install -c compucell3d tbb_full_dev
   pip install webcolors
