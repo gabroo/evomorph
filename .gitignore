@@ -6,11 +6,6 @@
 .ipynb_checkpoints
 __pycache__
 
-# evomorph
-output
-stage
-test
-
 # singularity
 *.sif
 *.img
@@ -20,3 +15,7 @@ slurm*.out
 
 # mac
 .DS_STORE
+
+# evomorph
+out
+stage
