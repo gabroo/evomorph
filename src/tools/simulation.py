@@ -1,77 +1,63 @@
 from os import environ, makedirs
 from pathlib import Path
-import glob
-import shutil
-import tempfile
+from shutil import copytree
 import json
 import multiprocessing
 import concurrent.futures
-import builtins
-import argparse
-
-import numpy as np
 
 from typing import List
 
 from cc3d.CompuCellSetup.CC3DCaller import CC3DCaller, CC3DCallerWorker
+import numpy as np
 
-# from viz import make_gif
+#from viz import make_gif
 
 
 class Simulation:
     def __init__(self, model: str, params: List[str], out_folder: Path):
-        self.model = model
-        self.out_folder = out_folder
-        self.ncores = environ.get("SLURM_CPUS_PER_TASK")
+        d_models = Path(__file__).parent.parent.parent/'models'
+        self.d_model = d_models/model
+        self.d_out = out_folder
+        self.d_stage = out_folder/'stage'
+        ncpus = environ.get("SLURM_CPUS_PER_TASK") 
+        self.ncores = ncpus if ncpus else multiprocessing.cpu_count()
         self.params = params
 
-    def gen(betas, stage_path=Path(".").resolve() / "stage"):
-        os.makedirs(stage_path, exist_ok=True)
-        sim_files = []
-        param_files = []
-
+    def gen(self, betas):
+        makedirs(self.d_stage, exist_ok=True)
         def gen_dir(i):
-            params_template = json.loads(open("templates/genome.json").read())
-            params_template["signaling"]["halfexpress"] = float(betas[i])
-            sim_dir_path = stage_path / f"sim_{i:03}"
-            os.makedirs(sim_dir_path, exist_ok=True)
+            d_sim = self.d_stage / f"sim_{i:03}"
+            makedirs(d_sim, exist_ok=True)
+            shutil.copytree(self.d_model, d_sim)
+            f_genome = d_sim/'genome.json'
+            params = json.load(f_genome)
+            params["signaling"]["halfexpress"] = float(betas[i])
+            json.dump(params, f_genome)
             print(".", end="")
-            if not (sim_dir_path / "Simulation").exists():
-                shutil.copytree("templates/Simulation", sim_dir_path / "Simulation")
-            if not (sim_dir_path / "screenshot_data").exists():
-                shutil.copytree(
-                    "templates/screenshot_data", sim_dir_path / "screenshot_data"
-                )
-            cc3d_path = sim_dir_path / "sim.cc3d"
-            shutil.copyfile("templates/sim.cc3d", cc3d_path)
-            genome_path = sim_dir_path / "Simulation" / "genome.json"
-            open(genome_path, "w").write(json.dumps(params_template))
-            return cc3d_path, genome_path
-
-        with concurrent.futures.ThreadPoolExecutor(max_workers=ncores) as executor:
-            fs = [executor.submit(gen_dir, i) for i in range(len(betas))]
-            for f in concurrent.futures.as_completed(fs):
-                tp = f.result()
-                sim_files.append(tp[0])
-                param_files.append(tp[1])
-
-    return sim_files, param_files
+        with concurrent.futures.ThreadPoolExecutor(max_workers=self.ncores) as executor:
+            try:
+                for i in range(len(betas)):
+                    executor.submit(gen_dir, i)
+            except Exception as e:
+                print(e)
+                return False
+        
+        return True
 
     def run(self, n_runs):
         print(f"running {n_runs} sims on {self.ncores} CPUs")
-        print(f"using {self.model} with {self.params} as variables")
-        return
-        betas = np.random.uniform(low=-10000, high=10000, size=(nsims,))
-        print(f"this is what {nsims} dots looks like:")
-        print("".join(["." for i in range(nsims)]))
+        print(f"using model {self.d_model} with {self.params} as variables")
+        betas = np.random.uniform(low=-10000, high=10000, size=(n_runs,))
+
         print("generating files")
-        sim_files, params = generate_sim_files(betas)
+        self.gen(betas)
+
+        return
+
         print("running sim")
-        res = run_sims(sim_files, ncores, output_folder)
         makedirs(self.out_folder, exist_ok=True)
         tasks = multiprocessing.JoinableQueue()
         results = multiprocessing.Queue()
-        print(f"using {self.ncores} workers")
         workers = [CC3DCallerWorker(tasks, results) for i in range(self.ncores)]
         genomes = {}
         datas = {}
