@@ -1,7 +1,7 @@
 from argparse import ArgumentParser
 from pathlib import Path
 from os import listdir
-from controller.runner import Simulation
+from tools.simulation import Simulation
 
 
 def cycle(m, n, g):
@@ -36,13 +36,19 @@ if __name__ == "__main__":
         choices=listdir(Path(__file__).parent / "models"),
     )
     parser.add_argument(
+        "-t",
+        "--time",
+        type=int,
+        required=True,
+        help="Number of Monte Carlo steps per simualtion.",
+    )
+    parser.add_argument(
         "-o",
         "--out",
         type=str,
         help="Output folder.",
-        default=Path(__file__).parent.parent / "out",
+        default=(Path(__file__).parent.parent / "out").resolve()
     )
     args = parser.parse_args()
-    print(args.individuals, args.generations, args.model, args.out)
-    s = Simulation(args.model, ["beta"], args.out)
-    s.run(args.individuals)
+    s = Simulation(args.model, ["beta"], Path(args.out))
+    s.run(args.individuals, args.time)

@@ -5,11 +5,10 @@ import random
 from pathlib import Path
 
 import numpy as np
+import json
 
 from cc3d.core.PySteppables import SteppableBasePy
 from cc3d import CompuCellSetup
-
-from utils.config import load_json, write_json
 
 
 def sphere_vol(r):
@@ -41,18 +40,12 @@ class Screenshots(SteppableBasePy):
 
 
 class LateralInhibition(SteppableBasePy):
-    def __init__(self, frequency=1, params_path=""):
+    def __init__(self, params_path, frequency=1):
         super().__init__(frequency)
-        self.params = load_json(str(Path(".").resolve() / params_path))
+        self.dir = params_path.parent
+        self.params = json.load(params_path.open())
         self.cell_types = [Type.GREEN, Type.RED, Type.MEDIUM]
         self.data = []
-        self.i = 0
-
-    def write_data(self):
-        write_json(self.data, str(sys.path[0] + f"/data{self.i}.json"))
-        del self.data
-        self.data = []
-        self.i += 1
 
     def start(self):
         for cell in self.cell_list:
@@ -73,18 +66,16 @@ class LateralInhibition(SteppableBasePy):
     # updates cell attributes at each timestep `t`
     def step(self, t):
         # data collection
-        coms = {"green": [], "red": []}
-        points_green, points_red = (0, 0)
-        n_green, n_red = (0, 0)
-        csa_het, csa_red = (0, 0)
+        n_red = 0
+        csa_rg, csa_red = (0, 0)
         for cell in self.cell_list:
             points = 0
             csas = {tp: 0 for tp in self.cell_types}
             neighbors = self.get_cell_neighbor_data_list(cell)
             # n: neighbor, csa: common surface area
             for n, csa in neighbors:
-                if n.type != cell.type:  # want to maximize heterogenous csa
-                    csa_het += csa
+                if n.type != cell.type and cell.type == Type.RED:  # don't double count
+                    csa_rg += csa
                 if n is None:  # medium
                     csas[Type.MEDIUM] += csa
                 elif n.type == Type.GREEN:
@@ -128,9 +119,6 @@ class LateralInhibition(SteppableBasePy):
                     )
                     / cell.surface
                 )
-                coms["green"].append([cell.xCOM, cell.yCOM])
-                points_green += cell.dict["pts"]
-                n_green += 1
 
             elif cell.type == Type.RED:
                 cell.lambdaSurface = 2.2
@@ -145,13 +133,11 @@ class LateralInhibition(SteppableBasePy):
                     )
                     / cell.surface
                 )
-                coms["red"].append([cell.xCOM, cell.yCOM])
-                points_red += cell.dict["pts"]
                 csa_red += cell.surface
                 n_red += 1
 
         if csa_red != 0:
-            fitness = csa_het / csa_red
+            fitness = csa_rg / csa_red
         else:
             fitness = 0
         self.data.append([t, fitness])
@@ -159,4 +145,4 @@ class LateralInhibition(SteppableBasePy):
     def finish(self):
         pg = CompuCellSetup.persistent_globals
         pg.return_object = 1
-        write_json(self.data, str(sys.path[0] + f"/data.json"))
+        json.dump(self.data, (self.dir/'data.json').open('w'))
