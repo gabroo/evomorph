@@ -145,4 +145,4 @@ class LateralInhibition(SteppableBasePy):
     def finish(self):
         pg = CompuCellSetup.persistent_globals
         pg.return_object = 1
-        json.dump(self.data, (self.dir/'data.json').open('w'))
+        json.dump(self.data, (self.dir / "data.json").open("w"))
