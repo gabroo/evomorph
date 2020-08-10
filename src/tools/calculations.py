@@ -10,6 +10,7 @@ import math
 import numpy as np
 from scipy.spatial import Delaunay
 
+
 def mitosis_force_min(alpha):
     """
     Negative mitosis driving force fluctuation, based on an exponential parameter alpha.
@@ -23,19 +24,6 @@ def mitosis_force_max(alpha):
     """
     return 4 * 10 ** (alpha)  # TODO what is this
 
-
-def sphere_vol(r):
-    """
-    Volume of a sphere
-    """
-    return (4 / 3) * math.pi * (r ** 3)
-
-
-def sphere_sa(r):
-    """
-    Surface area of a sphere
-    """
-    return 4 * math.pi * (r ** 2)
 
 def find_neighbors(pindex, triang):
     neighbors = list()

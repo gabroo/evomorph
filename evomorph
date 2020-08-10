@@ -65,6 +65,5 @@ if [ $1 == "-v" ]; then
   leave 0;
 fi
 
-cd /scratch2/sajeevsa/evomorph
 singularity exec simbox.sif python3 $@
 leave 0
