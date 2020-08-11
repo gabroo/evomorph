@@ -64,7 +64,7 @@ class Simulation:
 
         """
         print(f"using model {self.d_model} with {self.params} as variables ...")
-        print(f"running {n_runs} sims for {n_steps} steps on {self.ncores} CPUs ...")
+        print(f"running {len(trials)} sims for {n_steps} steps on {self.ncores} CPUs ...")
 
         print("generating files", end=" ")
         self.gen(d_out, n_steps, trials)
@@ -73,17 +73,16 @@ class Simulation:
         tasks = multiprocessing.JoinableQueue()
         results = multiprocessing.Queue()
         workers = [CC3DCallerWorker(tasks, results) for i in range(self.ncores)]
-        genomes = {}
-        datas = {}
 
         for p in d_out.iterdir():
-            i = int(re.match(".*_0+(\d+)", str(p)).groups()[0])
-            cc3d_caller = CC3DCaller(
-                cc3d_sim_fname=p / "sim.cc3d",
-                output_dir=str(p),
-                result_identifier_tag=i,
-            )
-            tasks.put(cc3d_caller)
+            if p.suffix == '':
+                i = int(re.match(".*_0+(\d+)", str(p)).groups()[0])
+                cc3d_caller = CC3DCaller(
+                    cc3d_sim_fname=p / "sim.cc3d",
+                    output_dir=str(p),
+                    result_identifier_tag=i,
+                )
+                tasks.put(cc3d_caller)
 
         for i in range(self.ncores):
             tasks.put(None)  # "poison pill"
@@ -93,7 +92,7 @@ class Simulation:
 
         tasks.join()  # wait for all tasks to complete
 
-        for i in range(n_runs):
+        for i in range(len(trials)):
             res = results.get()
             if res["result"] != 1:
                 print(f"issue with {res['tag']}")
@@ -102,5 +101,6 @@ class Simulation:
         print("making gifs ...")
         with ProcessPoolExecutor(max_workers=self.ncores) as executor:
             for p in d_out.iterdir():
-                executor.submit(make_gif(str(p / "screenshots"), str(p / "movie.gif")))
+                if p.suffix == '':
+                    executor.submit(make_gif(str(p / "screenshots"), str(p / "movie.gif")))
         print("exiting ...")
