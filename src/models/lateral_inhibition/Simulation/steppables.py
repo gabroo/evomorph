@@ -40,10 +40,10 @@ class Screenshots(SteppableBasePy):
 
 
 class LateralInhibition(SteppableBasePy):
-    def __init__(self, params_path, frequency=1):
+    def __init__(self, params, d_out, frequency=1):
         super().__init__(frequency)
-        self.dir = params_path.parent
-        self.params = json.load(params_path.open())
+        self.dir = d_out
+        self.params = params
         self.cell_types = [Type.GREEN, Type.RED, Type.MEDIUM]
         self.data = []
 
@@ -74,7 +74,7 @@ class LateralInhibition(SteppableBasePy):
             neighbors = self.get_cell_neighbor_data_list(cell)
             # n: neighbor, csa: common surface area
             for n, csa in neighbors:
-                if n.type != cell.type and cell.type == Type.RED:  # don't double count
+                if n.type == Type.GREEN and cell.type == Type.RED:  # don't double count
                     csa_rg += csa
                 if n is None:  # medium
                     csas[Type.MEDIUM] += csa

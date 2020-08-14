@@ -23,7 +23,7 @@ class Simulation:
         self.ncores = int(ncpus) if ncpus else multiprocessing.cpu_count()
         self.params = params
 
-    def gen(self, stage: Path, n_steps: int, trials: List):
+    def gen(self, stage: Path, n_steps: int, trials: List, freq: int):
         makedirs(stage, exist_ok=True)
 
         def gen_dir(i):
@@ -35,6 +35,7 @@ class Simulation:
                 f_genome = d_sim / "genome.json"
                 params = json.load(f_genome.open())
                 params["signaling"]["halfexpress"] = float(trials[i])
+                params["frequency"] = freq
                 json.dump(params, f_genome.open("w"))
                 config = ET.parse(d_sim / "Simulation" / "config.xml")
                 config.getroot().find("Potts").find("Steps").text = str(n_steps)
@@ -49,7 +50,7 @@ class Simulation:
 
         return True
 
-    def run_experiment(self, trials: List, n_steps: int, d_out: Path):
+    def run_experiment(self, trials: List, n_steps: int, d_out: Path, freq: int):
         """
         Run an experiment (a group of trials) for this model.
         
@@ -61,13 +62,16 @@ class Simulation:
         `n_steps`: number of Monte Carlo steps to run each trial
 
         `d_out`: the output directory for this experiment
+        
+        `freq`: screenshot output frequency
 
         """
         print(f"using model {self.d_model} with {self.params} as variables ...")
         print(f"running {len(trials)} sims for {n_steps} steps on {self.ncores} CPUs ...")
+        print(f"outputting every {freq} mcs to {d_out} ...")
 
         print("generating files", end=" ")
-        self.gen(d_out, n_steps, trials)
+        self.gen(d_out, n_steps, trials, freq)
 
         print("running sims ...")
         tasks = multiprocessing.JoinableQueue()

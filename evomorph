@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH -c16
-#SBATCH -t12:00:00
+#SBATCH -t24:00:00
 
 # colors
 NC='\033[0m'
@@ -65,5 +65,5 @@ if [ $1 == "-v" ]; then
   leave 0;
 fi
 
-singularity exec simbox.sif python3 $@
+time singularity exec simbox.sif python3 $@
 leave 0

@@ -1,6 +1,8 @@
 from argparse import ArgumentParser
 from pathlib import Path
 from os import listdir
+from os.path import exists
+from shutil import rmtree
 from tools.simulation import Simulation
 from typing import List
 
@@ -23,12 +25,12 @@ def get_scores(d_out: Path) -> List[float]:
     return scores
 
 
-def cycle(s: Simulation, N: int, G: int, t: int, o: Path):
-    trials = np.random.uniform(-10000, 10000, N)
+def cycle(s: Simulation, N: int, G: int, t: int, o: Path, f: int):
+    trials = np.random.uniform(-20000, 20000, N)
     for g in range(G):
         print(f"generation {g+1}")
         out = o / f"gen_{g+1:03}"
-        s.run_experiment(trials, t, out)
+        s.run_experiment(trials, t, out, f)
         json.dump(trials.tolist(), (out/'trials.json').open('w'))
         scores = get_scores(out)
         json.dump(scores, (out / "scores.json").open("w"))
@@ -36,7 +38,7 @@ def cycle(s: Simulation, N: int, G: int, t: int, o: Path):
         good = {i for i, v in scores.items() if v > Fmu}
         good_trials = trials[[i in good for i in sorted(scores)]]
         Nmu = np.mean(good_trials)
-        Nsd = np.ptp(good_trials)/2
+        Nsd = np.ptp(good_trials)/4
         json.dump(good_trials.tolist(), (out / "good_sims.json").open("w"))
         json.dump({'mu': Nmu, 'sd': Nsd}, (out / "new_dist.json").open("w"))
 
@@ -66,7 +68,7 @@ if __name__ == "__main__":
         type=str,
         required=True,
         help="Model to simulate.",
-        choices=listdir(Path(__file__).parent / "models"),
+        choices=listdir('src/models'),
     )
     parser.add_argument(
         "-t",
@@ -78,10 +80,20 @@ if __name__ == "__main__":
     parser.add_argument(
         "-o",
         "--out",
-        type=str,
+        type=Path,
         help="Output folder.",
-        default=(Path(__file__).parent.parent / "out").resolve(),
+        default='out',
+    )
+    parser.add_argument(
+        "-f",
+        "--frequency",
+        type=int,
+        required=True,
+        help="Screenshot output frequency in Monte Carlo steps.",
+        default=500,
     )
     args = parser.parse_args()
     s = Simulation(args.model, ["beta"])
-    cycle(s, args.individuals, args.generations, args.time, args.out)
+    if exists(args.out):
+        rmtree(args.out)
+    cycle(s, args.individuals, args.generations, args.time, args.out, args.frequency)
