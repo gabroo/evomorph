@@ -16,8 +16,9 @@ def get_scores(d_out: Path) -> List[float]:
     print(f"fetching scores from {d_out}")
     scores = {}
     for p in d_out.iterdir():
+        print(p)
         if p.suffix == '':
-            i = int(re.match(".*_0+(\d+)", str(p)).groups()[0])
+            i = int(re.search("sim_(\d\d\d)", str(p)).groups()[0])
             data = np.array(json.load((p / "data.json").open()))[:, 1]
             mu = np.mean(data)
             sd = np.std(data)

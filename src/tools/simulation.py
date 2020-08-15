@@ -80,7 +80,7 @@ class Simulation:
 
         for p in d_out.iterdir():
             if p.suffix == '':
-                i = int(re.match(".*_0+(\d+)", str(p)).groups()[0])
+                i = int(re.search("sim_(\d\d\d)", str(p)).groups()[0])
                 cc3d_caller = CC3DCaller(
                     cc3d_sim_fname=p / "sim.cc3d",
                     output_dir=str(p),
@@ -103,8 +103,11 @@ class Simulation:
 
         print("sims are done ...")
         print("making gifs ...")
-        with ProcessPoolExecutor(max_workers=self.ncores) as executor:
-            for p in d_out.iterdir():
-                if p.suffix == '':
-                    executor.submit(make_gif(str(p / "screenshots"), str(p / "movie.gif")))
+        try:
+            with ProcessPoolExecutor(max_workers=self.ncores) as executor:
+                for p in d_out.iterdir():
+                    if p.suffix == '':
+                        executor.submit(make_gif(str(p / "screenshots"), str(p / "movie.gif")))
+        except Exception as e:
+            print(f"error with making gifs: {e}")
         print("exiting ...")
