@@ -16,12 +16,12 @@ from .viz import make_gif
 
 
 class Simulation:
-    def __init__(self, model: str, params: List[str]):
+    def __init__(self, model: str):
         d_models = Path(__file__).parent.parent / "models"
         self.d_model = d_models / model
         ncpus = environ.get("SLURM_CPUS_PER_TASK")
         self.ncores = int(ncpus) if ncpus else multiprocessing.cpu_count()
-        self.params = params
+        self.variables = json.load((self.d_model / "genome.json").open())
 
     def gen(self, stage: Path, n_steps: int, trials: List, freq: int):
         makedirs(stage, exist_ok=True)
@@ -67,7 +67,9 @@ class Simulation:
 
         """
         print(f"using model {self.d_model} with {self.params} as variables ...")
-        print(f"running {len(trials)} sims for {n_steps} steps on {self.ncores} CPUs ...")
+        print(
+            f"running {len(trials)} sims for {n_steps} steps on {self.ncores} CPUs ..."
+        )
         print(f"outputting every {freq} mcs to {d_out} ...")
 
         print("generating files", end=" ")
@@ -79,7 +81,7 @@ class Simulation:
         workers = [CC3DCallerWorker(tasks, results) for i in range(self.ncores)]
 
         for p in d_out.iterdir():
-            if p.suffix == '':
+            if p.suffix == "":
                 i = int(re.search("sim_(\d\d\d)", str(p)).groups()[0])
                 cc3d_caller = CC3DCaller(
                     cc3d_sim_fname=p / "sim.cc3d",
@@ -106,8 +108,10 @@ class Simulation:
         try:
             with ProcessPoolExecutor(max_workers=self.ncores) as executor:
                 for p in d_out.iterdir():
-                    if p.suffix == '':
-                        executor.submit(make_gif(str(p / "screenshots"), str(p / "movie.gif")))
+                    if p.suffix == "":
+                        executor.submit(
+                            make_gif(str(p / "screenshots"), str(p / "movie.gif"))
+                        )
         except Exception as e:
             print(f"error with making gifs: {e}")
         print("exiting ...")

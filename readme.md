@@ -8,7 +8,9 @@ tbd
 
 ## install
 
-this branch is intended for use on the HPC cluster at USC, and should already be installed there.
+*evomorph* depends on the [CompuCell3D](https://github.com/compucell3d/compucell3d) Python module.
+
+for headless environments, a [container](https://cloud.sylabs.io/library/gabroo/default/cc3d_ubuntu) is available via Singularity.
 
 ## configure
 
@@ -16,4 +18,6 @@ tbd
 
 ## run
 
-tbd
+```
+[sbatch] evomorph src/run.py -m[model] -n[individuals] -g[generations] -t[timesteps] -f[frequency] -o[output]
+```
