@@ -1,3 +1,20 @@
-*.swp
+# vscode
 .vscode
 *.code-workspace
+
+# python
+.ipynb_checkpoints
+__pycache__
+
+# singularity
+*.sif
+*.img
+
+# slurm
+slurm*.out
+
+# mac
+.DS_STORE
+
+# evomorph
+out
