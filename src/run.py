@@ -3,7 +3,7 @@ from pathlib import Path
 from os import listdir
 from os.path import exists
 from shutil import rmtree
-from tools.simulation import Simulation
+from tools.simulate import Simulation
 from typing import List
 
 import json
@@ -17,7 +17,7 @@ def get_scores(d_out: Path) -> List[float]:
     scores = {}
     for p in d_out.iterdir():
         print(p)
-        if p.suffix == '':
+        if p.suffix == "":
             i = int(re.search("sim_(\d\d\d)", str(p)).groups()[0])
             data = np.array(json.load((p / "data.json").open()))[:, 1]
             mu = np.mean(data)
@@ -32,18 +32,19 @@ def cycle(s: Simulation, N: int, G: int, t: int, o: Path, f: int):
         print(f"generation {g+1}")
         out = o / f"gen_{g+1:03}"
         s.run_experiment(trials, t, out, f)
-        json.dump(trials.tolist(), (out/'trials.json').open('w'))
+        json.dump(trials.tolist(), (out / "trials.json").open("w"))
         scores = get_scores(out)
         json.dump(scores, (out / "scores.json").open("w"))
         Fmu = np.mean(list(scores.values()))
         good = {i for i, v in scores.items() if v > Fmu}
         good_trials = trials[[i in good for i in sorted(scores)]]
         Nmu = np.mean(good_trials)
-        Nsd = np.ptp(good_trials)/4
+        Nsd = np.ptp(good_trials) / 4
         json.dump(good_trials.tolist(), (out / "good_sims.json").open("w"))
-        json.dump({'mu': Nmu, 'sd': Nsd}, (out / "new_dist.json").open("w"))
+        json.dump({"mu": Nmu, "sd": Nsd}, (out / "new_dist.json").open("w"))
 
         trials = np.random.normal(Nmu, Nsd, N)
+
 
 if __name__ == "__main__":
     parser = ArgumentParser(description="Optimizes `n` simulations for `g` iterations.")
@@ -69,7 +70,7 @@ if __name__ == "__main__":
         type=str,
         required=True,
         help="Model to simulate.",
-        choices=listdir('src/models'),
+        choices=listdir("src/models"),
     )
     parser.add_argument(
         "-t",
@@ -79,11 +80,7 @@ if __name__ == "__main__":
         help="Number of Monte Carlo steps per simualtion.",
     )
     parser.add_argument(
-        "-o",
-        "--out",
-        type=Path,
-        help="Output folder.",
-        default='out',
+        "-o", "--out", type=Path, help="Output folder.", default="out",
     )
     parser.add_argument(
         "-f",
