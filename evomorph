@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -c16
+#SBATCH -c32
 #SBATCH -t24:00:00
 
 # colors
