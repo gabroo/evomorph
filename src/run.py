@@ -19,10 +19,13 @@ def get_scores(d_out: Path) -> List[float]:
         print(p)
         if p.suffix == "":
             i = int(re.search("sim_(\d\d\d)", str(p)).groups()[0])
-            data = np.array(json.load((p / "data.json").open()))[:, 1]
-            mu = np.mean(data)
-            sd = np.std(data)
-            scores[i] = mu - sd / mu
+            try:
+                data = np.array(json.load((p / "data.json").open()))[:, 1]
+                mu = np.mean(data)
+                sd = np.std(data)
+                scores[i] = mu - sd / mu
+            except:
+                scores[i] = 0
     return scores
 
 
@@ -45,7 +48,7 @@ def cycle(s: Simulation, N: int, G: int, t: int, o: Path, f: int, p: List):
         Nmu = np.mean(good_trials, axis=0)
         Nsd = np.ptp(good_trials, axis=0) / 4
         json.dump(good_trials.tolist(), (out / "good_sims.json").open("w"))
-        json.dump({"mu": Nmu, "sd": Nsd}, (out / "new_dist.json").open("w"))
+        json.dump({"mu": Nmu.tolist(), "sd": Nsd.tolist()}, (out / "new_dist.json").open("w"))
         print(Nmu.shape, Nsd.shape)
         trials = np.random.multivariate_normal(Nmu, np.identity(len(p)))
         print(trials)

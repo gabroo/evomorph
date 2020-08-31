@@ -11,7 +11,7 @@ import numpy as np
 
 from typing import List
 
-# from cc3d.CompuCellSetup.CC3DCaller import CC3DCaller, CC3DCallerWorker
+from cc3d.CompuCellSetup.CC3DCaller import CC3DCaller, CC3DCallerWorker
 
 from .viz import make_gif
 
