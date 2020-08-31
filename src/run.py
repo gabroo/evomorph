@@ -26,8 +26,12 @@ def get_scores(d_out: Path) -> List[float]:
     return scores
 
 
-def cycle(s: Simulation, N: int, G: int, t: int, o: Path, f: int):
-    trials = np.random.uniform(-20000, 20000, N)
+def cycle(s: Simulation, N: int, G: int, t: int, o: Path, f: int, p: List):
+    D = len(p)
+    trials = np.ndarray((N, D), dtype=np.float64)
+    for i, v in enumerate(p):
+        trials[:, i] = np.random.uniform(v["from"], v["to"], size=N)
+    print(trials)
     for g in range(G):
         print(f"generation {g+1}")
         out = o / f"gen_{g+1:03}"
@@ -38,16 +42,24 @@ def cycle(s: Simulation, N: int, G: int, t: int, o: Path, f: int):
         Fmu = np.mean(list(scores.values()))
         good = {i for i, v in scores.items() if v > Fmu}
         good_trials = trials[[i in good for i in sorted(scores)]]
-        Nmu = np.mean(good_trials)
-        Nsd = np.ptp(good_trials) / 4
+        Nmu = np.mean(good_trials, axis=0)
+        Nsd = np.ptp(good_trials, axis=0) / 4
         json.dump(good_trials.tolist(), (out / "good_sims.json").open("w"))
         json.dump({"mu": Nmu, "sd": Nsd}, (out / "new_dist.json").open("w"))
-
-        trials = np.random.normal(Nmu, Nsd, N)
+        print(Nmu.shape, Nsd.shape)
+        trials = np.random.multivariate_normal(Nmu, np.identity(len(p)))
+        print(trials)
 
 
 if __name__ == "__main__":
     parser = ArgumentParser(description="Optimizes `n` simulations for `g` iterations.")
+    parser.add_argument(
+        "-c",
+        "--config",
+        type=Path,
+        help="Configuration file for the experiment.",
+        default="config.json",
+    )
     parser.add_argument(
         "-n",
         "--individuals",
@@ -68,9 +80,9 @@ if __name__ == "__main__":
         "-m",
         "--model",
         type=str,
-        required=True,
         help="Model to simulate.",
         choices=listdir("src/models"),
+        default="lateral_inhibition",
     )
     parser.add_argument(
         "-t",
@@ -80,7 +92,11 @@ if __name__ == "__main__":
         help="Number of Monte Carlo steps per simualtion.",
     )
     parser.add_argument(
-        "-o", "--out", type=Path, help="Output folder.", default="out",
+        "-o",
+        "--out",
+        type=Path,
+        help="Output folder for screenshots and data.",
+        default="out",
     )
     parser.add_argument(
         "-f",
@@ -88,10 +104,19 @@ if __name__ == "__main__":
         type=int,
         required=True,
         help="Screenshot output frequency in Monte Carlo steps.",
-        default=500,
     )
     args = parser.parse_args()
-    s = Simulation(args.model, ["beta"])
+    config = json.load(args.config.open())
+    variables = config["variables"]
+    s = Simulation(args.model, variables)
     if exists(args.out):
         rmtree(args.out)
-    cycle(s, args.individuals, args.generations, args.time, args.out, args.frequency)
+    cycle(
+        s,
+        args.individuals,
+        args.generations,
+        args.time,
+        args.out,
+        args.frequency,
+        variables,
+    )

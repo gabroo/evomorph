@@ -7,21 +7,23 @@ import json
 import re
 import multiprocessing
 from concurrent.futures import ThreadPoolExecutor, ProcessPoolExecutor
+import numpy as np
 
 from typing import List
 
-from cc3d.CompuCellSetup.CC3DCaller import CC3DCaller, CC3DCallerWorker
+# from cc3d.CompuCellSetup.CC3DCaller import CC3DCaller, CC3DCallerWorker
 
 from .viz import make_gif
 
 
 class Simulation:
-    def __init__(self, model: str):
+    def __init__(self, model: str, variables: list):
         d_models = Path(__file__).parent.parent / "models"
         self.d_model = d_models / model
         ncpus = environ.get("SLURM_CPUS_PER_TASK")
         self.ncores = int(ncpus) if ncpus else multiprocessing.cpu_count()
-        self.variables = json.load((self.d_model / "genome.json").open())
+        self.params = json.load((self.d_model / "genome.json").open())
+        self.variables = variables
 
     def gen(self, stage: Path, n_steps: int, trials: List, freq: int):
         makedirs(stage, exist_ok=True)
@@ -34,8 +36,9 @@ class Simulation:
                 copytree(self.d_model, d_sim)
                 f_genome = d_sim / "genome.json"
                 params = json.load(f_genome.open())
-                params["signaling"]["halfexpress"] = float(trials[i])
-                params["frequency"] = freq
+                for k, p in enumerate(self.variables):
+                    params[p["category"]][p["name"]] = float(trials[i, k])
+                    params["frequency"] = freq
                 json.dump(params, f_genome.open("w"))
                 config = ET.parse(d_sim / "Simulation" / "config.xml")
                 config.getroot().find("Potts").find("Steps").text = str(n_steps)
@@ -66,7 +69,7 @@ class Simulation:
         `freq`: screenshot output frequency
 
         """
-        print(f"using model {self.d_model} with {self.params} as variables ...")
+        print(f"using model {self.d_model} with {self.params} as parameters ...")
         print(
             f"running {len(trials)} sims for {n_steps} steps on {self.ncores} CPUs ..."
         )
