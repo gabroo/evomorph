@@ -47,7 +47,7 @@ def cycle(s: Simulation, N: int, G: int, t: int, o: Path, f: int, p: List):
         json.dump(good_trials.tolist(), (out / "good_sims.json").open("w"))
         json.dump({"mu": Nmu, "sd": Nsd}, (out / "new_dist.json").open("w"))
         print(Nmu.shape, Nsd.shape)
-        trials = np.random.multivariate_normal(Nmu, np.identity(len(p)))
+        trials = np.random.multivariate_normal(Nmu, np.identity(len(p)), size=(N, D))
         print(trials)
 
 
