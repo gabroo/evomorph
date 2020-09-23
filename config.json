@@ -9,7 +9,7 @@
     {
       "category": "signaling",
       "name": "sharpness",
-      "from": -2000,
+      "from": 50,
       "to": 2000
     }
   ]
