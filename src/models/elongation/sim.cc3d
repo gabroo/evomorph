@@ -1,4 +1,5 @@
 <Simulation version="4.2.0">
   <XMLScript Type="XMLScript">Simulation/config.xml</XMLScript>
   <PythonScript>Simulation/sim.py</PythonScript>
+  <PythonScript>Simulation/steppables.py</PythonScript>
 </Simulation>
