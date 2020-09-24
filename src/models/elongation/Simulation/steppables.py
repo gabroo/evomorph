@@ -92,7 +92,7 @@ class Screenshots(SteppableBasePy):
 
 
 class Elongation(SteppableBasePy):
-    def __init__(self, params, d_out, _frequency=1):
+    def __init__(self, params, d_out, frequency=1):
         super().__init__(frequency)
         self.dir = d_out
         self.params = params
@@ -109,6 +109,7 @@ class Elongation(SteppableBasePy):
             cell.targetVolume = sphere_vol(r)
             cell.targetSurface = sphere_sa(r)
             cell.dict["pts"] = 0
+            cell.dict["RDM"] = r
 
     def step(self, mcs):
         for cell in self.cellList:  # iterate over cell list
@@ -126,14 +127,14 @@ class Elongation(SteppableBasePy):
             for n, csa in neighbors:
                 if n is None:
                     csas[Type.MEDIUM] += csa
-                if n.type == Type.YELLOW:
+                elif n.type == Type.YELLOW:
                     csas[Type.YELLOW] += csa
                     PTSY += (
                         csa
                         * (CONEXPSCF / (1 + math.exp(-(mcs - THETA) / XI)))
                         / n.surface
                     )
-                if n.type == Type.GREEN:
+                elif n.type == Type.GREEN:
                     csas[Type.GREEN] += csa
                     PTSG += (
                         csa
@@ -141,14 +142,14 @@ class Elongation(SteppableBasePy):
                         / n.surface
                     )
                     SECLPTSG += csa * n.dict["pts"] / (n.surface)
-                if n.type == Type.BLUE:
+                elif n.type == Type.BLUE:
                     csas[Type.BLUE] += csa
                     PTSB += (
                         csa
                         * (CONEXPSCF / (1 + math.exp(-(mcs - THETA) / XI)))
                         / n.surface
                     )
-                if n.type == Type.RED:
+                elif n.type == Type.RED:
                     csas[Type.RED] += csa
                     PTSR += (
                         csa
@@ -195,9 +196,6 @@ class Elongation(SteppableBasePy):
 
             adhesion = self.params["adhesion"]
             if cell.type == 1:  # gray cells
-                CSAYGBR += (
-                    csas[Type.BLUE] + csas[Type.RED]
-                ) / cell.surface  # total common surface area of YG cells to BR cells normailzed to YG cell surface
                 cell.lambdaSurface = 1.0  # change depending on cell adhesitivity
                 cell.lambdaVolume = 1.0  # change depending on cell adhesitivity
                 cell.fluctAmpl = (
@@ -214,9 +212,6 @@ class Elongation(SteppableBasePy):
                 )  # corrected cell motility, tune based on adhesive neighbors, vetted
 
             if cell.type == 2:  # green cells
-                CSAYGBR += (
-                    csas[Type.BLUE] + csas[Type.RED]
-                ) / cell.surface  # total common surface area of YG cells to BR cells normailzed to YG cell surface
                 cell.lambdaSurface = 1.0  # change depending on cell adhesitivity
                 cell.lambdaVolume = 1.0  # change depending on cell adhesitivity
                 cell.fluctAmpl = (
@@ -270,8 +265,9 @@ class Elongation(SteppableBasePy):
 
 class Mitosis(MitosisSteppableBase):
     def __init__(self, frequency=1):
-        super().init(frequency)
-        self.setParentChildPositionFlag(0)  # randomize child cell position, see developer manual
+        super().__init__(frequency)
+        # randomize child cell position, see developer manual
+        self.set_parent_child_position_flag(0) 
 
     def step(self, mcs):
         cells_to_divide = []  # gen cells to divide list

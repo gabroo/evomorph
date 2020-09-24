@@ -45,15 +45,10 @@ leave()
 # script
 start
 
-if [ $# == 0 ]; then
-  help
-  leave 0;
-fi
-
-if [ $1 == "-v" ]; then
+if [[ $1 == "-v" ]]; then
   version
   leave 0;
 fi
 
-time singularity exec simbox.sif python3 $@
+time singularity exec simbox.sif python3 src/run.py $@
 leave 0

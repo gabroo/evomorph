@@ -85,7 +85,7 @@ if __name__ == "__main__":
         type=str,
         help="Model to simulate.",
         choices=listdir("src/models"),
-        default="lateral_inhibition",
+        required=True
     )
     parser.add_argument(
         "-t",
@@ -99,7 +99,7 @@ if __name__ == "__main__":
         "--out",
         type=Path,
         help="Output folder for screenshots and data.",
-        default="out",
+        required=True
     )
     parser.add_argument(
         "-f",
