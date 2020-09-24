@@ -17,8 +17,21 @@
     "threshold": 5263
   },
   "adhesion": {
-    "gg": 49,
-    "gr": 49,
-    "rr": 49
+    "yy": 30,
+    "yg": 49,
+    "yb": 49,
+    "yr": 49,
+    "gg": 5,
+    "gb": 49,
+    "gr": 5,
+    "bb": 30,
+    "br": 49,
+    "rr": 5
+  },
+  "thresholds": {
+    "br_up": 10000,
+    "br_down": 0,
+    "yg_up": 10000,
+    "yg_down": 0
   }
 }

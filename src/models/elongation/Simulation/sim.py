@@ -5,12 +5,13 @@ from pathlib import Path
 
 from cc3d import CompuCellSetup
 
-from steppables import LateralInhibition, Screenshots
+from steppables import Elongation, Screenshots, Mitosis
 
 params_path = Path(sys.path[0]).parent/'genome.json'
 params = json.load(params_path.open())
-CompuCellSetup.register_steppable(LateralInhibition(params, params_path.parent))
+CompuCellSetup.register_steppable(Elongation(params, params_path.parent))
 
 CompuCellSetup.register_steppable(Screenshots(frequency=params['frequency']))
+CompuCellSetup.register_steppable(Mitosis())
 
 CompuCellSetup.run()

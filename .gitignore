@@ -19,3 +19,4 @@ slurm*.out
 # evomorph
 out
 .vim
+post
