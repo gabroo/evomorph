@@ -1,5 +1,5 @@
 # singularity box definition file
-# name: cc3d_ubuntu
+# contains cc3d package (offscreen mode) in the base conda environment
 
 Bootstrap: library
 From: ubuntu:focal
@@ -30,9 +30,7 @@ From: ubuntu:focal
   conda install -c conda-forge pandas jinja2 pyqt pyqtgraph deprecated qscintilla2 chardet imageio matplotlib seaborn swig=3 cmake=3.13.4
   conda install -c conda-forge/label/vtk_dev vtk=9.0.0.rc3=with_osmesa_py37h43e0876_0
   conda install -c compucell3d tbb_full_dev
-  pip install webcolors
-  pip install libroadrunner
-  pip intall antimony
+  pip install webcolors libroadrunner antimony
 
 # build cc3d from (custom) sources
   git clone https://github.com/gabroo/CompuCell3D.git

@@ -1,0 +1,63 @@
+<CompuCell3D Revision="20171208" Version="3.7.7">
+   <Potts>
+      <Dimensions x="100" y="100" z="100" />
+      <Steps>100001</Steps>
+      <Flip2DimRatio>1</Flip2DimRatio>
+      <RandomSeed>44691</RandomSeed>
+      <NeighborOrder>3</NeighborOrder>
+   </Potts>
+   <Plugin Name="CellType">    
+      <CellType TypeId="0" TypeName="Medium" />
+      <CellType TypeId="1" TypeName="Y" />
+      <CellType TypeId="2" TypeName="G" />
+      <CellType TypeId="3" TypeName="B" />
+      <CellType TypeId="4" TypeName="R" />
+   </Plugin>
+   <Plugin Name="Volume" />
+   <Plugin Name="Surface" />
+   <Plugin Name="CenterOfMass" />
+   <Plugin Name="NeighborTracker" />
+   <Plugin Name="PixelTracker" />
+   <Plugin Name="ConnectivityGlobal">
+       <FastAlgorithm />
+       <ConnectivityOn Type="Y" />
+       <ConnectivityOn Type="G" />
+       <ConnectivityOn Type="B" />
+       <ConnectivityOn Type="R" />        
+   </Plugin>
+   <Plugin Name="Contact">
+      <Energy Type1="Medium" Type2="Medium">0</Energy>
+      <Energy Type1="Medium" Type2="Y">26.0</Energy>
+      <Energy Type1="Medium" Type2="G">26.0</Energy>
+      <Energy Type1="Medium" Type2="B">26.0</Energy>
+      <Energy Type1="Medium" Type2="R">26.0</Energy>      
+      <Energy Type1="Y" Type2="Y">47.0</Energy>    
+      <Energy Type1="Y" Type2="G">42.0</Energy>    
+      <Energy Type1="Y" Type2="B">49.0</Energy>
+      <Energy Type1="Y" Type2="R">49.0</Energy>      
+      <Energy Type1="G" Type2="G">35.0</Energy>
+      <Energy Type1="G" Type2="B">49.0</Energy>     
+      <Energy Type1="G" Type2="R">49.0</Energy>
+      <Energy Type1="B" Type2="B">40.85</Energy>      
+      <Energy Type1="B" Type2="R">49.0</Energy>
+      <Energy Type1="R" Type2="R">49.0</Energy>
+      <NeighborOrder>4</NeighborOrder>
+   </Plugin>
+   
+   <Steppable Type="UniformInitializer">
+     <Region>
+       <BoxMin x="20" y="20" z="0" />
+       <BoxMax x="80" y="80" z="5" />
+       <Gap>0</Gap>
+       <Width>5</Width>
+       <Types>B</Types>
+     </Region>
+     <Region>
+       <BoxMin x="20" y="20" z="5" />
+       <BoxMax x="80" y="80" z="10" />
+       <Gap>0</Gap>
+       <Width>5</Width>
+       <Types>Y</Types>
+     </Region>
+   </Steppable>
+</CompuCell3D>

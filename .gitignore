@@ -17,6 +17,4 @@ slurm*.out
 .DS_STORE
 
 # evomorph
-out
 .vim
-post

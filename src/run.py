@@ -25,7 +25,7 @@ def get_scores(d_out: Path) -> List[float]:
                 sd = np.std(data)
                 scores[i] = mu - sd / mu
             except:
-                scores[i] = 0
+                return None
     return scores
 
 
@@ -35,23 +35,30 @@ def cycle(s: Simulation, N: int, G: int, t: int, o: Path, f: int, p: List):
     for i, v in enumerate(p):
         trials[:, i] = np.random.uniform(v["from"], v["to"], size=N)
     print(trials)
-    for g in range(G):
-        print(f"generation {g+1}")
-        out = o / f"gen_{g+1:03}"
+    for g in range(1, G + 1):
+        print(f"generation {g}")
+        if G > 1:
+            out = o / f"gen_{g:03}"
+        else:
+            out = o
         s.run_experiment(trials, t, out, f)
         json.dump(trials.tolist(), (out / "trials.json").open("w"))
         scores = get_scores(out)
-        json.dump(scores, (out / "scores.json").open("w"))
-        Fmu = np.mean(list(scores.values()))
-        good = {i for i, v in scores.items() if v > Fmu}
-        good_trials = trials[[i in good for i in sorted(scores)]]
-        Nmu = np.mean(good_trials, axis=0)
-        Nsd = np.ptp(good_trials, axis=0) / 4
-        json.dump(good_trials.tolist(), (out / "good_sims.json").open("w"))
-        json.dump({"mu": Nmu.tolist(), "sd": Nsd.tolist()}, (out / "new_dist.json").open("w"))
-        print(Nmu.shape, Nsd.shape)
-        trials = np.random.multivariate_normal(Nmu, np.identity(len(p)), size=N)
-        print(trials)
+        if scores:
+            json.dump(scores, (out / "scores.json").open("w"))
+            Fmu = np.mean(list(scores.values()))
+            good = {i for i, v in scores.items() if v > Fmu}
+            good_trials = trials[[i in good for i in sorted(scores)]]
+            Nmu = np.mean(good_trials, axis=0)
+            Nsd = np.ptp(good_trials, axis=0) / 4
+            json.dump(good_trials.tolist(), (out / "good_sims.json").open("w"))
+            json.dump(
+                {"mu": Nmu.tolist(), "sd": Nsd.tolist()},
+                (out / "new_dist.json").open("w"),
+            )
+            print(Nmu.shape, Nsd.shape)
+            trials = np.random.multivariate_normal(Nmu, np.identity(len(p)), size=N)
+            print(trials)
 
 
 if __name__ == "__main__":
@@ -85,7 +92,7 @@ if __name__ == "__main__":
         type=str,
         help="Model to simulate.",
         choices=listdir("src/models"),
-        required=True
+        required=True,
     )
     parser.add_argument(
         "-t",
@@ -99,7 +106,7 @@ if __name__ == "__main__":
         "--out",
         type=Path,
         help="Output folder for screenshots and data.",
-        required=True
+        required=True,
     )
     parser.add_argument(
         "-f",
@@ -118,7 +125,7 @@ if __name__ == "__main__":
         s,
         args.individuals,
         args.generations,
-        args.time,
+        args.time + 1,  # strange indexing with mcs
         args.out,
         args.frequency,
         variables,
