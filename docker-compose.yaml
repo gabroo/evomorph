@@ -1,0 +1,8 @@
+services:
+  service:
+    build: ./engine
+    volumes:
+      - ./out:/var/out
+      - ./models:/var/models
+    ports:
+      - "1001:1001"
