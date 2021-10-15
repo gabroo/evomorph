@@ -1,0 +1,33 @@
+package(default_visibility = ["//visibility:public"])
+
+proto_library(
+    name = "common_proto",
+    srcs = ["common.proto"],
+)
+
+proto_library(
+    name = "engine_proto",
+    srcs = ["engine.proto"],
+    deps = ["common_proto"],
+)
+
+load("@rules_proto_grpc//go:defs.bzl", "go_grpc_library")
+
+go_grpc_library(
+    name = "engine_go_proto_library",
+    importpath = "evomorph",
+    protos = ["engine_proto", "common_proto"],
+)
+
+proto_library(
+    name = "controller_proto",
+    srcs = ["controller.proto"],
+    deps = ["common_proto"],
+)
+
+load("@rules_proto_grpc//cpp:defs.bzl", "cpp_proto_library")
+
+cpp_proto_library(
+    name = "controller_cpp_proto",
+    protos = ["controller_proto", "common_proto"],
+)

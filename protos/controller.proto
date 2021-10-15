@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+option go_package = ".;evomorph";
+
+import "protos/common.proto";
+
+// Payload for running a simulation.
+message RunRequest {
+  string name = 1;
+  uint32 length = 2;
+  Params params = 3;
+}
+
+// Human-readable parameters for our GJSM model.
+message Params {
+  uint32 num_cells = 1;
+  // ... add other parameters here ...
+}
+
+// Timing information of current simulation.
+message Progress {
+  uint32 cur_mcs = 1;
+  uint32 max_mcs = 2;
+}
+
+// Single frame from a trajectory.
+message Frame {
+  enum FrameType {
+    PICTURE = 0;
+    STRUCTURE = 1;
+  }
+  FrameType type = 1;
+  string path = 2;
+}
+
+service Controller {
+  rpc Run(RunRequest) returns (Simulation);
+  rpc Pause(Simulation) returns (Status);
+  rpc Resume(Simulation) returns (Status);
+  rpc Cancel(Simulation) returns (Status);
+  rpc GetStatus(Simulation) returns (Status);
+  rpc GetProgress(Simulation) returns (Progress);
+  rpc GetPictures(Simulation) returns (stream Frame);
+  rpc GetStructures(Simulation) returns (stream Frame);
+}

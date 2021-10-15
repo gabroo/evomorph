@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+option go_package = ".;evomorph";
+
+import "protos/common.proto";
+
+// Parameters for starting a job.
+message StartRequest {
+  // Path to XML file with MorpheusML config.
+  string model_path = 1;
+  // Output directory for simulation data.
+  string out_dir = 2;
+}
+
+// Response for starting a job.
+message StartResponse {
+  Status status = 1;
+  // Computed ID of the simulation.
+  uint32 id = 2;
+}
+
+// Parameters for stopping a job.
+message StopRequest {
+  uint32 id = 1;
+}
+
+// Response for stopping a job.
+message StopResponse {
+  Status status = 1;
+}
+
+service Engine {
+  rpc Start(StartRequest) returns (StartResponse);
+  rpc Stop(StopRequest) returns (StopResponse);
+}

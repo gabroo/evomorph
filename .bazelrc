@@ -1,0 +1,2 @@
+build --experimental_no_product_name_out_symlink
+build --symlink_prefix=build/
