@@ -1,2 +1,11 @@
-build
-out
+# evomorph
+build/
+out/
+
+# editors 
+.vscode/
+*.code-workspace
+
+# vagrant
+.vagrant/
+Vagrantfile
