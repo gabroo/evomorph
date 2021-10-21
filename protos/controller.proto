@@ -1,36 +1,46 @@
 syntax = "proto3";
 
-option go_package = ".;evomorph";
+import "common.proto";
+import "google/api/field_behavior.proto";
 
-import "protos/common.proto";
-
-// Payload for running a simulation.
-message RunRequest {
-  string name = 1;
-  uint32 length = 2;
-  Params params = 3;
-}
+option go_package = "evomorph/";
 
 // Human-readable parameters for our GJSM model.
 message Params {
+  // Number of cells.
   uint32 num_cells = 1;
-  // ... add other parameters here ...
+}
+
+// Payload for running a simulation.
+message RunRequest {
+  // Simulation name.
+  string name = 1 [(google.api.field_behavior) = REQUIRED];
+  // End time (mcs).
+  uint32 length = 2 [(google.api.field_behavior) = REQUIRED];
+  // Parameters payload.
+  Params params = 3 [(google.api.field_behavior) = REQUIRED];
 }
 
 // Timing information of current simulation.
 message Progress {
-  uint32 cur_mcs = 1;
-  uint32 max_mcs = 2;
+  // Current time (mcs).
+  uint32 cur_mcs = 1 [(google.api.field_behavior) = REQUIRED];
+  // End time (mcs).
+  uint32 max_mcs = 2 [(google.api.field_behavior) = REQUIRED];
 }
 
 // Single frame from a trajectory.
 message Frame {
   enum FrameType {
+    // Human viewable frame, eg, JPEG, PNG.
     PICTURE = 0;
+    // Fully resolved structure, eg, VTK, HDF5.
     STRUCTURE = 1;
   }
-  FrameType type = 1;
-  string path = 2;
+  // Which kind of frame it is.
+  FrameType type = 1 [(google.api.field_behavior) = REQUIRED];
+  // Path to the corresponding file.
+  string path = 2 [(google.api.field_behavior) = REQUIRED];
 }
 
 service Controller {
