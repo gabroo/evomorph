@@ -8,6 +8,23 @@ http_archive(
     urls = ["https://github.com/rules-proto-grpc/rules_proto_grpc/archive/4.0.1.tar.gz"],
 )
 
+# io_bazel_rules_go pinned at 70b8365
+http_archive(
+    name = "io_bazel_rules_go",
+    sha256 = "376fbf7c3c946f2a464f428f8b0cf2608524a5e758f0781102f8acba3dca8e93",
+    strip_prefix = "rules_go-70b8365a90e226b98f66bc35d3abb3e335883d81",
+    urls = ["https://github.com/bazelbuild/rules_go/archive/70b8365a90e226b98f66bc35d3abb3e335883d81.tar.gz"],
+)
+
+# googleapis protos
+http_archive(
+    name = "googleapis",
+    sha256 = "7a15e0c1bd929e091d180e801ca71b2d4dcc234ed8e93492c918716a97c88da0",
+    strip_prefix = "googleapis-bb1f3e9048c34528b3450cd0cb6faa91a6ee4b9f",
+    urls = ["https://github.com/googleapis/googleapis/archive/bb1f3e9048c34528b3450cd0cb6faa91a6ee4b9f.tar.gz"],
+)
+
+# rules_proto deps
 load("@rules_proto_grpc//:repositories.bzl", "rules_proto_grpc_repos", "rules_proto_grpc_toolchains")
 
 rules_proto_grpc_toolchains()
@@ -17,10 +34,8 @@ load("@rules_proto//proto:repositories.bzl", "rules_proto_dependencies", "rules_
 
 rules_proto_dependencies()
 rules_proto_toolchains()
-load("@rules_proto_grpc//:repositories.bzl", "bazel_gazelle", "io_bazel_rules_go")
 
-io_bazel_rules_go()
-
+# Go deps
 load("@io_bazel_rules_go//go:deps.bzl", "go_register_toolchains", "go_rules_dependencies")
 
 go_rules_dependencies()
@@ -29,12 +44,30 @@ go_register_toolchains(
     version = "1.17.2",
 )
 
+# Gazelle
+load("@rules_proto_grpc//:repositories.bzl", "bazel_gazelle")
+
 bazel_gazelle()
 
 load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies")
 
 gazelle_dependencies(go_repository_default_config = "@//:WORKSPACE.bazel")
 
-load("@rules_proto_grpc//go:repositories.bzl", rules_proto_grpc_go_repos = "go_repos")
+# Go repos
+load("@rules_proto_grpc//go:repositories.bzl", "go_repos")
 
-rules_proto_grpc_go_repos()
+go_repos()
+
+# googleapis protos
+load("@googleapis//:repository_rules.bzl", "switched_rules_by_language")
+
+switched_rules_by_language(
+    name = "com_google_googleapis_imports",
+    go = True,
+    grpc = True,
+)
+
+# protoc-gen-doc
+load("@rules_proto_grpc//doc:repositories.bzl", rules_proto_grpc_doc_repos = "doc_repos")
+
+rules_proto_grpc_doc_repos()
