@@ -1,20 +1,19 @@
 load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
 
 go_library(
-    name = "engine_lib",
+    name = "test_lib",
     srcs = ["main.go"],
-    importpath = "github.com/gabroo/evomorph/engine",
+    importpath = "github.com/gabroo/evomorph/engine/test",
     visibility = ["//visibility:private"],
     deps = [
         "//protos",
         "@com_github_kr_pretty//:go_default_library",
         "@org_golang_google_grpc//:go_default_library",
-        "@org_golang_google_protobuf//encoding/protojson:go_default_library",
     ],
 )
 
 go_binary(
     name = "main",
-    embed = [":engine_lib"],
+    embed = [":test_lib"],
     visibility = ["//visibility:public"],
 )

@@ -1,7 +1,17 @@
 package(default_visibility = ["//visibility:public"])
 
+load("@rules_proto_grpc//cpp:defs.bzl", "cpp_proto_library")
+
+cpp_proto_library(
+    name = "controller_cpp_proto",
+    protos = [
+        "//protos:common_proto",
+        "//protos:controller_proto",
+    ],
+)
+
 cc_binary(
     name = "main",
     srcs = ["main.cc"],
-    deps = ["//protos:controller_cpp_proto"],
+    deps = [":controller_cpp_proto"],
 )

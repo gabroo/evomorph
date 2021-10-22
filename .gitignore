@@ -1,2 +1,14 @@
-build
-out
+# evomorph
+build/
+out/
+
+# editors 
+.vscode/
+*.code-workspace
+
+# vagrant
+.vagrant/
+Vagrantfile
+
+# bazel
+.bazel_fix_commands.json

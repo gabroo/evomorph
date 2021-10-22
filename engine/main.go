@@ -1,21 +1,53 @@
 package main
 
 import (
-	"fmt"
-	"runtime"
-  "evomorph"
+	"context"
+	"log"
+	"net"
+
+	pb "evomorph/protos"
+
+	"google.golang.org/grpc"
 )
+
+const (
+	host = "localhost"
+	port = ":50051"
+	addr = host + port
+)
+
+type server struct {
+	pb.UnimplementedEngineServer
+}
+
+// Engine:Start
+func (s *server) Start(ctx context.Context, in *pb.StartRequest) (*pb.StartReply, error) {
+	log.Printf("called Start")
+	log.Printf("received payload: %v", in)
+	r := &pb.StartReply{Status: pb.StatusType_OK, Id: 123}
+	log.Printf("sending back: %v", r)
+	return r, nil
+}
+
+// Engine:Stop
+func (s *server) Stop(ctx context.Context, in *pb.StopRequest) (*pb.Status, error) {
+	log.Printf("called Stop")
+	log.Printf("received payload: %v", in)
+	r := &pb.Status{Status: pb.StatusType_OK}
+	log.Printf("sending back: %v", r)
+	return r, nil
+}
+
 func main() {
-	pc, file, line, ok := runtime.Caller(1)
-	if !ok {
-		fmt.Println("Error in runtime.Caller()")
-		return
+	log.Printf("starting server ...\n")
+	lis, err := net.Listen("tcp", addr)
+	if err != nil {
+		log.Fatalf("failed to listen: %v", err)
 	}
-
-	fmt.Printf("Called from %s, line #%d, func: %v\n", file, line, runtime.FuncForPC(pc).Name())
-	fmt.Printf("Hello world!\n")
-
-	s := evomorph.Simulation{Id: 42, Name: "game of life"}
-	fmt.Println("name: ", s.Name)
-	fmt.Printf("%+v\n", s)
+	s := grpc.NewServer()
+	pb.RegisterEngineServer(s, &server{})
+	log.Printf("server listening at %v", lis.Addr())
+	if err := s.Serve(lis); err != nil {
+		log.Fatalf("failed to server: %v", err)
+	}
 }

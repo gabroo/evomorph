@@ -1,33 +1,30 @@
-package(default_visibility = ["//visibility:public"])
+load("@rules_proto//proto:defs.bzl", "proto_library")
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+load("@io_bazel_rules_go//proto:def.bzl", "go_proto_library")
 
 proto_library(
-    name = "common_proto",
-    srcs = ["common.proto"],
+    name = "protos_proto",
+    srcs = [
+        "common.proto",
+        "controller.proto",
+        "engine.proto",
+    ],
+    visibility = ["//visibility:public"],
+    deps = ["@go_googleapis//google/api:annotations_proto"],
 )
 
-proto_library(
-    name = "engine_proto",
-    srcs = ["engine.proto"],
-    deps = ["common_proto"],
+go_proto_library(
+    name = "protos_go_proto",
+    compilers = ["@io_bazel_rules_go//proto:go_grpc"],
+    importpath = "evomorph/protos",
+    proto = ":protos_proto",
+    visibility = ["//visibility:public"],
+    deps = ["@go_googleapis//google/api:annotations_go_proto"],
 )
 
-load("@rules_proto_grpc//go:defs.bzl", "go_grpc_library")
-
-go_grpc_library(
-    name = "engine_go_proto_library",
-    importpath = "evomorph",
-    protos = ["engine_proto", "common_proto"],
-)
-
-proto_library(
-    name = "controller_proto",
-    srcs = ["controller.proto"],
-    deps = ["common_proto"],
-)
-
-load("@rules_proto_grpc//cpp:defs.bzl", "cpp_proto_library")
-
-cpp_proto_library(
-    name = "controller_cpp_proto",
-    protos = ["controller_proto", "common_proto"],
+go_library(
+    name = "protos",
+    embed = [":protos_go_proto"],
+    importpath = "evomorph/protos",
+    visibility = ["//visibility:public"],
 )

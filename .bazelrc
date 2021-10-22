@@ -1,2 +1,4 @@
+build --color=yes
+build --cxxopt='-std=c++20'
 build --experimental_no_product_name_out_symlink
 build --symlink_prefix=build/

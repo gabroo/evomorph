@@ -1,0 +1,17 @@
+load("@rules_proto_grpc//doc:defs.bzl", "doc_html_compile", "doc_markdown_compile")
+
+doc_html_compile(
+    name = "index",
+    output_mode = "NO_PREFIX",
+    protos = [
+        "//protos:protos_proto",
+    ],
+)
+
+doc_markdown_compile(
+    name = "docs",
+    output_mode = "NO_PREFIX",
+    protos = [
+        "//protos:protos_proto",
+    ],
+)
