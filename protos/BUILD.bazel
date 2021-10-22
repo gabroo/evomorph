@@ -1,28 +1,36 @@
-package(default_visibility = ["//visibility:public"])
+load("@rules_proto//proto:defs.bzl", "proto_library")
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+load("@io_bazel_rules_go//proto:def.bzl", "go_proto_library")
 
 proto_library(
-    name = "common_proto",
-    strip_import_prefix = "",
-    srcs = ["common.proto"],
+    name = "protos_proto",
+    srcs = [
+        "common.proto",
+        "controller.proto",
+        "engine.proto",
+    ],
+    visibility = ["//visibility:public"],
     deps = [
-      "@googleapis//google/api:field_behavior_proto",
+        "//:root_proto",
+        "@go_googleapis//google/api:annotations_proto",
     ],
 )
 
-proto_library(
-    name = "engine_proto",
-    srcs = ["engine.proto"],
+go_proto_library(
+    name = "protos_go_proto",
+    compilers = ["@io_bazel_rules_go//proto:go_grpc"],
+    importpath = "evomorph/",
+    proto = ":protos_proto",
+    visibility = ["//visibility:public"],
     deps = [
-      ":common_proto",
-      "@googleapis//google/api:field_behavior_proto",
+        "//:common.proto",
+        "@go_googleapis//google/api:annotations_go_proto",
     ],
 )
 
-proto_library(
-    name = "controller_proto",
-    srcs = ["controller.proto"],
-    deps = [
-      ":common_proto",
-      "@googleapis//google/api:field_behavior_proto",
-    ],
+go_library(
+    name = "evomorph",
+    embed = [":protos_go_proto"],
+    importpath = "evomorph/",
+    visibility = ["//visibility:public"],
 )

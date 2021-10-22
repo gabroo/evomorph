@@ -1,35 +1,18 @@
-package(default_visibility = ["//visibility:public"])
-
-load("@rules_proto_grpc//go:defs.bzl", "go_grpc_library")
-
-go_grpc_library(
-    name = "engine_go_grpc",
-    importpath = "evomorph",
-    protos = [
-        "//protos:common_proto",
-        "//protos:engine_proto",
-    ],
-    deps = [
-        "@googleapis//google/api:annotations_go_proto",
-    ],
-)
-
-load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_binary")
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
 
 go_library(
-    name = "engine",
+    name = "engine_lib",
     srcs = ["main.go"],
-    importpath = "main",
+    importpath = "github.com/gabroo/evomorph/engine",
+    visibility = ["//visibility:private"],
     deps = [
-        ":engine_go_grpc",
-        "@org_golang_x_tools//go/packages",
+        "@org_golang_x_text//language:go_default_library",
+        "@org_golang_x_text//message:go_default_library",
     ],
 )
 
 go_binary(
-  name = "main",
-  embed = [":engine"],
-  deps = [
-    ":engine"
-  ],
+    name = "main",
+    embed = [":engine_lib"],
+    visibility = ["//visibility:public"],
 )
