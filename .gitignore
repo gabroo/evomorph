@@ -9,3 +9,6 @@ out/
 # vagrant
 .vagrant/
 Vagrantfile
+
+# bazel
+.bazel_fix_commands.json

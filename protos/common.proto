@@ -1,8 +1,10 @@
 syntax = "proto3";
 
+package evomorph;
+
 import "google/api/field_behavior.proto";
 
-option go_package = "evomorph/";
+option go_package = "evomorph/protos";
 
 // Structure to identify a job.
 message Simulation {
@@ -12,15 +14,18 @@ message Simulation {
   string name = 2 [(google.api.field_behavior) = REQUIRED];
 }
 
-// Signal between services.
+// Enum contaning status types.
+enum StatusType {
+  // Status is unset (don't use)
+  _ = 0;
+  // Status is OK
+  OK = 1;
+  // Status is ERROR
+  ERROR = 2;
+}
+
+// Blank signal between services.
 message Status {
-  // Enum contaning status types.
-  enum StatusType {
-    // Status is OK
-    OK = 0;
-    // Status is ERROR
-    ERROR = 1;
-  }
   // Payload of message.
   StatusType status = 1 [(google.api.field_behavior) = REQUIRED]; 
 }

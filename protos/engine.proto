@@ -1,9 +1,11 @@
 syntax = "proto3";
 
-import "common.proto";
+package evomorph;
+
+import "protos/common.proto";
 import "google/api/field_behavior.proto";
 
-option go_package = "evomorph/";
+option go_package = "evomorph/protos";
 
 // Parameters for starting a job.
 message StartRequest {
@@ -14,10 +16,10 @@ message StartRequest {
   string out_dir = 2;
 }
 
-// Response for starting a job.
-message StartResponse {
+// Reply for starting a job.
+message StartReply {
   // Status of response.
-  Status status = 1 [(google.api.field_behavior) = REQUIRED];
+  StatusType status = 1 [(google.api.field_behavior) = REQUIRED];
   // Computed ID of the simulation.
   uint32 id = 2 [(google.api.field_behavior) = REQUIRED];
 }
@@ -28,13 +30,7 @@ message StopRequest {
   uint32 id = 1 [(google.api.field_behavior) = REQUIRED];
 }
 
-// Response for stopping a job.
-message StopResponse {
-  // Status of response.
-  Status status = 1 [(google.api.field_behavior) = REQUIRED];
-}
-
 service Engine {
-  rpc Start(StartRequest) returns (StartResponse);
-  rpc Stop(StopRequest) returns (StopResponse);
+  rpc Start(StartRequest) returns (StartReply);
+  rpc Stop(StopRequest) returns (Status);
 }

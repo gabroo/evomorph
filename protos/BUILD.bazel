@@ -10,27 +10,21 @@ proto_library(
         "engine.proto",
     ],
     visibility = ["//visibility:public"],
-    deps = [
-        "//:root_proto",
-        "@go_googleapis//google/api:annotations_proto",
-    ],
+    deps = ["@go_googleapis//google/api:annotations_proto"],
 )
 
 go_proto_library(
     name = "protos_go_proto",
     compilers = ["@io_bazel_rules_go//proto:go_grpc"],
-    importpath = "evomorph/",
+    importpath = "evomorph/protos",
     proto = ":protos_proto",
     visibility = ["//visibility:public"],
-    deps = [
-        "//:common.proto",
-        "@go_googleapis//google/api:annotations_go_proto",
-    ],
+    deps = ["@go_googleapis//google/api:annotations_go_proto"],
 )
 
 go_library(
-    name = "evomorph",
+    name = "protos",
     embed = [":protos_go_proto"],
-    importpath = "evomorph/",
+    importpath = "evomorph/protos",
     visibility = ["//visibility:public"],
 )

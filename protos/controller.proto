@@ -1,9 +1,11 @@
 syntax = "proto3";
 
-import "common.proto";
+package evomorph;
+
+import "protos/common.proto";
 import "google/api/field_behavior.proto";
 
-option go_package = "evomorph/";
+option go_package = "evomorph/protos";
 
 // Human-readable parameters for our GJSM model.
 message Params {

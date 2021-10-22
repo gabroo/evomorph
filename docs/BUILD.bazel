@@ -4,10 +4,7 @@ doc_html_compile(
     name = "index",
     output_mode = "NO_PREFIX",
     protos = [
-        "//protos:common_proto",
-        "//protos:controller_proto",
-        "//protos:engine_proto",
-        "@googleapis//google/api:field_behavior_proto",
+        "//protos:protos_proto",
     ],
 )
 
@@ -15,9 +12,6 @@ doc_markdown_compile(
     name = "docs",
     output_mode = "NO_PREFIX",
     protos = [
-        "//protos:common_proto",
-        "//protos:controller_proto",
-        "//protos:engine_proto",
-        "@googleapis//google/api:field_behavior_proto",
+        "//protos:protos_proto",
     ],
 )

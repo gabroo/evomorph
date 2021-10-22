@@ -1,4 +1,5 @@
 load("@bazel_gazelle//:def.bzl", "gazelle")
 
+# gazelle:exclude build
 # gazelle:prefix github.com/gabroo/evomorph
 gazelle(name = "gazelle")
