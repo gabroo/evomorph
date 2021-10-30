@@ -34,7 +34,7 @@
   </Space>
   <Time>
     <StartTime value="0"/>
-    <StopTime value="5"/>
+    <StopTime value="3"/>
     <TimeSymbol symbol="time"/>
   </Time>
   <CellTypes>

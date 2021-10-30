@@ -20,14 +20,14 @@ message StartRequest {
 message StartReply {
   // Status of response.
   StatusType status = 1 [(google.api.field_behavior) = REQUIRED];
-  // Computed ID of the simulation.
-  uint32 id = 2 [(google.api.field_behavior) = REQUIRED];
+  // Simulation identifier.
+  string uuid = 2 [(google.api.field_behavior) = REQUIRED];
 }
 
 // Parameters for stopping a job.
 message StopRequest {
-  // ID of stopped job.
-  uint32 id = 1 [(google.api.field_behavior) = REQUIRED];
+  // Simulation identifier.
+  string uuid = 1 [(google.api.field_behavior) = REQUIRED];
 }
 
 service Engine {
