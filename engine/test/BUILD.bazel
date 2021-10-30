@@ -6,9 +6,8 @@ go_library(
     importpath = "github.com/gabroo/evomorph/engine/test",
     visibility = ["//visibility:private"],
     deps = [
-        "//protos",
-        "@com_github_kr_pretty//:go_default_library",
-        "@org_golang_google_grpc//:go_default_library",
+        "//protos:protos_go_proto",
+        "@org_golang_google_grpc//:grpc",
     ],
 )
 
