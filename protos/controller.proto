@@ -3,7 +3,6 @@ syntax = "proto3";
 package evomorph;
 
 import "protos/common.proto";
-import "google/api/field_behavior.proto";
 
 option go_package = "evomorph/protos";
 
@@ -16,19 +15,19 @@ message Params {
 // Payload for running a simulation.
 message RunRequest {
   // Simulation name.
-  string name = 1 [(google.api.field_behavior) = REQUIRED];
+  string name = 1;
   // End time (mcs).
-  uint32 length = 2 [(google.api.field_behavior) = REQUIRED];
+  uint32 length = 2;
   // Parameters payload.
-  Params params = 3 [(google.api.field_behavior) = REQUIRED];
+  Params params = 3;
 }
 
 // Timing information of current simulation.
 message Progress {
   // Current time (mcs).
-  uint32 cur_mcs = 1 [(google.api.field_behavior) = REQUIRED];
+  uint32 cur_mcs = 1;
   // End time (mcs).
-  uint32 max_mcs = 2 [(google.api.field_behavior) = REQUIRED];
+  uint32 max_mcs = 2;
 }
 
 // Single frame from a trajectory.
@@ -40,9 +39,9 @@ message Frame {
     STRUCTURE = 1;
   }
   // Which kind of frame it is.
-  FrameType type = 1 [(google.api.field_behavior) = REQUIRED];
+  FrameType type = 1;
   // Path to the corresponding file.
-  string path = 2 [(google.api.field_behavior) = REQUIRED];
+  string path = 2;
 }
 
 service Controller {
