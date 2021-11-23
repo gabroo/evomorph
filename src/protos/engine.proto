@@ -3,14 +3,13 @@ syntax = "proto3";
 package evomorph;
 
 import "protos/common.proto";
-import "google/api/field_behavior.proto";
 
 option go_package = "evomorph/protos";
 
 // Parameters for starting a job.
 message StartRequest {
   // Path to XML file with MorpheusML config.
-  string model_path = 1 [(google.api.field_behavior) = REQUIRED];
+  string model_path = 1;
   // Output directory for simulation data.
   // Default: [TODO]
   string out_dir = 2;
@@ -19,15 +18,15 @@ message StartRequest {
 // Reply for starting a job.
 message StartReply {
   // Status of response.
-  StatusType status = 1 [(google.api.field_behavior) = REQUIRED];
+  StatusType status = 1;
   // Computed ID of the simulation.
-  uint32 id = 2 [(google.api.field_behavior) = REQUIRED];
+  uint32 id = 2;
 }
 
 // Parameters for stopping a job.
 message StopRequest {
   // ID of stopped job.
-  uint32 id = 1 [(google.api.field_behavior) = REQUIRED];
+  uint32 id = 1;
 }
 
 service Engine {
