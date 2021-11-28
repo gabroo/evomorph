@@ -32,6 +32,7 @@ export function CreateSimulationModal(props) {
                                         <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 focus:border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="simulationTitle" type="text" placeholder="Title" required />
                                     </div>
                                 </div>
+
                                 <div className="flex flex-wrap mb-2">
                                     <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="numCellsA">
@@ -45,14 +46,22 @@ export function CreateSimulationModal(props) {
                                         </label>
                                         <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="numCellsB" type="number" required/>
                                     </div>
+                                </div>
+                                
+                                <div className="flex flex-wrap mb-2">
                                     <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                                        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="gamma">
-                                            Gamma
+                                        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="gammaA">
+                                            Gamma A
+                                        </label>
+                                        <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="gamma" type="number" required/>
+                                    </div>
+                                    <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                                        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="gammaB">
+                                            Gamma B
                                         </label>
                                         <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="gamma" type="number" required/>
                                     </div>
                                 </div>
-
 
                                 <div className="flex flex-wrap mb-2">
                                     <div className="w-full md:w-1/4 px-3 mb-6 md:mb-0">

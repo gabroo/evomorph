@@ -12,8 +12,10 @@ export function SimulationColumn(props) {
         <Title>Simulations</Title>
         {simList}
         <CreateSimulationModal handleSubmit={(incoming) => { incoming.preventDefault(); setSimList(simList => [...simList, 
-            <SimulationParamContainer simulationTitle={incoming.target[0].value} numCells={incoming.target[1].value} simType={incoming.target[2].value} desc={incoming.target[3].value} key={simList.length}/>]);
-            console.log(incoming)}}/>
+            <SimulationParamContainer simulationTitle={incoming.target[0].value} numACells={incoming.target[1].value} numBCells={incoming.target[2].value} gammaA={incoming.target[3].value} gammaB={incoming.target[4].value} xValue={incoming.target[5].value} yValue={incoming.target[6].value} zValue={incoming.target[7].value} stopTime={incoming.target[8].value} desc={incoming.target[9].value} key={simList.length}/>]);
+            //console.log(incoming)
+            //console.log(simList)
+            }}/>
       </ul>
     )
   }
