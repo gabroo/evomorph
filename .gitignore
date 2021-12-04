@@ -13,4 +13,4 @@ Vagrantfile
 # bazel
 .bazel_fix_commands.json
 
-web/tissue-app/node_modules/
+node_modules/
