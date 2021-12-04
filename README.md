@@ -1,5 +1,3 @@
-# evomorph
-
 ## Setup
 
 Install [Bazel](https://docs.bazel.build/versions/main/install.html) or
