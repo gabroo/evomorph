@@ -13,27 +13,28 @@ import (
 )
 
 const (
-	ADDRESS       = "localhost:50051"
-	STRESS_TEST_N = 50
+	ADDR = "localhost:50051"
+	BASE = "./"
 )
 
 func main() {
 	// Set up a connection to the server.
-	conn, err := grpc.Dial(ADDRESS, grpc.WithInsecure(), grpc.WithBlock())
+	conn, err := grpc.Dial(ADDR, grpc.WithInsecure(), grpc.WithBlock())
 	if err != nil {
 		log.Fatalf("did not connect: %v", err)
 	}
 
 	// Contact the server and print out its response.
 	c := pb.NewEngineClient(conn)
-	log.Printf("starting client...\ntype 's' to start, 'p' to stop, 't' for stress test\n")
+	log.Print("starting client...")
+	log.Print("type 's' to start, 'p' to stop")
 
 	// input and output files
-	in, err := filepath.Abs("./models/three_layer.xml")
+	in, err := filepath.Abs(filepath.Join(BASE, "models/three_layer.xml"))
 	if err != nil {
 		log.Fatal(err)
 	}
-	out, err := filepath.Abs("./out")
+	out, err := filepath.Abs(filepath.Join(BASE, "out"))
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -43,7 +44,6 @@ func main() {
 	var s string
 	for {
 		_, err := fmt.Scan(&s)
-		log.Print(s)
 		if err != nil {
 			log.Fatal(err)
 			return
@@ -57,8 +57,9 @@ func main() {
 			rp, err := c.Start(
 				ctx,
 				&pb.StartRequest{
-					ModelPath: in,
-					OutDir:    out,
+					Models:     []string{in},
+					Replicates: 1,
+					Out:        out,
 				},
 			)
 			if err != nil {
@@ -80,36 +81,8 @@ func main() {
 				log.Fatal(err)
 			}
 			log.Printf("response: %v", rp)
-		case "t":
-			log.Printf("starting stress test with N=%d", STRESS_TEST_N)
-			var ids []string
-			for i := 0; i < STRESS_TEST_N; i++ {
-				rp, err := c.Start(
-					ctx,
-					&pb.StartRequest{
-						ModelPath: in,
-						OutDir:    out,
-					},
-				)
-				if err != nil {
-          log.Fatalf("[WARNING] err when starting sim: %v", err)
-				}
-				id = rp.Uuid
-				ids = append(ids, id)
-			}
-			log.Printf("stopping all jobs")
-			for _, id := range ids {
-				_, err := c.Stop(
-					ctx,
-					&pb.StopRequest{Uuid: id},
-				)
-				if err != nil {
-          log.Fatalf("[WARNING] err when stopping sim (%s): %v", id, err)
-				}
-			}
-      log.Printf("done")
 		default:
-			log.Print("type 's' to start, 'p' to stop, 't' for stress test")
+			log.Print("type 's' to start, 'p' to stop")
 		}
 	}
 }

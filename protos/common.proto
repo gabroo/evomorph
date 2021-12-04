@@ -14,16 +14,13 @@ message Simulation {
 
 // Enum contaning status types.
 enum StatusType {
-  // Status is unset (don't use)
-  _ = 0;
-  // Status is OK
-  OK = 1;
-  // Status is ERROR
-  ERROR = 2;
+  _ = 0;     // Status is unset (don't use)
+  OK = 1;    // Status is OK
+  ERROR = 2; // Status is ERROR
 }
 
 // Simple signal between services.
 message Status {
   // Payload of message.
-  StatusType status = 1 [(google.api.field_behavior) = REQUIRED]; 
+  StatusType status = 1 [(google.api.field_behavior) = REQUIRED];
 }

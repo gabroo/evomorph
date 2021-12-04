@@ -19,10 +19,10 @@ Where `<component>` is one of `{controller, engine}`.
 
 ## Help
 
-Protobuf references can be built using Bazel.
+Documentation for protobuf can be built from source.
 
 ```
-bazel[isk] build docs:all
+bazel[isk] build docs
 ```
 
 Output files will be available in `build/bin/docs` in HTML and Markdown format.

@@ -7,30 +7,38 @@ import "google/api/field_behavior.proto";
 
 option go_package = "evomorph/protos";
 
-// Parameters for starting a job.
+// Parameters for starting a job consisting of >= 1 simulation(s).
 message StartRequest {
-  // Path to XML file with MorpheusML config.
-  string model_path = 1 [(google.api.field_behavior) = REQUIRED];
+  // Paths to MorpheusML models.
+  repeated string models = 1 [(google.api.field_behavior) = REQUIRED];
+
+  // Repeat each trial this many times.
+  uint32 replicates = 2;
+
   // Output directory for simulation data.
   // Default: [TODO]
-  string out_dir = 2;
+  string out = 3;
 }
 
 // Reply for starting a job.
 message StartReply {
   // Status of response.
   StatusType status = 1 [(google.api.field_behavior) = REQUIRED];
-  // Simulation identifier.
+
+  // Job identifier.
   string uuid = 2 [(google.api.field_behavior) = REQUIRED];
 }
 
 // Parameters for stopping a job.
 message StopRequest {
-  // Simulation identifier.
-  string uuid = 1 [(google.api.field_behavior) = REQUIRED];
+  // Status of response.
+  StatusType status = 1 [(google.api.field_behavior) = REQUIRED];
+
+  // Job identifier.
+  string uuid = 2 [(google.api.field_behavior) = REQUIRED];
 }
 
 service Engine {
-  rpc Start(StartRequest) returns (StartReply);
-  rpc Stop(StopRequest) returns (Status);
+  rpc Start(StartRequest) returns(StartReply);
+  rpc Stop(StopRequest) returns(Status);
 }
