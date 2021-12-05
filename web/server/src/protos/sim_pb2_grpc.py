@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-import Simulation_pb2 as Simulation__pb2
+from protos import sim_pb2 as sim__pb2
 
 
 class SimulatorStub(object):
@@ -16,8 +16,8 @@ class SimulatorStub(object):
         """
         self.RunSimulation = channel.unary_unary(
                 '/Simulator/RunSimulation',
-                request_serializer=Simulation__pb2.Simulation.SerializeToString,
-                response_deserializer=Simulation__pb2.SimResponse.FromString,
+                request_serializer=sim__pb2.Simulation.SerializeToString,
+                response_deserializer=sim__pb2.SimResponse.FromString,
                 )
 
 
@@ -35,8 +35,8 @@ def add_SimulatorServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'RunSimulation': grpc.unary_unary_rpc_method_handler(
                     servicer.RunSimulation,
-                    request_deserializer=Simulation__pb2.Simulation.FromString,
-                    response_serializer=Simulation__pb2.SimResponse.SerializeToString,
+                    request_deserializer=sim__pb2.Simulation.FromString,
+                    response_serializer=sim__pb2.SimResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -60,7 +60,7 @@ class Simulator(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/Simulator/RunSimulation',
-            Simulation__pb2.Simulation.SerializeToString,
-            Simulation__pb2.SimResponse.FromString,
+            sim__pb2.Simulation.SerializeToString,
+            sim__pb2.SimResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
