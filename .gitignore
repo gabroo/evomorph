@@ -10,7 +10,5 @@ out/
 .vagrant/
 Vagrantfile
 
-# bazel
-.bazel_fix_commands.json
-
-web/tissue-app/node_modules/
+# npm
+node_modules/
