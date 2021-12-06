@@ -2,7 +2,7 @@
 build/
 out/
 
-# editors 
+# vscode 
 .vscode/
 *.code-workspace
 
@@ -10,5 +10,8 @@ out/
 .vagrant/
 Vagrantfile
 
-# npm
+# node
 node_modules/
+
+# python
+__pycache__/
