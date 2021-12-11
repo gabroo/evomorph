@@ -24,7 +24,9 @@ http_archive(
     urls = ["https://github.com/googleapis/googleapis/archive/bb1f3e9048c34528b3450cd0cb6faa91a6ee4b9f.tar.gz"],
 )
 
-# rules_proto deps
+# rules_proto_grpc
+
+# deps
 load("@rules_proto_grpc//:repositories.bzl", "rules_proto_grpc_repos", "rules_proto_grpc_toolchains")
 
 rules_proto_grpc_toolchains()
@@ -53,11 +55,17 @@ load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies")
 
 gazelle_dependencies(go_repository_default_config = "@//:WORKSPACE.bazel")
 
+# protobuf docs
+load("@rules_proto_grpc//doc:repositories.bzl", rules_proto_grpc_doc_repos = "doc_repos")
+
+rules_proto_grpc_doc_repos()
+
 # Go repos
 load("@rules_proto_grpc//go:repositories.bzl", "go_repos")
 
 go_repos()
 
+# Python repos
 load("@rules_proto_grpc//python:repositories.bzl", rules_proto_grpc_python_repos = "python_repos")
 
 rules_proto_grpc_python_repos()
@@ -75,8 +83,3 @@ switched_rules_by_language(
     python = True,
     grpc = True,
 )
-
-# protoc-gen-doc
-load("@rules_proto_grpc//doc:repositories.bzl", rules_proto_grpc_doc_repos = "doc_repos")
-
-rules_proto_grpc_doc_repos()
