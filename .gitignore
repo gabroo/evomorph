@@ -1,8 +1,10 @@
+.git/
+
 # evomorph
 build/
 out/
 
-# editors 
+# vscode 
 .vscode/
 *.code-workspace
 
@@ -10,5 +12,8 @@ out/
 .vagrant/
 Vagrantfile
 
-# bazel
-.bazel_fix_commands.json
+# node
+node_modules/
+
+# python
+__pycache__/
