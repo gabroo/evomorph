@@ -1,0 +1,13 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "server",
+    srcs = ["server.go"],
+    importpath = "github.com/gabroo/evomorph/engine/server",
+    visibility = ["//visibility:public"],
+    data = [":run.sh"],
+    deps = [
+        "//protos:protos_go_proto",
+        "@com_github_google_uuid//:uuid",
+    ],
+)

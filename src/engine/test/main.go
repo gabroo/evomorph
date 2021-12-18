@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"path/filepath"
 	"time"
 
 	pb "evomorph/protos"
@@ -12,31 +13,76 @@ import (
 )
 
 const (
-	address = "localhost:50051"
+	ADDR = "localhost:50051"
+	BASE = "./"
 )
 
 func main() {
-	log.Printf("starting client...\npress <Enter> to send a request\n")
+	// Set up a connection to the server.
+	conn, err := grpc.Dial(ADDR, grpc.WithInsecure(), grpc.WithBlock())
+	if err != nil {
+		log.Fatalf("did not connect: %v", err)
+	}
+
+	// Contact the server and print out its response.
+	c := pb.NewEngineClient(conn)
+	log.Print("starting client...")
+	log.Print("type 's' to start, 'p' to stop")
+
+	// input and output files
+	in, err := filepath.Abs(filepath.Join(BASE, "models/three_layer.xml"))
+	if err != nil {
+		log.Fatal(err)
+	}
+	out, err := filepath.Abs(filepath.Join(BASE, "out"))
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// Listen for messages
+	id := ""
 	var s string
 	for {
-		// Read line
-		fmt.Scanln(&s)
-
-		// Set up a connection to the server.
-		conn, err := grpc.Dial(address, grpc.WithInsecure(), grpc.WithBlock())
+		_, err := fmt.Scan(&s)
 		if err != nil {
-			log.Fatalf("did not connect: %v", err)
+			log.Fatal(err)
+			return
 		}
+		ctx, cancel := context.WithTimeout(context.Background(), time.Minute)
+		defer cancel()
 
-		// Contact the server and print out its response.
-		c := pb.NewEngineClient(conn)
-		ctx, cancel := context.WithTimeout(context.Background(), time.Second)
-    log.Printf("calling Start")
-		r, err := c.Start(ctx, &pb.StartRequest{ModelPath: "in", OutDir: "out"})
-		cancel()
-		if err != nil {
-			log.Fatalf("error: %v", err)
+		switch s {
+		case "s":
+			log.Print("calling Start")
+			rp, err := c.Start(
+				ctx,
+				&pb.StartRequest{
+					Models:     []string{in},
+					Replicates: 1,
+					Out:        out,
+				},
+			)
+			if err != nil {
+				log.Fatal(err)
+			}
+			log.Printf("response: %v", rp)
+			id = rp.Uuid
+		case "p":
+			if id == "" {
+				log.Printf("no simulation started yet")
+				continue
+			}
+			log.Printf("calling Stop(%s)", id)
+			rp, err := c.Stop(
+				ctx,
+				&pb.StopRequest{Uuid: id},
+			)
+			if err != nil {
+				log.Fatal(err)
+			}
+			log.Printf("response: %v", rp)
+		default:
+			log.Print("type 's' to start, 'p' to stop")
 		}
-		log.Printf("response: %v", r)
 	}
 }
