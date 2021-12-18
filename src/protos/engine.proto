@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package evomorph;
 
-import "protos/common.proto";
+import "src/protos/common.proto";
 
 option go_package = "evomorph/protos";
 
