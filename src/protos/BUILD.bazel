@@ -4,9 +4,6 @@ load("@rules_proto//proto:defs.bzl", "proto_library")
 load("@io_bazel_rules_go//go:def.bzl", "go_library")
 load("@io_bazel_rules_go//proto:def.bzl", "go_proto_library")
 load("@rules_proto_grpc//python:defs.bzl", "python_proto_library", "python_grpc_library")
-load("@rules_proto_grpc//doc:defs.bzl", "doc_html_compile", "doc_markdown_compile")
-load("@rules_proto_grpc//python:defs.bzl", "python_proto_library", "python_grpc_library")
-load("@rules_proto_grpc//doc:defs.bzl", "doc_html_compile", "doc_markdown_compile")
 
 proto_library(
     name = "protos",
@@ -39,20 +36,4 @@ go_library(
 py_library(
     name = "py",
     deps = [":protos_py"],
-)
-
-doc_html_compile(
-    name = "index",
-    output_mode = "NO_PREFIX",
-    protos = [
-        "//protos:protos_proto",
-    ],
-)
-
-doc_markdown_compile(
-    name = "docs",
-    output_mode = "NO_PREFIX",
-    protos = [
-        "//protos:protos_proto",
-    ],
 )

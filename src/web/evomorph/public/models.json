@@ -1,0 +1,32 @@
+[
+  {
+    "id": "a81d8r0e",
+    "name": "four layers v3",
+    "path": "4L_ecad.xml",
+    "desc": "uses high A-A adhesion and bidirectional activation to achieve a fourth layer"
+  },
+  {
+    "id": "bx9a2udk",
+    "name": "two layers",
+    "path": "2L_main.xml",
+    "desc": "simple two layer model, A = blue, A' = red, B = gray, B' = green"
+  },
+  {
+    "id": "0xoa83hf",
+    "name": "elongated structure",
+    "path": "elongation.xml",
+    "desc": "extension of the layered circuits; high adhesion and mitosis at the poles leads to elongation"
+  },
+  {
+    "id": "lduz73bs",
+    "name": "two layers v2",
+    "path": "4L_ecad.xml",
+    "desc": "second iteration of the two layers structure"
+  },
+  {
+    "id": "1sb8mz6s",
+    "name": "3L test #85",
+    "path": "three_layer.xml",
+    "desc": "this time it has the right adhesion values"
+  }
+]
