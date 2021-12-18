@@ -1,0 +1,2282 @@
+[
+  {
+    "id": "yov1pk24",
+    "name": "Willowherb",
+    "model": "onagraceae.xml",
+    "params": [
+      { "name": "Glass", "value": 7.0 },
+      { "name": "Wood", "value": 70.3 },
+      { "name": "Plastic", "value": 52.6 },
+      { "name": "Rubber", "value": 44.6 }
+    ]
+  },
+  {
+    "id": "jm46r0nj",
+    "name": "Blue Ash",
+    "model": "oleaceae.xml",
+    "params": [
+      { "name": "Glass", "value": 79.8 },
+      { "name": "Vinyl", "value": 80.2 }
+    ]
+  },
+  {
+    "id": "2581qi70",
+    "name": "Texas Selenia",
+    "model": "brassicaceae.xml",
+    "params": [{ "name": "Plastic", "value": 21.4 }]
+  },
+  {
+    "id": "n2f4c8is",
+    "name": "Royal Clubmoss",
+    "model": "lycopodiaceae.xml",
+    "params": [
+      { "name": "Plastic", "value": 85.3 },
+      { "name": "Aluminum", "value": 41.7 },
+      { "name": "Granite", "value": 68.3 }
+    ]
+  },
+  {
+    "id": "2wgzj276",
+    "name": "Jack In The Pulpit",
+    "model": "araceae.xml",
+    "params": [
+      { "name": "Plastic", "value": 33.7 },
+      { "name": "Plexiglass", "value": 15.1 },
+      { "name": "Stone", "value": 15.0 },
+      { "name": "Glass", "value": 58.9 },
+      { "name": "Rubber", "value": 21.1 }
+    ]
+  },
+  {
+    "id": "cwzl38ya",
+    "name": "Hasse's Psorotichia Lichen",
+    "model": "lichinaceae.xml",
+    "params": []
+  },
+  {
+    "id": "cxze6tzg",
+    "name": "Fiddlewood",
+    "model": "verbenaceae.xml",
+    "params": []
+  },
+  {
+    "id": "w5vcmn0n",
+    "name": "Slender Greenthread",
+    "model": "asteraceae.xml",
+    "params": [
+      { "name": "Aluminum", "value": 45.8 },
+      { "name": "Brass", "value": 12.1 },
+      { "name": "Steel", "value": 90.7 },
+      { "name": "Stone", "value": 75.7 },
+      { "name": "Wood", "value": 17.4 }
+    ]
+  },
+  {
+    "id": "3toimglj",
+    "name": "Field Chickweed",
+    "model": "caryophyllaceae.xml",
+    "params": [{ "name": "Stone", "value": 82.8 }]
+  },
+  {
+    "id": "rjjv4q60",
+    "name": "Wetforest Cyanea",
+    "model": "campanulaceae.xml",
+    "params": [
+      { "name": "Vinyl", "value": 22.8 },
+      { "name": "Plastic", "value": 88.2 },
+      { "name": "Plastic", "value": 24.3 },
+      { "name": "Glass", "value": 16.6 },
+      { "name": "Plastic", "value": 74.3 }
+    ]
+  },
+  {
+    "id": "b7go20gi",
+    "name": "Needle Palm",
+    "model": "arecaceae.xml",
+    "params": [
+      { "name": "Plexiglass", "value": 25.1 },
+      { "name": "Vinyl", "value": 66.7 },
+      { "name": "Rubber", "value": 20.0 },
+      { "name": "Plexiglass", "value": 94.6 }
+    ]
+  },
+  {
+    "id": "8sq7klm7",
+    "name": "Brandegee's Springbeauty",
+    "model": "portulacaceae.xml",
+    "params": [
+      { "name": "Vinyl", "value": 82.1 },
+      { "name": "Plastic", "value": 73.9 },
+      { "name": "Plastic", "value": 98.1 }
+    ]
+  },
+  {
+    "id": "yp02049r",
+    "name": "Wild Indigo",
+    "model": "fabaceae.xml",
+    "params": [
+      { "name": "Vinyl", "value": 12.8 },
+      { "name": "Stone", "value": 10.0 },
+      { "name": "Plexiglass", "value": 50.9 }
+    ]
+  },
+  {
+    "id": "p63dk6u4",
+    "name": "Desert Twinbugs",
+    "model": "asteraceae.xml",
+    "params": []
+  },
+  {
+    "id": "v7brbn9u",
+    "name": "Wart Lichen",
+    "model": "trichotheliaceae.xml",
+    "params": [
+      { "name": "Stone", "value": 51.6 },
+      { "name": "Glass", "value": 1.3 },
+      { "name": "Plexiglass", "value": 62.1 },
+      { "name": "Brass", "value": 51.5 }
+    ]
+  },
+  {
+    "id": "wwtqo87x",
+    "name": "White Arctic Mountain Heather",
+    "model": "ericaceae.xml",
+    "params": []
+  },
+  {
+    "id": "wu55t0qw",
+    "name": "Wyoming Townsend Daisy",
+    "model": "asteraceae.xml",
+    "params": [
+      { "name": "Brass", "value": 67.4 },
+      { "name": "Vinyl", "value": 99.1 },
+      { "name": "Rubber", "value": 27.4 },
+      { "name": "Wood", "value": 42.9 },
+      { "name": "Plastic", "value": 42.9 }
+    ]
+  },
+  {
+    "id": "6fbtq8jj",
+    "name": "Perfoliate Spineflower",
+    "model": "polygonaceae.xml",
+    "params": []
+  },
+  {
+    "id": "9vebp97y",
+    "name": "Mountain Ashdaisy",
+    "model": "asteraceae.xml",
+    "params": [{ "name": "Plexiglass", "value": 13.2 }]
+  },
+  {
+    "id": "knmnkedy",
+    "name": "Nimblewill",
+    "model": "poaceae.xml",
+    "params": [
+      { "name": "Brass", "value": 71.8 },
+      { "name": "Steel", "value": 70.6 },
+      { "name": "Wood", "value": 25.1 }
+    ]
+  },
+  {
+    "id": "79jqeedg",
+    "name": "Lentil Vetch",
+    "model": "fabaceae.xml",
+    "params": [
+      { "name": "Stone", "value": 1.0 },
+      { "name": "Plastic", "value": 5.4 },
+      { "name": "Granite", "value": 55.3 }
+    ]
+  },
+  {
+    "id": "ndm3x0i8",
+    "name": "Indianpipe",
+    "model": "monotropaceae.xml",
+    "params": [{ "name": "Wood", "value": 13.2 }]
+  },
+  {
+    "id": "nqpnwebr",
+    "name": "Keteleeria",
+    "model": "pinaceae.xml",
+    "params": [{ "name": "Rubber", "value": 86.6 }]
+  },
+  {
+    "id": "x6h8zniu",
+    "name": "Willowherb",
+    "model": "onagraceae.xml",
+    "params": [
+      { "name": "Rubber", "value": 77.6 },
+      { "name": "Vinyl", "value": 22.7 },
+      { "name": "Wood", "value": 56.1 },
+      { "name": "Steel", "value": 6.3 },
+      { "name": "Plexiglass", "value": 89.4 }
+    ]
+  },
+  {
+    "id": "sfyogmez",
+    "name": "Harper's Flax",
+    "model": "linaceae.xml",
+    "params": []
+  },
+  {
+    "id": "0l9cv2lv",
+    "name": "California Pseudobraunia Moss",
+    "model": "hedwigiaceae.xml",
+    "params": [
+      { "name": "Wood", "value": 87.9 },
+      { "name": "Aluminum", "value": 92.0 }
+    ]
+  },
+  {
+    "id": "vd68z2av",
+    "name": "Orange Azalea",
+    "model": "ericaceae.xml",
+    "params": [
+      { "name": "Steel", "value": 27.7 },
+      { "name": "Glass", "value": 51.3 },
+      { "name": "Rubber", "value": 31.6 },
+      { "name": "Aluminum", "value": 85.5 }
+    ]
+  },
+  {
+    "id": "h5u1dq74",
+    "name": "Carolina Frostweed",
+    "model": "cistaceae.xml",
+    "params": []
+  },
+  {
+    "id": "0zd8skaz",
+    "name": "Organpipe Cactus",
+    "model": "cactaceae.xml",
+    "params": []
+  },
+  {
+    "id": "hxm8cv9h",
+    "name": "Hairy Brome",
+    "model": "poaceae.xml",
+    "params": [
+      { "name": "Vinyl", "value": 34.5 },
+      { "name": "Stone", "value": 10.2 },
+      { "name": "Rubber", "value": 66.1 }
+    ]
+  },
+  {
+    "id": "6cmaszgm",
+    "name": "Pygmy Bladderpod",
+    "model": "brassicaceae.xml",
+    "params": []
+  },
+  {
+    "id": "2pggmod4",
+    "name": "Golden Eardrops",
+    "model": "fumariaceae.xml",
+    "params": [{ "name": "Steel", "value": 21.8 }]
+  },
+  {
+    "id": "s674x5p4",
+    "name": "Pingpong-ball Cactus",
+    "model": "cactaceae.xml",
+    "params": [
+      { "name": "Granite", "value": 29.2 },
+      { "name": "Plexiglass", "value": 56.2 },
+      { "name": "Brass", "value": 53.1 }
+    ]
+  },
+  {
+    "id": "jowp72p9",
+    "name": "Pore Lichen",
+    "model": "pertusariaceae.xml",
+    "params": [
+      { "name": "Vinyl", "value": 67.4 },
+      { "name": "Vinyl", "value": 48.5 },
+      { "name": "Plexiglass", "value": 8.7 }
+    ]
+  },
+  {
+    "id": "k7l5zji3",
+    "name": "Davy's Sedge",
+    "model": "cyperaceae.xml",
+    "params": [{ "name": "Granite", "value": 43.3 }]
+  },
+  {
+    "id": "1914h2y2",
+    "name": "Threadleaf Fleabane",
+    "model": "asteraceae.xml",
+    "params": [{ "name": "Glass", "value": 44.2 }]
+  },
+  {
+    "id": "smaszy4q",
+    "name": "Dwarf Serviceberry",
+    "model": "rosaceae.xml",
+    "params": [
+      { "name": "Brass", "value": 65.0 },
+      { "name": "Glass", "value": 10.3 },
+      { "name": "Glass", "value": 12.3 },
+      { "name": "Aluminum", "value": 94.8 },
+      { "name": "Granite", "value": 44.4 }
+    ]
+  },
+  {
+    "id": "2w4d8119",
+    "name": "Pendantgrass",
+    "model": "poaceae.xml",
+    "params": [
+      { "name": "Brass", "value": 49.0 },
+      { "name": "Granite", "value": 9.9 },
+      { "name": "Plastic", "value": 29.8 }
+    ]
+  },
+  {
+    "id": "tp5jda8l",
+    "name": "Wart Lichen",
+    "model": "pyrenulaceae.xml",
+    "params": [{ "name": "Rubber", "value": 60.9 }]
+  },
+  {
+    "id": "paltlpvr",
+    "name": "Alkali Sandspurry",
+    "model": "caryophyllaceae.xml",
+    "params": [
+      { "name": "Vinyl", "value": 10.4 },
+      { "name": "Plexiglass", "value": 32.7 },
+      { "name": "Glass", "value": 59.2 }
+    ]
+  },
+  {
+    "id": "nmvne5lp",
+    "name": "American Dry Rock Moss",
+    "model": "grimmiaceae.xml",
+    "params": []
+  },
+  {
+    "id": "8m2q1leu",
+    "name": "Devil's-tongue",
+    "model": "cactaceae.xml",
+    "params": [
+      { "name": "Steel", "value": 87.9 },
+      { "name": "Wood", "value": 32.7 },
+      { "name": "Rubber", "value": 57.8 },
+      { "name": "Granite", "value": 70.6 }
+    ]
+  },
+  {
+    "id": "l9sn00en",
+    "name": "Northland Cottonsedge",
+    "model": "cyperaceae.xml",
+    "params": [{ "name": "Plexiglass", "value": 96.4 }]
+  },
+  {
+    "id": "en4liwzt",
+    "name": "Pineland Bogbutton",
+    "model": "eriocaulaceae.xml",
+    "params": [
+      { "name": "Glass", "value": 64.2 },
+      { "name": "Granite", "value": 32.2 },
+      { "name": "Plexiglass", "value": 29.4 },
+      { "name": "Steel", "value": 6.6 },
+      { "name": "Brass", "value": 46.4 }
+    ]
+  },
+  {
+    "id": "op4le97s",
+    "name": "Lempholemma Lichen",
+    "model": "lichinaceae.xml",
+    "params": [
+      { "name": "Vinyl", "value": 5.1 },
+      { "name": "Brass", "value": 16.9 },
+      { "name": "Aluminum", "value": 55.5 },
+      { "name": "Rubber", "value": 6.1 },
+      { "name": "Rubber", "value": 70.9 }
+    ]
+  },
+  {
+    "id": "y8i029jq",
+    "name": "Linearleaf Snapdragon",
+    "model": "scrophulariaceae.xml",
+    "params": [
+      { "name": "Plexiglass", "value": 11.1 },
+      { "name": "Steel", "value": 55.9 },
+      { "name": "Steel", "value": 67.0 }
+    ]
+  },
+  {
+    "id": "17q2m915",
+    "name": "Pelicanflower",
+    "model": "aristolochiaceae.xml",
+    "params": [
+      { "name": "Vinyl", "value": 49.0 },
+      { "name": "Stone", "value": 26.2 }
+    ]
+  },
+  {
+    "id": "k585rt48",
+    "name": "Littleleaf Alumroot",
+    "model": "saxifragaceae.xml",
+    "params": [
+      { "name": "Glass", "value": 28.5 },
+      { "name": "Vinyl", "value": 15.3 }
+    ]
+  },
+  {
+    "id": "oa4t1c09",
+    "name": "Artocarpus",
+    "model": "moraceae.xml",
+    "params": [{ "name": "Rubber", "value": 4.0 }]
+  },
+  {
+    "id": "bjezi0nc",
+    "name": "Yerba De Alambre",
+    "model": "poaceae.xml",
+    "params": [
+      { "name": "Brass", "value": 89.8 },
+      { "name": "Plexiglass", "value": 67.3 },
+      { "name": "Wood", "value": 15.2 },
+      { "name": "Brass", "value": 44.5 },
+      { "name": "Plexiglass", "value": 69.9 }
+    ]
+  },
+  {
+    "id": "vcgaz1t7",
+    "name": "Indian Plum",
+    "model": "flacourtiaceae.xml",
+    "params": [
+      { "name": "Aluminum", "value": 50.4 },
+      { "name": "Plastic", "value": 6.0 },
+      { "name": "Wood", "value": 91.3 }
+    ]
+  },
+  {
+    "id": "rtr9fz31",
+    "name": "Kaempferia",
+    "model": "zingiberaceae.xml",
+    "params": []
+  },
+  {
+    "id": "v9qv8q88",
+    "name": "Western Catchfly",
+    "model": "caryophyllaceae.xml",
+    "params": [
+      { "name": "Vinyl", "value": 20.2 },
+      { "name": "Steel", "value": 91.6 },
+      { "name": "Brass", "value": 22.7 }
+    ]
+  },
+  {
+    "id": "ibjl9l5t",
+    "name": "Big Bend Bluegrass",
+    "model": "poaceae.xml",
+    "params": [
+      { "name": "Wood", "value": 59.9 },
+      { "name": "Wood", "value": 27.4 },
+      { "name": "Stone", "value": 32.6 },
+      { "name": "Brass", "value": 6.3 }
+    ]
+  },
+  {
+    "id": "27atev5s",
+    "name": "Cockleshell Lichen",
+    "model": "lecideaceae.xml",
+    "params": [
+      { "name": "Brass", "value": 43.4 },
+      { "name": "Wood", "value": 23.6 }
+    ]
+  },
+  {
+    "id": "d63vbyfs",
+    "name": "Mountain Camellia",
+    "model": "theaceae.xml",
+    "params": [
+      { "name": "Plexiglass", "value": 64.1 },
+      { "name": "Stone", "value": 40.9 },
+      { "name": "Aluminum", "value": 69.7 },
+      { "name": "Wood", "value": 64.9 }
+    ]
+  },
+  {
+    "id": "x1r9q30p",
+    "name": "Whiteflower Albizia",
+    "model": "fabaceae.xml",
+    "params": []
+  },
+  {
+    "id": "f79a2g8s",
+    "name": "Roughseed Cryptantha",
+    "model": "boraginaceae.xml",
+    "params": [
+      { "name": "Aluminum", "value": 36.9 },
+      { "name": "Glass", "value": 35.0 },
+      { "name": "Steel", "value": 86.5 }
+    ]
+  },
+  {
+    "id": "5egfjrdd",
+    "name": "Quillwort",
+    "model": "isoetaceae.xml",
+    "params": [{ "name": "Aluminum", "value": 61.7 }]
+  },
+  {
+    "id": "mrv4e6mo",
+    "name": "Western Milkvetch",
+    "model": "fabaceae.xml",
+    "params": [
+      { "name": "Steel", "value": 70.9 },
+      { "name": "Rubber", "value": 52.0 }
+    ]
+  },
+  {
+    "id": "anyi9g6e",
+    "name": "Kyasuma Grass",
+    "model": "poaceae.xml",
+    "params": [{ "name": "Rubber", "value": 43.3 }]
+  },
+  {
+    "id": "m5eezdwm",
+    "name": "Sierra Bluecup",
+    "model": "campanulaceae.xml",
+    "params": [
+      { "name": "Rubber", "value": 40.9 },
+      { "name": "Granite", "value": 82.7 },
+      { "name": "Brass", "value": 11.0 },
+      { "name": "Brass", "value": 74.5 },
+      { "name": "Glass", "value": 82.8 }
+    ]
+  },
+  {
+    "id": "44t4w1hd",
+    "name": "Pocono Plateau Dewberry",
+    "model": "rosaceae.xml",
+    "params": [
+      { "name": "Steel", "value": 99.9 },
+      { "name": "Rubber", "value": 10.4 },
+      { "name": "Plastic", "value": 28.9 },
+      { "name": "Steel", "value": 92.1 }
+    ]
+  },
+  {
+    "id": "1is7n6t5",
+    "name": "Tussock Cottongrass",
+    "model": "cyperaceae.xml",
+    "params": [{ "name": "Plastic", "value": 6.2 }]
+  },
+  {
+    "id": "xt37c0ke",
+    "name": "Light-blue Snakeweed",
+    "model": "verbenaceae.xml",
+    "params": [
+      { "name": "Rubber", "value": 92.5 },
+      { "name": "Brass", "value": 89.8 },
+      { "name": "Wood", "value": 67.2 }
+    ]
+  },
+  {
+    "id": "ghcbh105",
+    "name": "Napa Bluecurls",
+    "model": "lamiaceae.xml",
+    "params": [
+      { "name": "Aluminum", "value": 71.2 },
+      { "name": "Glass", "value": 44.7 },
+      { "name": "Steel", "value": 64.6 },
+      { "name": "Stone", "value": 2.8 }
+    ]
+  },
+  {
+    "id": "2jgfxe2v",
+    "name": "Hybrid Oak",
+    "model": "fagaceae.xml",
+    "params": [
+      { "name": "Stone", "value": 30.0 },
+      { "name": "Aluminum", "value": 36.1 },
+      { "name": "Granite", "value": 99.8 },
+      { "name": "Stone", "value": 66.1 },
+      { "name": "Plexiglass", "value": 22.8 }
+    ]
+  },
+  {
+    "id": "wwi1x3uh",
+    "name": "Springloving Centaury",
+    "model": "gentianaceae.xml",
+    "params": []
+  },
+  {
+    "id": "dsbrrm8j",
+    "name": "Florida Keys Thoroughwort",
+    "model": "asteraceae.xml",
+    "params": [
+      { "name": "Wood", "value": 63.7 },
+      { "name": "Wood", "value": 6.8 },
+      { "name": "Plastic", "value": 49.8 },
+      { "name": "Stone", "value": 90.1 },
+      { "name": "Plexiglass", "value": 17.1 }
+    ]
+  },
+  {
+    "id": "8hdo7u5s",
+    "name": "Soana",
+    "model": "rhamnaceae.xml",
+    "params": [{ "name": "Glass", "value": 39.0 }]
+  },
+  {
+    "id": "x3weewtj",
+    "name": "Soft Lupine",
+    "model": "fabaceae.xml",
+    "params": [
+      { "name": "Steel", "value": 27.3 },
+      { "name": "Plastic", "value": 9.2 },
+      { "name": "Vinyl", "value": 97.3 },
+      { "name": "Rubber", "value": 12.7 },
+      { "name": "Brass", "value": 75.1 }
+    ]
+  },
+  {
+    "id": "slpr2im4",
+    "name": "Fringed Lichen",
+    "model": "physciaceae.xml",
+    "params": [
+      { "name": "Aluminum", "value": 80.3 },
+      { "name": "Stone", "value": 8.7 },
+      { "name": "Vinyl", "value": 63.8 }
+    ]
+  },
+  {
+    "id": "1bi09zle",
+    "name": "Fontanesia",
+    "model": "oleaceae.xml",
+    "params": [{ "name": "Brass", "value": 25.3 }]
+  },
+  {
+    "id": "uwjygl32",
+    "name": "Pride Of Ohio",
+    "model": "primulaceae.xml",
+    "params": [
+      { "name": "Plastic", "value": 15.9 },
+      { "name": "Aluminum", "value": 71.6 },
+      { "name": "Plastic", "value": 61.7 }
+    ]
+  },
+  {
+    "id": "cv3exsyk",
+    "name": "Hansen's Clover",
+    "model": "fabaceae.xml",
+    "params": [{ "name": "Rubber", "value": 5.1 }]
+  },
+  {
+    "id": "7qghx9z8",
+    "name": "Singlewhorl Burrobrush",
+    "model": "asteraceae.xml",
+    "params": [
+      { "name": "Plastic", "value": 52.5 },
+      { "name": "Wood", "value": 1.2 },
+      { "name": "Granite", "value": 29.4 },
+      { "name": "Steel", "value": 94.3 }
+    ]
+  },
+  {
+    "id": "hihfl2pt",
+    "name": "Spleenwort",
+    "model": "aspleniaceae.xml",
+    "params": [
+      { "name": "Plexiglass", "value": 64.3 },
+      { "name": "Rubber", "value": 28.8 },
+      { "name": "Stone", "value": 40.8 }
+    ]
+  },
+  {
+    "id": "mf7qky6y",
+    "name": "Niruri",
+    "model": "euphorbiaceae.xml",
+    "params": [
+      { "name": "Aluminum", "value": 36.8 },
+      { "name": "Plastic", "value": 16.6 },
+      { "name": "Plexiglass", "value": 81.0 }
+    ]
+  },
+  {
+    "id": "kz0f2dp9",
+    "name": "Szechuan White Birch",
+    "model": "betulaceae.xml",
+    "params": [
+      { "name": "Rubber", "value": 92.7 },
+      { "name": "Stone", "value": 5.1 }
+    ]
+  },
+  {
+    "id": "tw4bkuds",
+    "name": "Protea",
+    "model": "proteaceae.xml",
+    "params": [
+      { "name": "Granite", "value": 84.5 },
+      { "name": "Wood", "value": 18.0 },
+      { "name": "Plexiglass", "value": 51.5 }
+    ]
+  },
+  {
+    "id": "gdi9dsrl",
+    "name": "Yuma Silverbush",
+    "model": "euphorbiaceae.xml",
+    "params": [{ "name": "Granite", "value": 69.6 }]
+  },
+  {
+    "id": "ncj4fzus",
+    "name": "Swallen's Needlegrass",
+    "model": "poaceae.xml",
+    "params": [
+      { "name": "Plexiglass", "value": 7.4 },
+      { "name": "Plexiglass", "value": 61.3 }
+    ]
+  },
+  {
+    "id": "mndr9r8w",
+    "name": "Horseradishtree",
+    "model": "moringaceae.xml",
+    "params": []
+  },
+  {
+    "id": "4ke35hy6",
+    "name": "Whited's Fissurewort",
+    "model": "brassicaceae.xml",
+    "params": [
+      { "name": "Plastic", "value": 82.9 },
+      { "name": "Wood", "value": 78.5 },
+      { "name": "Brass", "value": 20.6 }
+    ]
+  },
+  {
+    "id": "ufcwmnij",
+    "name": "Broadleaf Tonguefern",
+    "model": "dryopteridaceae.xml",
+    "params": [
+      { "name": "Wood", "value": 92.8 },
+      { "name": "Plastic", "value": 28.6 },
+      { "name": "Wood", "value": 44.0 },
+      { "name": "Rubber", "value": 97.7 },
+      { "name": "Granite", "value": 87.4 }
+    ]
+  },
+  {
+    "id": "8yvm5swx",
+    "name": "Mt. Albert Goldenrod",
+    "model": "asteraceae.xml",
+    "params": [
+      { "name": "Stone", "value": 10.2 },
+      { "name": "Plastic", "value": 6.0 },
+      { "name": "Steel", "value": 11.7 },
+      { "name": "Aluminum", "value": 61.1 }
+    ]
+  },
+  {
+    "id": "ob0swpz1",
+    "name": "Island False Bindweed",
+    "model": "convolvulaceae.xml",
+    "params": [
+      { "name": "Stone", "value": 80.5 },
+      { "name": "Plastic", "value": 51.0 },
+      { "name": "Wood", "value": 13.4 }
+    ]
+  },
+  {
+    "id": "4n6398m3",
+    "name": "Athelia Lichen",
+    "model": "atheliaceae.xml",
+    "params": [
+      { "name": "Glass", "value": 89.3 },
+      { "name": "Glass", "value": 38.5 },
+      { "name": "Plastic", "value": 27.3 },
+      { "name": "Aluminum", "value": 73.7 },
+      { "name": "Granite", "value": 53.0 }
+    ]
+  },
+  {
+    "id": "b5oigpgj",
+    "name": "Stalked Popcornflower",
+    "model": "boraginaceae.xml",
+    "params": [
+      { "name": "Stone", "value": 89.8 },
+      { "name": "Glass", "value": 28.0 }
+    ]
+  },
+  {
+    "id": "i80n6lm0",
+    "name": "Voitia Moss",
+    "model": "splachnaceae.xml",
+    "params": [
+      { "name": "Steel", "value": 56.3 },
+      { "name": "Granite", "value": 96.8 }
+    ]
+  },
+  {
+    "id": "7wlz8apz",
+    "name": "Yellow Carolina Milkvine",
+    "model": "asclepiadaceae.xml",
+    "params": [{ "name": "Steel", "value": 24.3 }]
+  },
+  {
+    "id": "367wrhm4",
+    "name": "Darrow's Flavopunctelia Lichen",
+    "model": "parmeliaceae.xml",
+    "params": [
+      { "name": "Aluminum", "value": 42.3 },
+      { "name": "Rubber", "value": 74.7 }
+    ]
+  },
+  {
+    "id": "dq9p6d6h",
+    "name": "Longbract Wakerobin",
+    "model": "liliaceae.xml",
+    "params": [
+      { "name": "Rubber", "value": 19.4 },
+      { "name": "Plastic", "value": 1.2 },
+      { "name": "Stone", "value": 22.9 },
+      { "name": "Steel", "value": 22.6 }
+    ]
+  },
+  {
+    "id": "ogwr5gz9",
+    "name": "Boggs Lake Dodder",
+    "model": "cuscutaceae.xml",
+    "params": [
+      { "name": "Steel", "value": 17.6 },
+      { "name": "Brass", "value": 8.3 },
+      { "name": "Wood", "value": 76.3 },
+      { "name": "Glass", "value": 14.6 }
+    ]
+  },
+  {
+    "id": "9xjq9g85",
+    "name": "White Avalanche-lily",
+    "model": "liliaceae.xml",
+    "params": [
+      { "name": "Steel", "value": 32.4 },
+      { "name": "Plexiglass", "value": 80.9 }
+    ]
+  },
+  {
+    "id": "s09vqufo",
+    "name": "Alectryon",
+    "model": "sapindaceae.xml",
+    "params": [
+      { "name": "Plexiglass", "value": 97.6 },
+      { "name": "Granite", "value": 39.2 },
+      { "name": "Glass", "value": 74.8 },
+      { "name": "Plexiglass", "value": 3.0 },
+      { "name": "Wood", "value": 82.3 }
+    ]
+  },
+  {
+    "id": "fvum51xp",
+    "name": "Corn Speedwell",
+    "model": "scrophulariaceae.xml",
+    "params": [
+      { "name": "Plastic", "value": 36.8 },
+      { "name": "Rubber", "value": 38.7 },
+      { "name": "Plastic", "value": 52.6 }
+    ]
+  },
+  {
+    "id": "zxokcc01",
+    "name": "Waxy Thoroughwort",
+    "model": "asteraceae.xml",
+    "params": [{ "name": "Wood", "value": 88.5 }]
+  },
+  {
+    "id": "hovuhmfu",
+    "name": "Tracy's Bluestem",
+    "model": "poaceae.xml",
+    "params": [{ "name": "Rubber", "value": 74.0 }]
+  },
+  {
+    "id": "kuvsi4rk",
+    "name": "Morton's Alpine Oatgrass",
+    "model": "poaceae.xml",
+    "params": []
+  },
+  {
+    "id": "ug18mzxx",
+    "name": "Arctic Wart Lichen",
+    "model": "verrucariaceae.xml",
+    "params": [
+      { "name": "Granite", "value": 3.4 },
+      { "name": "Rubber", "value": 82.0 },
+      { "name": "Wood", "value": 4.0 },
+      { "name": "Stone", "value": 71.3 }
+    ]
+  },
+  {
+    "id": "yzdxi2yb",
+    "name": "Cretanweed",
+    "model": "asteraceae.xml",
+    "params": [
+      { "name": "Wood", "value": 29.4 },
+      { "name": "Plastic", "value": 49.8 },
+      { "name": "Plexiglass", "value": 79.1 },
+      { "name": "Wood", "value": 20.2 }
+    ]
+  },
+  {
+    "id": "7zaro6nt",
+    "name": "Pygmy Linanthus",
+    "model": "polemoniaceae.xml",
+    "params": [
+      { "name": "Vinyl", "value": 65.0 },
+      { "name": "Glass", "value": 67.5 },
+      { "name": "Plexiglass", "value": 9.0 },
+      { "name": "Granite", "value": 56.7 },
+      { "name": "Aluminum", "value": 20.5 }
+    ]
+  },
+  {
+    "id": "bsy8eqc6",
+    "name": "Inland Serviceberry",
+    "model": "rosaceae.xml",
+    "params": []
+  },
+  {
+    "id": "ujeu17pl",
+    "name": "Prairie Broomweed",
+    "model": "asteraceae.xml",
+    "params": [{ "name": "Vinyl", "value": 34.4 }]
+  },
+  {
+    "id": "c08vsnyr",
+    "name": "Black Garlic",
+    "model": "liliaceae.xml",
+    "params": []
+  },
+  {
+    "id": "klpkoir5",
+    "name": "Chihuahuan Pine",
+    "model": "pinaceae.xml",
+    "params": []
+  },
+  {
+    "id": "t83rxkcg",
+    "name": "Redbay",
+    "model": "lauraceae.xml",
+    "params": [
+      { "name": "Rubber", "value": 87.4 },
+      { "name": "Plexiglass", "value": 38.0 },
+      { "name": "Aluminum", "value": 19.9 }
+    ]
+  },
+  {
+    "id": "88v0oyco",
+    "name": "Short-hair Cottongrass",
+    "model": "cyperaceae.xml",
+    "params": [
+      { "name": "Steel", "value": 73.7 },
+      { "name": "Plastic", "value": 57.9 },
+      { "name": "Steel", "value": 35.3 },
+      { "name": "Glass", "value": 23.2 }
+    ]
+  },
+  {
+    "id": "nxc5d30j",
+    "name": "Slender Orcutt Grass",
+    "model": "poaceae.xml",
+    "params": [
+      { "name": "Brass", "value": 83.1 },
+      { "name": "Stone", "value": 51.7 }
+    ]
+  },
+  {
+    "id": "c15ak0n1",
+    "name": "Inyo Meadow Lupine",
+    "model": "fabaceae.xml",
+    "params": [
+      { "name": "Plastic", "value": 25.7 },
+      { "name": "Plexiglass", "value": 76.8 },
+      { "name": "Plexiglass", "value": 4.0 },
+      { "name": "Rubber", "value": 23.2 }
+    ]
+  },
+  {
+    "id": "q5m89ysc",
+    "name": "Woolly Locoweed",
+    "model": "fabaceae.xml",
+    "params": []
+  },
+  {
+    "id": "lznmli5h",
+    "name": "Cutleaf Stork's Bill",
+    "model": "geraniaceae.xml",
+    "params": [
+      { "name": "Steel", "value": 9.0 },
+      { "name": "Granite", "value": 85.1 },
+      { "name": "Steel", "value": 51.3 }
+    ]
+  },
+  {
+    "id": "oi09qwm6",
+    "name": "King Bladderpod",
+    "model": "brassicaceae.xml",
+    "params": []
+  },
+  {
+    "id": "z2qoq536",
+    "name": "Gulf Vervain",
+    "model": "verbenaceae.xml",
+    "params": []
+  },
+  {
+    "id": "ntqkasgp",
+    "name": "Dactylospora Lichen",
+    "model": "dactylosporaceae.xml",
+    "params": [
+      { "name": "Wood", "value": 13.4 },
+      { "name": "Vinyl", "value": 99.4 },
+      { "name": "Brass", "value": 35.1 },
+      { "name": "Steel", "value": 13.7 }
+    ]
+  },
+  {
+    "id": "8zlpu8n7",
+    "name": "Elegant Lanceolateleaf Rock Moss",
+    "model": "orthotrichaceae.xml",
+    "params": [
+      { "name": "Plexiglass", "value": 56.9 },
+      { "name": "Brass", "value": 19.7 },
+      { "name": "Vinyl", "value": 76.8 },
+      { "name": "Rubber", "value": 89.5 },
+      { "name": "Plastic", "value": 78.6 }
+    ]
+  },
+  {
+    "id": "sybcy8by",
+    "name": "Hyacinth-flower Clematis",
+    "model": "ranunculaceae.xml",
+    "params": [
+      { "name": "Vinyl", "value": 88.3 },
+      { "name": "Plastic", "value": 9.9 },
+      { "name": "Brass", "value": 67.3 },
+      { "name": "Plexiglass", "value": 55.2 },
+      { "name": "Rubber", "value": 41.3 }
+    ]
+  },
+  {
+    "id": "omyed9gx",
+    "name": "California Desert-thorn",
+    "model": "solanaceae.xml",
+    "params": []
+  },
+  {
+    "id": "n8nbn9h4",
+    "name": "Cordilleran Sedge",
+    "model": "cyperaceae.xml",
+    "params": [
+      { "name": "Brass", "value": 32.8 },
+      { "name": "Stone", "value": 81.6 }
+    ]
+  },
+  {
+    "id": "si1n0mqf",
+    "name": "Bolinas Manzanita",
+    "model": "ericaceae.xml",
+    "params": [
+      { "name": "Granite", "value": 72.3 },
+      { "name": "Wood", "value": 26.3 },
+      { "name": "Brass", "value": 88.0 },
+      { "name": "Aluminum", "value": 1.3 }
+    ]
+  },
+  {
+    "id": "c39wj73b",
+    "name": "Paludella Moss",
+    "model": "meesiaceae.xml",
+    "params": [
+      { "name": "Plexiglass", "value": 89.4 },
+      { "name": "Plastic", "value": 12.8 },
+      { "name": "Rubber", "value": 40.6 },
+      { "name": "Plexiglass", "value": 85.6 },
+      { "name": "Glass", "value": 28.6 }
+    ]
+  },
+  {
+    "id": "hiourfdb",
+    "name": "Sunflower",
+    "model": "asteraceae.xml",
+    "params": [
+      { "name": "Rubber", "value": 90.8 },
+      { "name": "Steel", "value": 31.5 }
+    ]
+  },
+  {
+    "id": "qc4tynl1",
+    "name": "Leskea Moss",
+    "model": "leskeaceae.xml",
+    "params": []
+  },
+  {
+    "id": "a1ys1epg",
+    "name": "Stingingnettle",
+    "model": "urticaceae.xml",
+    "params": [{ "name": "Vinyl", "value": 34.7 }]
+  },
+  {
+    "id": "m4yv9ykd",
+    "name": "European Beachgrass",
+    "model": "poaceae.xml",
+    "params": [
+      { "name": "Glass", "value": 22.0 },
+      { "name": "Wood", "value": 52.5 },
+      { "name": "Plexiglass", "value": 32.3 },
+      { "name": "Plexiglass", "value": 57.3 },
+      { "name": "Stone", "value": 94.5 }
+    ]
+  },
+  {
+    "id": "skey5yrs",
+    "name": "Port Royal Senna",
+    "model": "fabaceae.xml",
+    "params": []
+  },
+  {
+    "id": "6ofbxz6d",
+    "name": "Wire Mousetail",
+    "model": "rosaceae.xml",
+    "params": [
+      { "name": "Brass", "value": 53.3 },
+      { "name": "Wood", "value": 13.3 }
+    ]
+  },
+  {
+    "id": "a8pd9k7w",
+    "name": "Brandegee's Penstemon",
+    "model": "scrophulariaceae.xml",
+    "params": []
+  },
+  {
+    "id": "v0b3h89j",
+    "name": "Peperomia",
+    "model": "piperaceae.xml",
+    "params": [
+      { "name": "Granite", "value": 17.3 },
+      { "name": "Rubber", "value": 5.1 },
+      { "name": "Stone", "value": 17.8 }
+    ]
+  },
+  {
+    "id": "bqiqyl5l",
+    "name": "Toumey's Century Plant",
+    "model": "agavaceae.xml",
+    "params": [{ "name": "Glass", "value": 94.3 }]
+  },
+  {
+    "id": "ner1o97a",
+    "name": "Matted Bluet",
+    "model": "rubiaceae.xml",
+    "params": [{ "name": "Wood", "value": 23.0 }]
+  },
+  {
+    "id": "i2wulgy0",
+    "name": "Fuller's Teasel",
+    "model": "dipsacaceae.xml",
+    "params": [
+      { "name": "Aluminum", "value": 56.4 },
+      { "name": "Stone", "value": 68.1 },
+      { "name": "Granite", "value": 86.6 }
+    ]
+  },
+  {
+    "id": "ws8j2jbb",
+    "name": "James' Seaheath",
+    "model": "frankeniaceae.xml",
+    "params": [
+      { "name": "Granite", "value": 66.3 },
+      { "name": "Rubber", "value": 80.7 }
+    ]
+  },
+  {
+    "id": "3dpfhpjm",
+    "name": "Spotted Water Hemlock",
+    "model": "apiaceae.xml",
+    "params": [
+      { "name": "Wood", "value": 41.7 },
+      { "name": "Wood", "value": 13.8 },
+      { "name": "Wood", "value": 64.1 },
+      { "name": "Vinyl", "value": 8.0 }
+    ]
+  },
+  {
+    "id": "ts0yiix2",
+    "name": "Confederate Spiderwort",
+    "model": "commelinaceae.xml",
+    "params": [
+      { "name": "Steel", "value": 41.5 },
+      { "name": "Plastic", "value": 7.3 },
+      { "name": "Glass", "value": 77.1 },
+      { "name": "Plastic", "value": 7.7 }
+    ]
+  },
+  {
+    "id": "97reqb2g",
+    "name": "Twayblade",
+    "model": "orchidaceae.xml",
+    "params": []
+  },
+  {
+    "id": "zihy41u1",
+    "name": "Fendler's Sandwort",
+    "model": "caryophyllaceae.xml",
+    "params": [
+      { "name": "Steel", "value": 75.8 },
+      { "name": "Plastic", "value": 43.1 }
+    ]
+  },
+  {
+    "id": "89mxfdhq",
+    "name": "Waterpurslane",
+    "model": "lythraceae.xml",
+    "params": [
+      { "name": "Vinyl", "value": 20.4 },
+      { "name": "Plexiglass", "value": 16.6 },
+      { "name": "Glass", "value": 43.1 },
+      { "name": "Aluminum", "value": 48.1 }
+    ]
+  },
+  {
+    "id": "3yoxf89y",
+    "name": "Perplexed Chiodecton Lichen",
+    "model": "opegraphaceae.xml",
+    "params": []
+  },
+  {
+    "id": "87efas9s",
+    "name": "Ellipticleaf Cyanea",
+    "model": "campanulaceae.xml",
+    "params": [
+      { "name": "Brass", "value": 62.8 },
+      { "name": "Rubber", "value": 29.3 },
+      { "name": "Rubber", "value": 53.1 },
+      { "name": "Steel", "value": 81.6 },
+      { "name": "Plexiglass", "value": 57.6 }
+    ]
+  },
+  {
+    "id": "wymcz6tn",
+    "name": "Manyspike Flatsedge",
+    "model": "cyperaceae.xml",
+    "params": [
+      { "name": "Vinyl", "value": 51.6 },
+      { "name": "Rubber", "value": 78.5 },
+      { "name": "Granite", "value": 65.7 }
+    ]
+  },
+  {
+    "id": "0ebqlayx",
+    "name": "Geyer's Onion",
+    "model": "liliaceae.xml",
+    "params": [
+      { "name": "Rubber", "value": 95.1 },
+      { "name": "Plastic", "value": 88.6 },
+      { "name": "Stone", "value": 31.6 }
+    ]
+  },
+  {
+    "id": "fbnrx8pg",
+    "name": "Odontites",
+    "model": "scrophulariaceae.xml",
+    "params": [
+      { "name": "Aluminum", "value": 84.7 },
+      { "name": "Stone", "value": 54.9 },
+      { "name": "Rubber", "value": 96.1 },
+      { "name": "Granite", "value": 87.1 },
+      { "name": "Vinyl", "value": 97.7 }
+    ]
+  },
+  {
+    "id": "ibcazkjo",
+    "name": "Brachythecium Moss",
+    "model": "brachytheciaceae.xml",
+    "params": []
+  },
+  {
+    "id": "5egm891l",
+    "name": "Birdnest Fern",
+    "model": "aspleniaceae.xml",
+    "params": []
+  },
+  {
+    "id": "1v37xygd",
+    "name": "Purple Monkeyflower",
+    "model": "scrophulariaceae.xml",
+    "params": [{ "name": "Wood", "value": 93.5 }]
+  },
+  {
+    "id": "6cvib7im",
+    "name": "False Spiraea",
+    "model": "rosaceae.xml",
+    "params": [
+      { "name": "Plastic", "value": 7.6 },
+      { "name": "Stone", "value": 77.4 },
+      { "name": "Wood", "value": 30.2 }
+    ]
+  },
+  {
+    "id": "6e8lmvfd",
+    "name": "Polygala",
+    "model": "polygalaceae.xml",
+    "params": [{ "name": "Plastic", "value": 98.7 }]
+  },
+  {
+    "id": "iu3d5grh",
+    "name": "Sandwort",
+    "model": "caryophyllaceae.xml",
+    "params": [
+      { "name": "Granite", "value": 76.6 },
+      { "name": "Plastic", "value": 70.0 },
+      { "name": "Aluminum", "value": 11.1 }
+    ]
+  },
+  {
+    "id": "eh1gk44x",
+    "name": "Flynn's Pritchardia",
+    "model": "arecaceae.xml",
+    "params": []
+  },
+  {
+    "id": "nc1zq00s",
+    "name": "Savannah Yelloweyed Grass",
+    "model": "xyridaceae.xml",
+    "params": [{ "name": "Granite", "value": 69.0 }]
+  },
+  {
+    "id": "djivqexr",
+    "name": "Hermbstaedtia",
+    "model": "amaranthaceae.xml",
+    "params": []
+  },
+  {
+    "id": "mlzrd8tn",
+    "name": "Paleflower Labordia",
+    "model": "loganiaceae.xml",
+    "params": [
+      { "name": "Granite", "value": 22.7 },
+      { "name": "Plexiglass", "value": 66.0 },
+      { "name": "Glass", "value": 82.9 },
+      { "name": "Plexiglass", "value": 68.2 }
+    ]
+  },
+  {
+    "id": "lwipfts9",
+    "name": "Powdery False Cloak Fern",
+    "model": "pteridaceae.xml",
+    "params": [
+      { "name": "Aluminum", "value": 17.4 },
+      { "name": "Rubber", "value": 99.6 }
+    ]
+  },
+  {
+    "id": "744tnb75",
+    "name": "Broadleaf Monkeyflower",
+    "model": "scrophulariaceae.xml",
+    "params": []
+  },
+  {
+    "id": "wclqjhea",
+    "name": "Anthracothecium Lichen",
+    "model": "pyrenulaceae.xml",
+    "params": [
+      { "name": "Plexiglass", "value": 51.9 },
+      { "name": "Stone", "value": 12.6 },
+      { "name": "Steel", "value": 32.3 },
+      { "name": "Brass", "value": 79.3 }
+    ]
+  },
+  {
+    "id": "vfb0h40n",
+    "name": "Darrov's Rinodina Lichen",
+    "model": "physciaceae.xml",
+    "params": [{ "name": "Plastic", "value": 28.5 }]
+  },
+  {
+    "id": "5jfytviv",
+    "name": "Shaggy Fleabane",
+    "model": "asteraceae.xml",
+    "params": [{ "name": "Aluminum", "value": 46.4 }]
+  },
+  {
+    "id": "j7bcsd1t",
+    "name": "Yellow Arctic Draba",
+    "model": "brassicaceae.xml",
+    "params": [{ "name": "Brass", "value": 77.7 }]
+  },
+  {
+    "id": "riwmdgo9",
+    "name": "Arroyo Willow",
+    "model": "salicaceae.xml",
+    "params": []
+  },
+  {
+    "id": "zy5tmmlh",
+    "name": "Polyblastia Lichen",
+    "model": "verrucariaceae.xml",
+    "params": [
+      { "name": "Vinyl", "value": 65.7 },
+      { "name": "Vinyl", "value": 71.5 },
+      { "name": "Plastic", "value": 21.0 },
+      { "name": "Granite", "value": 60.9 }
+    ]
+  },
+  {
+    "id": "fui5qpyr",
+    "name": "Peebles' Bluestar",
+    "model": "apocynaceae.xml",
+    "params": [
+      { "name": "Granite", "value": 32.4 },
+      { "name": "Granite", "value": 70.2 },
+      { "name": "Rubber", "value": 6.8 },
+      { "name": "Vinyl", "value": 97.6 },
+      { "name": "Glass", "value": 53.7 }
+    ]
+  },
+  {
+    "id": "tsgfveu3",
+    "name": "Oosting's Hypotrachyna Lichen",
+    "model": "parmeliaceae.xml",
+    "params": []
+  },
+  {
+    "id": "n0fyl3zv",
+    "name": "Largeleaf Rose Gentian",
+    "model": "gentianaceae.xml",
+    "params": [
+      { "name": "Granite", "value": 68.2 },
+      { "name": "Rubber", "value": 27.7 },
+      { "name": "Rubber", "value": 37.7 },
+      { "name": "Brass", "value": 58.7 },
+      { "name": "Plexiglass", "value": 88.9 }
+    ]
+  },
+  {
+    "id": "4sjn77gn",
+    "name": "Jau Jau",
+    "model": "melastomataceae.xml",
+    "params": [
+      { "name": "Aluminum", "value": 30.7 },
+      { "name": "Stone", "value": 5.4 }
+    ]
+  },
+  {
+    "id": "w6stj2yg",
+    "name": "Roundpod St. Johnswort",
+    "model": "clusiaceae.xml",
+    "params": [
+      { "name": "Glass", "value": 22.8 },
+      { "name": "Rubber", "value": 92.7 },
+      { "name": "Plexiglass", "value": 5.6 },
+      { "name": "Granite", "value": 74.8 },
+      { "name": "Granite", "value": 74.7 }
+    ]
+  },
+  {
+    "id": "muzm72s1",
+    "name": "White Mountain Lupine",
+    "model": "fabaceae.xml",
+    "params": [
+      { "name": "Glass", "value": 7.6 },
+      { "name": "Brass", "value": 5.1 },
+      { "name": "Vinyl", "value": 97.3 },
+      { "name": "Steel", "value": 40.9 }
+    ]
+  },
+  {
+    "id": "v61cdtxy",
+    "name": "Stephens' Penstemon",
+    "model": "scrophulariaceae.xml",
+    "params": [{ "name": "Granite", "value": 77.5 }]
+  },
+  {
+    "id": "bqyn32ta",
+    "name": "Yellow Water Buttercup",
+    "model": "ranunculaceae.xml",
+    "params": []
+  },
+  {
+    "id": "8zeewkyp",
+    "name": "Silver Cock's Comb",
+    "model": "amaranthaceae.xml",
+    "params": [{ "name": "Plexiglass", "value": 93.1 }]
+  },
+  {
+    "id": "bsq4g9b2",
+    "name": "Greenflower Indian Mallow",
+    "model": "malvaceae.xml",
+    "params": [
+      { "name": "Plastic", "value": 28.9 },
+      { "name": "Granite", "value": 10.2 },
+      { "name": "Stone", "value": 42.3 },
+      { "name": "Steel", "value": 59.0 },
+      { "name": "Rubber", "value": 98.1 }
+    ]
+  },
+  {
+    "id": "ysm57muh",
+    "name": "Mascarene Island Leaf-flower",
+    "model": "euphorbiaceae.xml",
+    "params": [
+      { "name": "Steel", "value": 26.9 },
+      { "name": "Steel", "value": 65.2 },
+      { "name": "Steel", "value": 49.7 }
+    ]
+  },
+  {
+    "id": "7v1bbmid",
+    "name": "African Teak",
+    "model": "moraceae.xml",
+    "params": [
+      { "name": "Stone", "value": 87.4 },
+      { "name": "Aluminum", "value": 65.1 },
+      { "name": "Vinyl", "value": 49.5 },
+      { "name": "Stone", "value": 65.3 },
+      { "name": "Glass", "value": 6.6 }
+    ]
+  },
+  {
+    "id": "uvd0l366",
+    "name": "Long-stolon Sedge",
+    "model": "cyperaceae.xml",
+    "params": [
+      { "name": "Granite", "value": 73.0 },
+      { "name": "Wood", "value": 58.8 }
+    ]
+  },
+  {
+    "id": "p37o1t4h",
+    "name": "Poverty Dropseed",
+    "model": "poaceae.xml",
+    "params": [
+      { "name": "Wood", "value": 13.3 },
+      { "name": "Brass", "value": 52.6 },
+      { "name": "Glass", "value": 54.0 },
+      { "name": "Vinyl", "value": 74.6 }
+    ]
+  },
+  {
+    "id": "wk6qjzbd",
+    "name": "El Paso Blazingstar",
+    "model": "loasaceae.xml",
+    "params": []
+  },
+  {
+    "id": "xokc5x2w",
+    "name": "Caribgrass",
+    "model": "poaceae.xml",
+    "params": [
+      { "name": "Steel", "value": 23.1 },
+      { "name": "Plexiglass", "value": 44.5 },
+      { "name": "Rubber", "value": 19.8 }
+    ]
+  },
+  {
+    "id": "3l9z24wp",
+    "name": "Chihuahuan Vervain",
+    "model": "verbenaceae.xml",
+    "params": [
+      { "name": "Wood", "value": 23.2 },
+      { "name": "Wood", "value": 70.0 },
+      { "name": "Plastic", "value": 23.2 },
+      { "name": "Plastic", "value": 3.3 }
+    ]
+  },
+  {
+    "id": "p38dvvpl",
+    "name": "Alpine Buttercup",
+    "model": "ranunculaceae.xml",
+    "params": [
+      { "name": "Glass", "value": 41.6 },
+      { "name": "Glass", "value": 46.3 },
+      { "name": "Plexiglass", "value": 12.4 },
+      { "name": "Steel", "value": 3.1 }
+    ]
+  },
+  {
+    "id": "wniqc4ne",
+    "name": "Sacramento Valley Buttercup",
+    "model": "ranunculaceae.xml",
+    "params": [{ "name": "Plexiglass", "value": 87.8 }]
+  },
+  {
+    "id": "gfuty7hi",
+    "name": "Disc Lichen",
+    "model": "physciaceae.xml",
+    "params": [
+      { "name": "Steel", "value": 74.8 },
+      { "name": "Rubber", "value": 17.7 }
+    ]
+  },
+  {
+    "id": "av7vw8bw",
+    "name": "Ethiopian Rattlebox",
+    "model": "fabaceae.xml",
+    "params": [{ "name": "Glass", "value": 62.1 }]
+  },
+  {
+    "id": "g3z4g2gh",
+    "name": "Spiny Spikemoss",
+    "model": "selaginellaceae.xml",
+    "params": [
+      { "name": "Aluminum", "value": 70.1 },
+      { "name": "Steel", "value": 40.9 },
+      { "name": "Plexiglass", "value": 87.1 },
+      { "name": "Vinyl", "value": 89.5 },
+      { "name": "Plexiglass", "value": 49.3 }
+    ]
+  },
+  {
+    "id": "lyn6ov0f",
+    "name": "Hybrid Cloakfern",
+    "model": "pteridaceae.xml",
+    "params": [
+      { "name": "Stone", "value": 17.3 },
+      { "name": "Granite", "value": 42.3 }
+    ]
+  },
+  { "id": "pbmsexzo", "name": "Spirea", "model": "rosaceae.xml", "params": [] },
+  {
+    "id": "ws4349xg",
+    "name": "Shellplant",
+    "model": "zingiberaceae.xml",
+    "params": []
+  },
+  {
+    "id": "dvwxibwq",
+    "name": "Rainbow Hedgehog Cactus",
+    "model": "cactaceae.xml",
+    "params": [
+      { "name": "Plastic", "value": 3.0 },
+      { "name": "Glass", "value": 2.5 },
+      { "name": "Granite", "value": 44.9 },
+      { "name": "Vinyl", "value": 85.5 },
+      { "name": "Wood", "value": 71.9 }
+    ]
+  },
+  {
+    "id": "een5rsmv",
+    "name": "Hybrid Floatingheart",
+    "model": "menyanthaceae.xml",
+    "params": [{ "name": "Stone", "value": 53.2 }]
+  },
+  {
+    "id": "qtfrjya6",
+    "name": "Filiform Anomobryum Moss",
+    "model": "bryaceae.xml",
+    "params": []
+  },
+  {
+    "id": "0sb9sulv",
+    "name": "Hybrid Oak",
+    "model": "fagaceae.xml",
+    "params": [
+      { "name": "Steel", "value": 17.7 },
+      { "name": "Wood", "value": 43.1 },
+      { "name": "Brass", "value": 22.9 },
+      { "name": "Brass", "value": 51.7 }
+    ]
+  },
+  {
+    "id": "8hgcyewa",
+    "name": "Largeflower Goldenweed",
+    "model": "asteraceae.xml",
+    "params": [{ "name": "Granite", "value": 15.6 }]
+  },
+  {
+    "id": "qdbxv8s3",
+    "name": "Schweinitz's Sunflower",
+    "model": "asteraceae.xml",
+    "params": [
+      { "name": "Aluminum", "value": 68.7 },
+      { "name": "Aluminum", "value": 42.2 },
+      { "name": "Steel", "value": 18.8 },
+      { "name": "Granite", "value": 75.0 }
+    ]
+  },
+  {
+    "id": "t92uki19",
+    "name": "Boreal Sagebrush",
+    "model": "asteraceae.xml",
+    "params": [
+      { "name": "Wood", "value": 82.5 },
+      { "name": "Granite", "value": 3.9 },
+      { "name": "Aluminum", "value": 19.5 },
+      { "name": "Glass", "value": 5.3 }
+    ]
+  },
+  {
+    "id": "k9s3vt6e",
+    "name": "Runyon's Dodder",
+    "model": "cuscutaceae.xml",
+    "params": [
+      { "name": "Brass", "value": 85.9 },
+      { "name": "Glass", "value": 75.8 },
+      { "name": "Plexiglass", "value": 75.0 },
+      { "name": "Rubber", "value": 89.7 }
+    ]
+  },
+  {
+    "id": "sy4ok0t4",
+    "name": "Kaala Phyllostegia",
+    "model": "lamiaceae.xml",
+    "params": [
+      { "name": "Vinyl", "value": 1.2 },
+      { "name": "Steel", "value": 72.3 },
+      { "name": "Steel", "value": 16.4 },
+      { "name": "Plexiglass", "value": 26.2 },
+      { "name": "Rubber", "value": 81.0 }
+    ]
+  },
+  {
+    "id": "kk5554pa",
+    "name": "Whitespot",
+    "model": "lamiaceae.xml",
+    "params": [
+      { "name": "Wood", "value": 79.6 },
+      { "name": "Granite", "value": 70.9 },
+      { "name": "Granite", "value": 15.3 }
+    ]
+  },
+  {
+    "id": "vo4xy8sk",
+    "name": "Hybrid Pine",
+    "model": "pinaceae.xml",
+    "params": [
+      { "name": "Wood", "value": 82.4 },
+      { "name": "Vinyl", "value": 8.1 },
+      { "name": "Stone", "value": 30.7 },
+      { "name": "Vinyl", "value": 39.7 }
+    ]
+  },
+  {
+    "id": "x62nf303",
+    "name": "Ma'ohi'ohi",
+    "model": "lamiaceae.xml",
+    "params": [{ "name": "Wood", "value": 17.1 }]
+  },
+  {
+    "id": "4ri46amd",
+    "name": "Oregon Woollyheads",
+    "model": "asteraceae.xml",
+    "params": [
+      { "name": "Wood", "value": 5.1 },
+      { "name": "Glass", "value": 27.8 },
+      { "name": "Rubber", "value": 44.7 }
+    ]
+  },
+  {
+    "id": "u7ip2q1w",
+    "name": "Sierra Blanca Least-daisy",
+    "model": "asteraceae.xml",
+    "params": [
+      { "name": "Plastic", "value": 91.6 },
+      { "name": "Plastic", "value": 49.2 }
+    ]
+  },
+  {
+    "id": "ptqo1f1l",
+    "name": "Mt. Atlas Mastic Tree",
+    "model": "anacardiaceae.xml",
+    "params": [
+      { "name": "Stone", "value": 2.7 },
+      { "name": "Glass", "value": 15.0 },
+      { "name": "Stone", "value": 45.1 }
+    ]
+  },
+  {
+    "id": "gwvqs31j",
+    "name": "Decodon",
+    "model": "lythraceae.xml",
+    "params": [
+      { "name": "Glass", "value": 70.3 },
+      { "name": "Rubber", "value": 60.2 },
+      { "name": "Wood", "value": 61.6 }
+    ]
+  },
+  {
+    "id": "w4uz29hr",
+    "name": "Narrow Corncockle",
+    "model": "caryophyllaceae.xml",
+    "params": []
+  },
+  {
+    "id": "i8yzmg75",
+    "name": "Flatbud Pricklypoppy",
+    "model": "papaveraceae.xml",
+    "params": [
+      { "name": "Rubber", "value": 12.2 },
+      { "name": "Stone", "value": 14.2 },
+      { "name": "Glass", "value": 94.7 }
+    ]
+  },
+  {
+    "id": "b7s5vtr0",
+    "name": "California Mistmaiden",
+    "model": "hydrophyllaceae.xml",
+    "params": [
+      { "name": "Plastic", "value": 4.5 },
+      { "name": "Plexiglass", "value": 76.3 },
+      { "name": "Vinyl", "value": 98.3 }
+    ]
+  },
+  {
+    "id": "4es04sui",
+    "name": "Largeflower Fleabane",
+    "model": "asteraceae.xml",
+    "params": [
+      { "name": "Plexiglass", "value": 80.2 },
+      { "name": "Glass", "value": 23.4 },
+      { "name": "Granite", "value": 89.4 },
+      { "name": "Steel", "value": 52.3 }
+    ]
+  },
+  {
+    "id": "oymnsoek",
+    "name": "Spreading Amaranth",
+    "model": "amaranthaceae.xml",
+    "params": [
+      { "name": "Wood", "value": 28.7 },
+      { "name": "Vinyl", "value": 79.5 },
+      { "name": "Granite", "value": 35.1 }
+    ]
+  },
+  {
+    "id": "4ztrb4ds",
+    "name": "Pringle Manzanita",
+    "model": "ericaceae.xml",
+    "params": []
+  },
+  {
+    "id": "t4if8zi2",
+    "name": "Schisandra",
+    "model": "schisandraceae.xml",
+    "params": [
+      { "name": "Rubber", "value": 77.8 },
+      { "name": "Wood", "value": 67.7 },
+      { "name": "Brass", "value": 92.2 },
+      { "name": "Granite", "value": 72.2 }
+    ]
+  },
+  {
+    "id": "g6dbox6n",
+    "name": "Oval Dry Rock Moss",
+    "model": "grimmiaceae.xml",
+    "params": [
+      { "name": "Aluminum", "value": 40.4 },
+      { "name": "Brass", "value": 50.4 },
+      { "name": "Granite", "value": 82.5 },
+      { "name": "Wood", "value": 40.3 }
+    ]
+  },
+  {
+    "id": "4cx4nska",
+    "name": "Low Silverbush",
+    "model": "euphorbiaceae.xml",
+    "params": [
+      { "name": "Wood", "value": 92.4 },
+      { "name": "Stone", "value": 66.9 }
+    ]
+  },
+  {
+    "id": "vp68czkd",
+    "name": "Phlox Heliotrope",
+    "model": "boraginaceae.xml",
+    "params": [{ "name": "Glass", "value": 5.7 }]
+  },
+  {
+    "id": "mrd4hac6",
+    "name": "Carolina Woodrush",
+    "model": "juncaceae.xml",
+    "params": [{ "name": "Steel", "value": 39.2 }]
+  },
+  {
+    "id": "2ur9fhnu",
+    "name": "Mojave Mound Cactus",
+    "model": "cactaceae.xml",
+    "params": [
+      { "name": "Plastic", "value": 26.8 },
+      { "name": "Plexiglass", "value": 92.8 }
+    ]
+  },
+  {
+    "id": "4tnf81en",
+    "name": "Homaliadelphus Moss",
+    "model": "neckeraceae.xml",
+    "params": [
+      { "name": "Brass", "value": 21.4 },
+      { "name": "Vinyl", "value": 43.6 },
+      { "name": "Rubber", "value": 18.6 }
+    ]
+  },
+  {
+    "id": "09alggqk",
+    "name": "Zarzabacoa Comun",
+    "model": "fabaceae.xml",
+    "params": [
+      { "name": "Stone", "value": 15.7 },
+      { "name": "Wood", "value": 81.3 },
+      { "name": "Rubber", "value": 16.4 },
+      { "name": "Brass", "value": 95.5 }
+    ]
+  },
+  {
+    "id": "qce701jd",
+    "name": "Torrey's Blazingstar",
+    "model": "loasaceae.xml",
+    "params": [
+      { "name": "Granite", "value": 32.4 },
+      { "name": "Vinyl", "value": 54.5 }
+    ]
+  },
+  {
+    "id": "qdtd1ldn",
+    "name": "Sweet Four O'clock",
+    "model": "nyctaginaceae.xml",
+    "params": [
+      { "name": "Brass", "value": 44.9 },
+      { "name": "Brass", "value": 63.8 },
+      { "name": "Glass", "value": 81.6 },
+      { "name": "Rubber", "value": 12.1 },
+      { "name": "Plastic", "value": 78.6 }
+    ]
+  },
+  {
+    "id": "dg8cwlt8",
+    "name": "Purple Marshlocks",
+    "model": "rosaceae.xml",
+    "params": [
+      { "name": "Plexiglass", "value": 65.3 },
+      { "name": "Steel", "value": 84.7 },
+      { "name": "Plastic", "value": 25.4 }
+    ]
+  },
+  {
+    "id": "tinmg5uz",
+    "name": "Toumey's Century Plant",
+    "model": "agavaceae.xml",
+    "params": [
+      { "name": "Wood", "value": 3.7 },
+      { "name": "Rubber", "value": 55.9 }
+    ]
+  },
+  {
+    "id": "40tp1wbj",
+    "name": "Giant Vine Fern",
+    "model": "blechnaceae.xml",
+    "params": [
+      { "name": "Stone", "value": 22.0 },
+      { "name": "Granite", "value": 68.2 },
+      { "name": "Stone", "value": 98.2 }
+    ]
+  },
+  {
+    "id": "ok4h18r9",
+    "name": "Hand Fern",
+    "model": "ophioglossaceae.xml",
+    "params": [
+      { "name": "Vinyl", "value": 23.7 },
+      { "name": "Granite", "value": 32.3 },
+      { "name": "Granite", "value": 11.2 },
+      { "name": "Stone", "value": 39.1 }
+    ]
+  },
+  {
+    "id": "k0sqmmw4",
+    "name": "Nepalese Smartweed",
+    "model": "polygonaceae.xml",
+    "params": [{ "name": "Vinyl", "value": 60.4 }]
+  },
+  {
+    "id": "wz890t5s",
+    "name": "Leathery Colicwood",
+    "model": "myrsinaceae.xml",
+    "params": [{ "name": "Granite", "value": 78.2 }]
+  },
+  {
+    "id": "nce2qszl",
+    "name": "Hellroot",
+    "model": "orobanchaceae.xml",
+    "params": [{ "name": "Glass", "value": 69.9 }]
+  },
+  {
+    "id": "eo7gwvq7",
+    "name": "Okeechobee Gourd",
+    "model": "cucurbitaceae.xml",
+    "params": [
+      { "name": "Plexiglass", "value": 76.8 },
+      { "name": "Wood", "value": 52.4 }
+    ]
+  },
+  {
+    "id": "m4nubige",
+    "name": "Castor Aralia",
+    "model": "araliaceae.xml",
+    "params": [
+      { "name": "Rubber", "value": 67.8 },
+      { "name": "Steel", "value": 60.1 },
+      { "name": "Brass", "value": 25.8 },
+      { "name": "Plastic", "value": 67.6 },
+      { "name": "Plastic", "value": 91.7 }
+    ]
+  },
+  {
+    "id": "pp8ro52v",
+    "name": "Prettyface",
+    "model": "liliaceae.xml",
+    "params": [
+      { "name": "Brass", "value": 98.5 },
+      { "name": "Aluminum", "value": 74.8 }
+    ]
+  },
+  {
+    "id": "4do6anv1",
+    "name": "Slender Milkvetch",
+    "model": "fabaceae.xml",
+    "params": [
+      { "name": "Brass", "value": 54.3 },
+      { "name": "Plexiglass", "value": 5.8 },
+      { "name": "Rubber", "value": 81.0 },
+      { "name": "Glass", "value": 9.3 },
+      { "name": "Granite", "value": 34.7 }
+    ]
+  },
+  {
+    "id": "vq9rjl8h",
+    "name": "Chinese Banyan",
+    "model": "moraceae.xml",
+    "params": [{ "name": "Aluminum", "value": 53.0 }]
+  },
+  {
+    "id": "28e3u70a",
+    "name": "Baretwig Neststraw",
+    "model": "asteraceae.xml",
+    "params": [
+      { "name": "Rubber", "value": 47.3 },
+      { "name": "Rubber", "value": 76.4 },
+      { "name": "Brass", "value": 8.4 },
+      { "name": "Wood", "value": 67.1 }
+    ]
+  },
+  {
+    "id": "0y49a3qx",
+    "name": "Leafystem Orchid",
+    "model": "orchidaceae.xml",
+    "params": [
+      { "name": "Rubber", "value": 26.4 },
+      { "name": "Rubber", "value": 97.5 },
+      { "name": "Stone", "value": 41.6 },
+      { "name": "Stone", "value": 49.0 }
+    ]
+  },
+  {
+    "id": "g1fhotel",
+    "name": "Corymbflower Tansy",
+    "model": "asteraceae.xml",
+    "params": [
+      { "name": "Rubber", "value": 93.8 },
+      { "name": "Wood", "value": 41.7 }
+    ]
+  },
+  {
+    "id": "ubty42mm",
+    "name": "White Leadtree",
+    "model": "fabaceae.xml",
+    "params": [
+      { "name": "Steel", "value": 96.7 },
+      { "name": "Plexiglass", "value": 70.9 }
+    ]
+  },
+  {
+    "id": "tacjr89s",
+    "name": "Syrian Cephalaria",
+    "model": "dipsacaceae.xml",
+    "params": [
+      { "name": "Glass", "value": 88.0 },
+      { "name": "Vinyl", "value": 53.3 }
+    ]
+  },
+  {
+    "id": "0ni31pi9",
+    "name": "Hybrid Oak",
+    "model": "fagaceae.xml",
+    "params": [{ "name": "Vinyl", "value": 86.7 }]
+  },
+  {
+    "id": "dgjj34jf",
+    "name": "Huckleberry Oak",
+    "model": "fagaceae.xml",
+    "params": [
+      { "name": "Stone", "value": 89.1 },
+      { "name": "Granite", "value": 30.5 }
+    ]
+  },
+  {
+    "id": "1b7uw2b6",
+    "name": "Alpine Chickweed",
+    "model": "caryophyllaceae.xml",
+    "params": [
+      { "name": "Rubber", "value": 96.3 },
+      { "name": "Wood", "value": 2.7 },
+      { "name": "Steel", "value": 92.6 },
+      { "name": "Brass", "value": 56.9 },
+      { "name": "Stone", "value": 19.9 }
+    ]
+  },
+  {
+    "id": "htruwtn8",
+    "name": "Pacific Pea",
+    "model": "fabaceae.xml",
+    "params": []
+  },
+  {
+    "id": "r336l5q7",
+    "name": "Nuttall's Oxytrope",
+    "model": "fabaceae.xml",
+    "params": [
+      { "name": "Brass", "value": 90.3 },
+      { "name": "Brass", "value": 46.7 },
+      { "name": "Steel", "value": 68.0 },
+      { "name": "Wood", "value": 76.1 }
+    ]
+  },
+  {
+    "id": "54zgyl1f",
+    "name": "Pauper Milkvetch",
+    "model": "fabaceae.xml",
+    "params": []
+  },
+  {
+    "id": "xijxu4tb",
+    "name": "Rose Rockcress",
+    "model": "brassicaceae.xml",
+    "params": [
+      { "name": "Plexiglass", "value": 7.3 },
+      { "name": "Aluminum", "value": 6.8 },
+      { "name": "Granite", "value": 31.8 },
+      { "name": "Aluminum", "value": 55.0 }
+    ]
+  },
+  {
+    "id": "2ycp222k",
+    "name": "Largeleaf Lupine",
+    "model": "fabaceae.xml",
+    "params": [
+      { "name": "Wood", "value": 49.0 },
+      { "name": "Plexiglass", "value": 31.8 },
+      { "name": "Granite", "value": 38.9 }
+    ]
+  },
+  {
+    "id": "4d47sjp0",
+    "name": "Goldenbush",
+    "model": "asteraceae.xml",
+    "params": [
+      { "name": "Stone", "value": 89.9 },
+      { "name": "Granite", "value": 10.0 },
+      { "name": "Plexiglass", "value": 17.8 },
+      { "name": "Plastic", "value": 6.8 }
+    ]
+  },
+  {
+    "id": "ubiecphy",
+    "name": "Grimmia Dry Rock Moss",
+    "model": "grimmiaceae.xml",
+    "params": [
+      { "name": "Wood", "value": 74.9 },
+      { "name": "Rubber", "value": 63.6 }
+    ]
+  },
+  {
+    "id": "hoob98t8",
+    "name": "Tioga Gentian",
+    "model": "gentianaceae.xml",
+    "params": [
+      { "name": "Stone", "value": 15.0 },
+      { "name": "Wood", "value": 97.5 },
+      { "name": "Glass", "value": 12.5 },
+      { "name": "Granite", "value": 16.4 },
+      { "name": "Brass", "value": 89.8 }
+    ]
+  },
+  {
+    "id": "72gfljgx",
+    "name": "Bridge Penstemon",
+    "model": "scrophulariaceae.xml",
+    "params": [
+      { "name": "Rubber", "value": 44.4 },
+      { "name": "Steel", "value": 29.8 },
+      { "name": "Plexiglass", "value": 9.3 },
+      { "name": "Wood", "value": 87.7 }
+    ]
+  },
+  {
+    "id": "tcgtq43x",
+    "name": "Sadleria",
+    "model": "blechnaceae.xml",
+    "params": []
+  },
+  {
+    "id": "rvypft8a",
+    "name": "Brownray Knapweed",
+    "model": "asteraceae.xml",
+    "params": [
+      { "name": "Plastic", "value": 54.8 },
+      { "name": "Plastic", "value": 15.7 },
+      { "name": "Glass", "value": 6.6 }
+    ]
+  },
+  {
+    "id": "5f84tx0o",
+    "name": "Thinfruit Sedge",
+    "model": "cyperaceae.xml",
+    "params": [
+      { "name": "Vinyl", "value": 68.9 },
+      { "name": "Wood", "value": 39.5 },
+      { "name": "Vinyl", "value": 14.7 },
+      { "name": "Wood", "value": 75.6 },
+      { "name": "Wood", "value": 90.1 }
+    ]
+  },
+  {
+    "id": "l8dn2rhr",
+    "name": "White Edge Sedge",
+    "model": "cyperaceae.xml",
+    "params": [
+      { "name": "Granite", "value": 54.9 },
+      { "name": "Stone", "value": 22.8 },
+      { "name": "Brass", "value": 85.6 }
+    ]
+  },
+  {
+    "id": "hmb83w52",
+    "name": "Chee Reedgrass",
+    "model": "poaceae.xml",
+    "params": [
+      { "name": "Granite", "value": 52.4 },
+      { "name": "Stone", "value": 23.2 }
+    ]
+  },
+  {
+    "id": "y3tw6t9i",
+    "name": "Ballhead Ipomopsis",
+    "model": "polemoniaceae.xml",
+    "params": [
+      { "name": "Glass", "value": 61.3 },
+      { "name": "Vinyl", "value": 72.4 },
+      { "name": "Wood", "value": 61.7 },
+      { "name": "Granite", "value": 48.7 }
+    ]
+  },
+  {
+    "id": "itwhtp42",
+    "name": "Longtongue Muhly",
+    "model": "poaceae.xml",
+    "params": [
+      { "name": "Brass", "value": 9.3 },
+      { "name": "Plexiglass", "value": 76.9 },
+      { "name": "Aluminum", "value": 47.9 },
+      { "name": "Wood", "value": 65.0 }
+    ]
+  },
+  {
+    "id": "u4ypzpix",
+    "name": "Freckled Milkvetch",
+    "model": "fabaceae.xml",
+    "params": [{ "name": "Steel", "value": 77.8 }]
+  }
+]
