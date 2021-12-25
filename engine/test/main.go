@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 	"time"
 
-	pb "evomorph/protos"
+	pb "github.com/gabroo/evomorph/protos/go"
 
 	"google.golang.org/grpc"
 )

@@ -4,10 +4,10 @@ import (
 	"log"
 	"net"
 
-  pb "evomorph/protos"
 	"google.golang.org/grpc"
 
-  "github.com/gabroo/evomorph/engine/server"
+	"github.com/gabroo/evomorph/engine/server"
+	pb "github.com/gabroo/evomorph/protos/go"
 )
 
 const (
@@ -17,16 +17,16 @@ const (
 )
 
 func main() {
-	log.Printf("starting server ...\n")
+	log.Println("starting engine")
 	lis, err := net.Listen("tcp", ADDR)
 	if err != nil {
-		log.Fatalf("failed to listen: %v", err)
+		log.Fatalln("failed to listen:", err)
 	}
 	s := grpc.NewServer()
 	pb.RegisterEngineServer(s, &server.Service{})
 
-	log.Printf("server listening at %v\n\n", lis.Addr())
+	log.Println("server listening:", lis.Addr())
 	if err := s.Serve(lis); err != nil {
-		log.Fatalf("failed to server: %v", err)
+		log.Fatalln("server failed:", err)
 	}
 }

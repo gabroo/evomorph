@@ -10,7 +10,7 @@ import (
 	"strings"
 	"time"
 
-	pb "evomorph/protos"
+	pb "github.com/gabroo/evomorph/protos/go"
 
 	"github.com/google/uuid"
 )
@@ -103,7 +103,7 @@ func executeCmd(
 		stop <- err
 	}
 
-	start <- cmd.Process
+	// start <- cmd.Process
 	err = cmd.Wait()
 	stop <- err
 }
@@ -117,6 +117,7 @@ func watchFiles(
 ) error {
 	seen := make(map[string]bool)
 	log.Printf("watching files for (%s)...", id)
+	log.Printf("out: %s", out)
 
 	// Files not in `seen` are printed
 	scanFiles := func(dir string) error {
