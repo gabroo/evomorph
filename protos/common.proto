@@ -4,18 +4,14 @@ package evomorph;
 
 option go_package = ".;pb";
 
-// Enum contaning status types.
+// Status of an arbitrary RPC.
 enum StatusType {
-  // Status is unset (don't use)
-  _ = 0;
-  // Status is OK
+  _ = 0;  // DO NOT USE
   OK = 1;
-  // Status is ERROR
   ERROR = 2;
 }
 
-// Blank signal between services.
-message Status {
-  // Payload of message.
-  StatusType status = 1; 
-}
+message Status { StatusType status = 1; }
+
+// Message to identify a job by its ID.
+message Simulation { string uuid = 1; }

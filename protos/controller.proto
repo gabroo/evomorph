@@ -6,25 +6,13 @@ import "common.proto";
 
 option go_package = ".;pb";
 
-// Structure to identify a job.
-message Simulation {
-  // Simulation UUID.
-  string uuid = 1; 
-}
-
 // Human-readable parameters for our GJSM model.
-message Params {
-  // Number of cells.
-  uint32 num_cells = 1;
-}
+message Params { uint32 num_cells = 1; }
 
 // Payload for running a simulation.
 message RunRequest {
-  // Simulation name.
   string name = 1;
-  // End time (mcs).
-  uint32 length = 2;
-  // Parameters payload.
+  uint32 end_mcs = 2;  // End time (mcs).
   Params params = 3;
 }
 
@@ -35,33 +23,32 @@ message RunReply {
 
 // Timing information of current simulation.
 message Progress {
-  // Current time (mcs).
-  uint32 cur_mcs = 1;
-  // End time (mcs).
-  uint32 max_mcs = 2;
+  uint32 mcs = 1;
+  uint32 end_mcs = 2;
 }
 
 // Single frame from a trajectory.
 message Frame {
   enum FrameType {
-    // Human viewable frame, eg, JPEG, PNG.
-    PICTURE = 0;
-    // Fully resolved structure, eg, VTK, HDF5.
-    STRUCTURE = 1;
+    _ = 0;  // DO NOT USE
+    JPEG = 1;
+    PNG = 2;
+    TIFF = 3;
+    VTK = 4;
+    HDF5 = 5;
   }
-  // Which kind of frame it is.
-  FrameType type = 1;
-  // Path to the corresponding file.
-  string path = 2;
+  uint32 mcs = 1;
+  FrameType type = 2;
+  string path = 3;
 }
 
 service Controller {
-  rpc Run(RunRequest) returns (RunReply);
-  rpc Pause(Simulation) returns (Status);
-  rpc Resume(Simulation) returns (Status);
-  rpc Cancel(Simulation) returns (Status);
-  rpc GetStatus(Simulation) returns (Status);
-  rpc GetProgress(Simulation) returns (Progress);
-  rpc GetPictures(Simulation) returns (stream Frame);
-  rpc GetStructures(Simulation) returns (stream Frame);
+  rpc Run(RunRequest) returns(RunReply);
+  rpc Pause(Simulation) returns(Status);
+  rpc Resume(Simulation) returns(Status);
+  rpc Cancel(Simulation) returns(Status);
+  rpc GetStatus(Simulation) returns(Status);
+  rpc GetProgress(Simulation) returns(Progress);
+  rpc GetPictures(Simulation) returns(stream Frame);
+  rpc GetStructures(Simulation) returns(stream Frame);
 }

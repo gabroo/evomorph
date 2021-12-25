@@ -6,31 +6,22 @@ import "common.proto";
 
 option go_package = ".;pb";
 
-// Parameters for starting a job.
+// Request to start a job.
 message StartRequest {
-  // Path to XML file with MorpheusML config.
-  repeated string models = 1;
+  repeated string models = 1; // MorpheusML model path(s)
   uint32 replicates = 2;
   // Output directory for simulation data.
   // Default: [TODO]
   string out = 3;
 }
 
-// Reply for starting a job.
+// Reply after starting a job.
 message StartReply {
-  // Status of response.
   StatusType status = 1;
-  // Computed ID of the simulation.
-  string uuid = 2;
-}
-
-// Parameters for stopping a job.
-message StopRequest {
-  // ID of stopped job.
-  string uuid = 1;
+  string uuid = 2; // Job ID
 }
 
 service Engine {
   rpc Start(StartRequest) returns (StartReply);
-  rpc Stop(StopRequest) returns (Status);
+  rpc Stop(Simulation) returns (Status);
 }
