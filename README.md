@@ -2,27 +2,28 @@
 
 ## Setup
 
-Install [Bazel](https://docs.bazel.build/versions/main/install.html) or
-(preferrably) [Bazelisk](https://github.com/bazelbuild/bazelisk#installation).
+Use [Go](https://go.dev) to install [reflex](https://github.com/cespare/reflex), [protoc-gen-go](https://pkg.go.dev/google.golang.org/protobuf/cmd/protoc-gen-go), and [protoc-gen-go-grpc](https://pkg.go.dev/google.golang.org/grpc/cmd/protoc-gen-go-grpc)
+
+```
+go install github.com/cespare/reflex@latest
+go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+```
 
 ## Build
 
-```
-bazel[isk] build <component>:main
-```
+After updating any protos, rebuild them with `protoc`.
 
-Where `<component>` is one of `{controller, engine}`.
+```
+protoc *.proto --go_out=go --go-grpc_out=go
+```
 
 ## Run
 
-[tbd]
-
-## Help
-
-Protobuf references can be built using Bazel.
+You can invoke reflex via the `run` script.
 
 ```
-bazel[isk] build docs:all
+./run [component]
 ```
 
-Output files will be available in `build/bin/docs` in HTML and Markdown format.
+Where `[component]` is one of `{engine, engine/test, controller}`.
