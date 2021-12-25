@@ -2,7 +2,7 @@
 
 ## Setup
 
-Use [Go](https://go.dev) to install [reflex](https://github.com/cespare/reflex), [protoc-gen-go](https://pkg.go.dev/google.golang.org/protobuf/cmd/protoc-gen-go), and [protoc-gen-go-grpc](https://pkg.go.dev/google.golang.org/grpc/cmd/protoc-gen-go-grpc)
+Use [Go](https://go.dev) to install [reflex](https://github.com/cespare/reflex), [protoc-gen-go](https://pkg.go.dev/google.golang.org/protobuf/cmd/protoc-gen-go), and [protoc-gen-go-grpc](https://pkg.go.dev/google.golang.org/grpc/cmd/protoc-gen-go-grpc).
 
 ```
 go install github.com/cespare/reflex@latest
