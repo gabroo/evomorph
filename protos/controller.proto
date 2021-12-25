@@ -17,7 +17,7 @@ message RunRequest {
 }
 
 message RunReply {
-  Status status = 1;
+  StatusType status = 1;
   string uuid = 2;
 }
 
