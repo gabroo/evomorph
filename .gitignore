@@ -3,6 +3,7 @@
 # evomorph
 build/
 out/
+protos/go/
 
 # vscode 
 .vscode/

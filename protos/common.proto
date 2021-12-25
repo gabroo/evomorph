@@ -2,15 +2,7 @@ syntax = "proto3";
 
 package evomorph;
 
-option go_package = "evomorph/protos";
-
-// Structure to identify a job.
-message Simulation {
-  // Simulation UUID.
-  uint32 id = 1;
-  // Human readable name.
-  string name = 2;
-}
+option go_package = ".;pb";
 
 // Enum contaning status types.
 enum StatusType {

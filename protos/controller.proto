@@ -2,9 +2,15 @@ syntax = "proto3";
 
 package evomorph;
 
-import "src/protos/common.proto";
+import "common.proto";
 
-option go_package = "evomorph/protos";
+option go_package = ".;pb";
+
+// Structure to identify a job.
+message Simulation {
+  // Simulation UUID.
+  string uuid = 1; 
+}
 
 // Human-readable parameters for our GJSM model.
 message Params {
@@ -20,6 +26,11 @@ message RunRequest {
   uint32 length = 2;
   // Parameters payload.
   Params params = 3;
+}
+
+message RunReply {
+  Status status = 1;
+  string uuid = 2;
 }
 
 // Timing information of current simulation.
@@ -45,7 +56,7 @@ message Frame {
 }
 
 service Controller {
-  rpc Run(RunRequest) returns (Simulation);
+  rpc Run(RunRequest) returns (RunReply);
   rpc Pause(Simulation) returns (Status);
   rpc Resume(Simulation) returns (Status);
   rpc Cancel(Simulation) returns (Status);
