@@ -1,0 +1,29 @@
+#!/bin/bash
+
+COMPONENTS=$(find -type f -printf '%P\n' | grep "main.go\$" | xargs dirname | xargs)
+
+function isin {
+  local e match="$1"
+  shift
+  for e; do [[ "$e" == "$match" ]] && return 0; done
+  return 1
+}
+
+if ! command -v reflex &> /dev/null; then
+  echo "could not find reflex"
+  echo "install using go:"
+  echo "  go install github.com/cespare/reflex@latest"
+  exit 1
+fi
+
+if [[ $# -ne 1 ]] || (! isin $1 ${COMPONENTS[@]}); then
+  echo "usage:"
+  echo "  run [component]"
+  echo "components:"
+  for c in ${COMPONENTS[@]}; do
+    echo "  $c"
+  done
+  exit 1
+fi
+
+reflex -d none -r "^$1/.*\$" -s -- sh -c "clear; go run ./$1"
