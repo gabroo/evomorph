@@ -22,8 +22,7 @@ const Index: NextPage = () => {
             evomorph
           </Heading>
           <Text color={'gray.500'} maxW={'3xl'}>
-            Some text about evomorph. You should use it because it is really
-            good.
+            Some text about evomorph. I don't know what to put on the home page.
           </Text>
           <Text color={'gray.500'} maxW={'3xl'}>
             "Now, I <i>only</i> use evomorph." &nbsp;&nbsp;
@@ -31,11 +30,7 @@ const Index: NextPage = () => {
           </Text>
           <Stack spacing={6} direction={'row'}>
             <Link href="/home">
-              <Button
-                rounded="full"
-                px={6}
-                colorScheme={'blue'}
-              >
+              <Button rounded="full" px={6} colorScheme={'blue'}>
                 enter&nbsp;&nbsp;&rarr;
               </Button>
             </Link>
