@@ -3,6 +3,8 @@ import { useState } from "react"
 import { AddIcon, ArrowBackIcon, ArrowForwardIcon } from '@chakra-ui/icons'
 import { Heading, IconButton, Stack, Text } from '@chakra-ui/react'
 
+
+
 import Job from './Job'
 
 import sims from '../../public/sims.json'

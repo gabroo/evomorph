@@ -1,4 +1,4 @@
-import { SimpleGrid, IconButton, Stack, Heading } from '@chakra-ui/react'
+import { Wrap, IconButton, Stack, Heading } from '@chakra-ui/react'
 import { AddIcon } from '@chakra-ui/icons'
 
 import Form from './Form'
@@ -8,11 +8,11 @@ import models from '../../public/models.json'
 import { useState } from 'react'
 
 const ModelList = () => (
-  <SimpleGrid columns={[1, 2, 2, 3, 4]} spacing={4}>
+  <Wrap spacing={4} justify='center'>
     {models.map((m, i) => (
       <Card key={i} id={m.id} name={m.name} path={m.path} desc={m.desc} />
     ))}
-  </SimpleGrid>
+  </Wrap>
 )
 function Models() {
   const [isAdding, setIsAdding] = useState(false)

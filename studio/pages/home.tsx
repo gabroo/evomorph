@@ -2,7 +2,8 @@ import { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 
-import { Text, Container, Heading, Stack } from '@chakra-ui/react'
+import { Text, Container, Heading, Stack, IconButton } from '@chakra-ui/react'
+import { BellIcon } from '@chakra-ui/icons'
 
 import Jobs from '../components/Jobs'
 import Models from '../components/Models'
@@ -21,6 +22,42 @@ const Header = () => (
   </Stack>
 )
 
+const handleRun = async () => {
+  const res = await fetch('http://localhost:8081/Controller/Run', {
+    method: 'POST',
+    cache: 'no-cache',
+    mode: 'no-cors',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      name: 'hello world sim',
+      endMcs: 1024,
+      params: {
+        numCells: 256,
+      },
+    }),
+  })
+  return res
+}
+
+const runSim = async () => {
+  const res = await handleRun().then(json => json)
+  alert(res)
+}
+
+const Run = () => (
+  <Stack align="center">
+    <IconButton
+      aria-label="add model"
+      colorScheme="red"
+      rounded="lg"
+      icon={<BellIcon />}
+      onClick={runSim}
+    />
+  </Stack>
+)
+
 const Home: NextPage = () => {
   return (
     <div>
@@ -32,6 +69,7 @@ const Home: NextPage = () => {
       <Container maxW={'6xl'}>
         <Stack my={8} spacing={16}>
           <Header />
+          <Run />
           <Models />
           <Jobs />
         </Stack>

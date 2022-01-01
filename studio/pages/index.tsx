@@ -22,7 +22,7 @@ const Index: NextPage = () => {
             evomorph
           </Heading>
           <Text color={'gray.500'} maxW={'3xl'}>
-            Some text about evomorph. I don't know what to put on the home page.
+            Some text about evomorph. I don't know what to put on this page.
           </Text>
           <Text color={'gray.500'} maxW={'3xl'}>
             "Now, I <i>only</i> use evomorph." &nbsp;&nbsp;
