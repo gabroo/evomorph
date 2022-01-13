@@ -11,9 +11,7 @@ import (
 )
 
 const (
-	HOST = "localhost"
-	PORT = ":50051"
-	ADDR = HOST + PORT
+	ADDR = "0.0.0.0:50051"
 )
 
 func main() {
@@ -23,7 +21,11 @@ func main() {
 		log.Fatalln("failed to listen:", err)
 	}
 	s := grpc.NewServer()
-	pb.RegisterEngineServer(s, &server.Service{})
+	srv, err := server.New()
+	if err != nil {
+		log.Fatal(err)
+	}
+	pb.RegisterEngineServer(s, srv)
 
 	log.Println("server listening:", lis.Addr())
 	if err := s.Serve(lis); err != nil {

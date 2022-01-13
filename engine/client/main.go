@@ -4,8 +4,9 @@ import (
 	"context"
 	"fmt"
 	"log"
-	"path/filepath"
 	"time"
+
+	fp "path/filepath"
 
 	pb "github.com/gabroo/evomorph/protos/go"
 
@@ -13,7 +14,7 @@ import (
 )
 
 const (
-	ADDR = "localhost:50051"
+	ADDR = "0.0.0.0:50051"
 	BASE = "./"
 )
 
@@ -30,11 +31,11 @@ func main() {
 	log.Print("type 's' to start, 'p' to stop")
 
 	// input and output files
-	in, err := filepath.Abs(filepath.Join(BASE, "models/three_layer.xml"))
+	in, err := fp.Abs(fp.Join(BASE, "models/three_layer.xml"))
 	if err != nil {
 		log.Fatal(err)
 	}
-	out, err := filepath.Abs(filepath.Join(BASE, "out"))
+	out, err := fp.Abs(fp.Join(BASE, "out"))
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -75,7 +76,7 @@ func main() {
 			log.Printf("calling Stop(%s)", id)
 			rp, err := c.Stop(
 				ctx,
-				&pb.StopRequest{Uuid: id},
+				&pb.Simulation{Uuid: id},
 			)
 			if err != nil {
 				log.Fatal(err)

@@ -14,11 +14,4 @@ echo "Input: $in";
 echo "Output: $out";
 echo "calling morpheus ...";
 
-if [[ -e morpheus ]]
-then
-  echo 'morpheus!'
-else
-  echo 'no morpheus :('
-fi
-
 exec morpheus --perf-stats --outdir $out -f $in
