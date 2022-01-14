@@ -1,27 +1,22 @@
 syntax = "proto3";
 
-package evomorph;
-
 import "common.proto";
 
 option go_package = ".;pb";
 
 // Request to start a job.
 message StartRequest {
-  repeated string models = 1; // MorpheusML model path(s)
-  uint32 replicates = 2;
-  // Output directory for simulation data.
-  // Default: [TODO]
-  string out = 3;
+  string model = 1;  // MorpheusML model path
+  string out = 3;  // Output directory for simulation data.
 }
 
 // Reply after starting a job.
 message StartReply {
   StatusType status = 1;
-  string uuid = 2; // Job ID
+  string uuid = 2;  // Job ID
 }
 
 service Engine {
-  rpc Start(StartRequest) returns (StartReply);
-  rpc Stop(Simulation) returns (Status);
+  rpc Start(StartRequest) returns(StartReply);
+  rpc Stop(Simulation) returns(Status);
 }

@@ -23,12 +23,13 @@ const Header = () => (
 )
 
 const handleRun = async () => {
-  const res = await fetch('http://localhost:8081/Controller/Run', {
+  const res = await fetch('https://localhost:8081/Controller/Run', {
     method: 'POST',
     cache: 'no-cache',
-    mode: 'no-cors',
+    mode: 'cors',
     headers: {
       'Content-Type': 'application/json',
+      'Accept': 'application/json',
     },
     body: JSON.stringify({
       name: 'hello world sim',
@@ -42,8 +43,8 @@ const handleRun = async () => {
 }
 
 const runSim = async () => {
-  const res = await handleRun().then(json => json)
-  alert(res)
+  const res = await handleRun().then(res => res.json())
+  console.log(res)
 }
 
 const Run = () => (

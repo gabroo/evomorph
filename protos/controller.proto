@@ -1,7 +1,5 @@
 syntax = "proto3";
 
-package evomorph;
-
 import "common.proto";
 
 option go_package = ".;pb";

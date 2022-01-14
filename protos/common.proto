@@ -1,7 +1,5 @@
 syntax = "proto3";
 
-package evomorph;
-
 option go_package = ".;pb";
 
 // Status of an arbitrary RPC.

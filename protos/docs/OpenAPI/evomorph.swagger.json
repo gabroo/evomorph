@@ -1,0 +1,429 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "common.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "Controller"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/Controller/Cancel": {
+      "post": {
+        "operationId": "Controller_Cancel",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Simulation"
+            }
+          }
+        ],
+        "tags": [
+          "Controller"
+        ]
+      }
+    },
+    "/Controller/GetPictures": {
+      "post": {
+        "operationId": "Controller_GetPictures",
+        "responses": {
+          "200": {
+            "description": "A successful response.(streaming responses)",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "$ref": "#/definitions/Frame"
+                },
+                "error": {
+                  "$ref": "#/definitions/googlerpcStatus"
+                }
+              },
+              "title": "Stream result of Frame"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Simulation"
+            }
+          }
+        ],
+        "tags": [
+          "Controller"
+        ]
+      }
+    },
+    "/Controller/GetProgress": {
+      "post": {
+        "operationId": "Controller_GetProgress",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/Progress"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Simulation"
+            }
+          }
+        ],
+        "tags": [
+          "Controller"
+        ]
+      }
+    },
+    "/Controller/GetStatus": {
+      "post": {
+        "operationId": "Controller_GetStatus",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Simulation"
+            }
+          }
+        ],
+        "tags": [
+          "Controller"
+        ]
+      }
+    },
+    "/Controller/GetStructures": {
+      "post": {
+        "operationId": "Controller_GetStructures",
+        "responses": {
+          "200": {
+            "description": "A successful response.(streaming responses)",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "$ref": "#/definitions/Frame"
+                },
+                "error": {
+                  "$ref": "#/definitions/googlerpcStatus"
+                }
+              },
+              "title": "Stream result of Frame"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Simulation"
+            }
+          }
+        ],
+        "tags": [
+          "Controller"
+        ]
+      }
+    },
+    "/Controller/Pause": {
+      "post": {
+        "operationId": "Controller_Pause",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Simulation"
+            }
+          }
+        ],
+        "tags": [
+          "Controller"
+        ]
+      }
+    },
+    "/Controller/Resume": {
+      "post": {
+        "operationId": "Controller_Resume",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Simulation"
+            }
+          }
+        ],
+        "tags": [
+          "Controller"
+        ]
+      }
+    },
+    "/Controller/Run": {
+      "post": {
+        "operationId": "Controller_Run",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/RunReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RunRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Controller"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "Frame": {
+      "type": "object",
+      "properties": {
+        "mcs": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "type": {
+          "$ref": "#/definitions/FrameFrameType"
+        },
+        "path": {
+          "type": "string"
+        }
+      },
+      "description": "Single frame from a trajectory."
+    },
+    "FrameFrameType": {
+      "type": "string",
+      "enum": [
+        "_",
+        "JPEG",
+        "PNG",
+        "TIFF",
+        "VTK",
+        "HDF5"
+      ],
+      "default": "_"
+    },
+    "Params": {
+      "type": "object",
+      "properties": {
+        "numCells": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "description": "Human-readable parameters for our GJSM model."
+    },
+    "Progress": {
+      "type": "object",
+      "properties": {
+        "mcs": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "endMcs": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "description": "Timing information of current simulation."
+    },
+    "RunReply": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/StatusType"
+        },
+        "uuid": {
+          "type": "string"
+        }
+      }
+    },
+    "RunRequest": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "endMcs": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "params": {
+          "$ref": "#/definitions/Params"
+        }
+      },
+      "description": "Payload for running a simulation."
+    },
+    "Simulation": {
+      "type": "object",
+      "properties": {
+        "uuid": {
+          "type": "string"
+        }
+      },
+      "description": "Message to identify a job by its ID."
+    },
+    "Status": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/StatusType"
+        }
+      }
+    },
+    "StatusType": {
+      "type": "string",
+      "enum": [
+        "_",
+        "OK",
+        "ERROR"
+      ],
+      "default": "_",
+      "description": "Status of an arbitrary RPC."
+    },
+    "googlerpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    }
+  }
+}

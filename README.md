@@ -12,11 +12,7 @@ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
 
 ## Build
 
-After updating any protos, rebuild them with `protoc`.
-
-```
-protoc *.proto --go_out=go --go-grpc_out=go
-```
+After updating any protos, rebuild them with the `build` script. OpenAPI docs will be generated automatically.
 
 ## Run
 
@@ -26,4 +22,14 @@ You can invoke reflex via the `run` script.
 ./run [component]
 ```
 
-Where `[component]` is one of `{engine, engine/test, controller}`.
+Where `[component]` is one of `{engine, controller}`.
+
+If you are running `controller`, the OpenAPI reference for the HTTP gateway will be available at `/docs`.
+
+Run the frontend with `yarn`:
+
+```
+cd studio
+yarn
+yarn dev
+```

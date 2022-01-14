@@ -1,0 +1,22 @@
+#!/bin/bash
+
+echo "building protos ..."
+cd protos
+
+protoc \
+  --go_out=go \
+  --go-grpc_out=go \
+  --grpc-gateway_out=go \
+  --grpc-gateway_opt logtostderr=true \
+  --grpc-gateway_opt generate_unbound_methods=true \
+  *.proto
+
+protoc \
+  --openapiv2_out=docs/OpenAPI \
+  --openapiv2_opt logtostderr=true \
+  --openapiv2_opt allow_merge=true \
+  --openapiv2_opt merge_file_name=evomorph \
+  --openapiv2_opt generate_unbound_methods=true \
+  common.proto controller.proto
+
+ cd .. 
