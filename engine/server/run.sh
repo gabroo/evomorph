@@ -8,6 +8,11 @@ do
   esac
 done
 
+if ! command -v morpheus &> /dev/null
+then
+    echo "morpheus could not be found"
+    exit 1
+fi
 
 echo "run.sh";
 echo "Input: $in";
