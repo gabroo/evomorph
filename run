@@ -1,6 +1,6 @@
 #!/bin/bash
 
-COMPONENTS=$(find -type f -printf '%P\n' | grep "main.go\$" | xargs dirname | xargs)
+COMPONENTS=$(find . -type f | grep "main.go\$" | xargs -I{} bash -c 'v=$(dirname {}); echo "${v#"./"}"')
 
 function isin {
   local e match="$1"
@@ -26,4 +26,4 @@ if [[ $# -ne 1 ]] || (! isin $1 ${COMPONENTS[@]}); then
   exit 1
 fi
 
-reflex -d none -r "^$1/.*\$" -s -- sh -c "clear; go run ./$1"
+reflex -d none -r "^$1/.*\$" -R "node_modules" -s -- sh -c "clear; go run ./$1"
