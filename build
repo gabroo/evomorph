@@ -3,6 +3,12 @@
 echo "building protos ..."
 cd protos
 
+if [[ ! -d ./go ]]
+then
+    echo "making protos/go"
+    mkdir ./go
+fi
+
 protoc \
   --go_out=go \
   --go-grpc_out=go \
