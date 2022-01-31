@@ -8,6 +8,10 @@ import (
 	"os"
 	"syscall"
 
+	etree "github.com/beevik/etree"
+	"math/rand"
+	"strconv"
+
 	"os/exec"
 
 	"github.com/google/uuid"
@@ -70,11 +74,38 @@ func startJob(model string, out string, jobs map[string]*os.Process) (string, er
 		return id, err
 	}
 
+	// Load model
+	doc := etree.NewDocument()
+	if err := doc.ReadFromFile(model); err != nil {
+		panic(err)
+	}
+
+	// Random number placeholders for now
+	a_cells := rand.Intn(101)
+	b_cells := rand.Intn(101)
+
+	// Find each number-of-cells attribute and set value
+	for _, e := range doc.FindElements("//Population") {
+		if e.SelectAttrValue("type", "") == "A"{
+			e.SelectElement("InitCircle").SelectAttr("number-of-cells").Value = strconv.Itoa(a_cells)
+		}
+		if e.SelectAttrValue("type", "") == "B"{
+			e.SelectElement("InitCircle").SelectAttr("number-of-cells").Value = strconv.Itoa(b_cells)
+		}
+	}
+
+	// Write to output directory
+	doc.WriteToFile(out + "/three_layer_modified")
+
 	// we invoke Morpheus via shell script
 	sh, err := exec.LookPath(SCRIPT_PATH)
 	if err != nil {
 		return id, err
 	}
+	
+	// Change model path to individual simulation's modified xml
+	model = out + "/three_layer_modified"
+	
 	cmd := exec.Command(sh, "-i", model, "-o", out)
 	logfile := fmt.Sprintf("%s/%s", out, LOG_FILE)
 	file, err := os.Create(logfile)
