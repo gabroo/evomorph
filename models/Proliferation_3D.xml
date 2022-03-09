@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<MorpheusModel version="4">
+    <Description>
+        <Title>Example-Proliferation3D</Title>
+        <Details>Illustrates size-dependent cell division and plotting 2D slices of 3D configurations
+        
+        - Upon cell division, two daughters are initialised each with its half the mother's occupied volume, then CPM dynamics lets each daughter grow to the target volume are the mother had.  
+        
+        - A condition for CellDivision is used that combines (logic and) a threshold (actual cell size > threshold) with a probability to divide.
+        </Details>
+    </Description>
+    <Global/>
+    <Space>
+        <Lattice class="cubic">
+            <Size symbol="size" value="100, 100, 100"/>
+            <BoundaryConditions>
+                <Condition boundary="x" type="periodic"/>
+                <Condition boundary="y" type="periodic"/>
+                <Condition boundary="z" type="noflux"/>
+                <Condition boundary="-z" type="noflux"/>
+            </BoundaryConditions>
+            <Neighborhood>
+                <Order>2</Order>
+            </Neighborhood>
+        </Lattice>
+        <MembraneLattice>
+            <Resolution symbol="memsize" value="20"/>
+            <SpaceSymbol symbol="m"/>
+        </MembraneLattice>
+        <SpaceSymbol symbol="space"/>
+    </Space>
+    <Time>
+        <StartTime value="0"/>
+        <StopTime value="1000"/>
+        <TimeSymbol symbol="time"/>
+        <RandomSeed value="1456688742"/>
+    </Time>
+    <CellTypes>
+        <CellType class="medium" name="medium"/>
+        <CellType class="medium" name="matrix"/>
+        <CellType class="biological" name="cell">
+            <Property symbol="Vt" name="Target Volume" value="500"/>
+            <Property symbol="divisions" value="0"/>
+            <VolumeConstraint strength="1.0" target="Vt"/>
+            <SurfaceConstraint mode="aspherity" strength="1.0" target="1.0"/>
+            <CellDivision division-plane="major">
+                <Condition>rand_uni(0,1) &lt; 0.0025 and cell.volume > Vt*0.9</Condition>
+                <Triggers>
+                    <Rule symbol-ref="divisions">
+                        <Expression>divisions + 0.5</Expression>
+                    </Rule>
+                </Triggers>
+            </CellDivision>
+            <MembraneProperty symbol="c" value="1">
+                <Diffusion rate="0.0"/>
+            </MembraneProperty>
+        </CellType>
+    </CellTypes>
+    <CPM>
+        <Interaction default="0">
+            <Contact type1="cell" value="-6" type2="cell"/>
+            <Contact type1="cell" value="0" type2="medium"/>
+            <Contact type1="cell" value="-2" type2="matrix"/>
+        </Interaction>
+        <MonteCarloSampler stepper="edgelist">
+            <MCSDuration value="1"/>
+            <Neighborhood>
+                <Order>2</Order>
+            </Neighborhood>
+            <MetropolisKinetics temperature="0.5"/>
+        </MonteCarloSampler>
+        <ShapeSurface scaling="norm">
+            <Neighborhood>
+                <Distance>2.5</Distance>
+            </Neighborhood>
+        </ShapeSurface>
+    </CPM>
+    <CellPopulations>
+        <Population type="cell" size="0">
+            <InitCellObjects mode="distance">
+                <Arrangement repetitions="1, 1, 1" displacements="1, 1, 1">
+                    <Sphere radius="5" center="50,50,50"/>
+                </Arrangement>
+            </InitCellObjects>
+        </Population>
+        <BoundaryValue boundary="x" value="matrix"/>
+        <BoundaryValue boundary="-x" value="matrix"/>
+        <BoundaryValue boundary="y" value="matrix"/>
+        <BoundaryValue boundary="-y" value="matrix"/>
+        <BoundaryValue boundary="z" value="matrix"/>
+        <BoundaryValue boundary="-z" value="matrix"/>
+    </CellPopulations>
+    <Analysis>
+        <!-- <TiffPlotter format="8bit" time-step="100" compression="false" timelapse="true" OME-header="true">
+            <Channel exclude-medium="true" symbol-ref="cell.id"/>
+            <Channel exclude-medium="true" celltype="cell" symbol-ref="c" outline="true"/>
+        </TiffPlotter> -->
+        <VtkPlotter mode="binary" time-step="10">
+            <Channel symbol-ref="cell.id"/>
+            <Channel symbol-ref="c"/>
+        </VtkPlotter>
+        <!-- <Gnuplotter decorate="true" time-step="100">
+            <Plot slice="50">
+                <Cells value="cell.id"/>
+            </Plot>
+            <Terminal name="png"/>
+        </Gnuplotter> -->
+        <!-- <Logger time-step="100">
+            <Input>
+                <Symbol symbol-ref="celltype.cell.size"/>
+            </Input>
+            <Output>
+                <TextOutput/>
+            </Output>
+            <Plots>
+                <Plot time-step="500">
+                    <Style style="linespoints"/>
+                    <Terminal terminal="png"/>
+                    <X-axis>
+                        <Symbol symbol-ref="time"/>
+                    </X-axis>
+                    <Y-axis>
+                        <Symbol symbol-ref="celltype.cell.size"/>
+                    </Y-axis>
+                </Plot>
+            </Plots>
+        </Logger> -->
+        <ModelGraph reduced="false" format="svg" include-tags="#untagged"/>
+    </Analysis>
+</MorpheusModel>

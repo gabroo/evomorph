@@ -40,7 +40,7 @@ func New() (*Service, error) {
 	return s, nil
 }
 
-func startJob(c pb.EngineClient, in, out string) (string, error) {
+func startJob(c pb.EngineClient, in, out string, rq *pb.RunRequest) (string, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Minute)
 	defer cancel()
 	rp, err := c.Start(
@@ -48,6 +48,7 @@ func startJob(c pb.EngineClient, in, out string) (string, error) {
 		&pb.StartRequest{
 			Model: in,
 			Out:   out,
+			Params: rq.Params,
 		},
 	)
 	if err != nil {
@@ -62,7 +63,8 @@ func (s *Service) Run(ctx context.Context, rq *pb.RunRequest) (*pb.RunReply, err
 	if s.c == nil {
 		return nil, errors.New("nil engine client in controller server")
 	}
-	id, err := startJob(s.c, "models/three_layer.xml", "out")
+	
+	id, err := startJob(s.c, "models/barkley3d_coupling.xml", "out", rq)
 	var status pb.StatusType
 	if err != nil {
 		status = pb.StatusType_ERROR

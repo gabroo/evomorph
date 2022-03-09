@@ -326,9 +326,12 @@
         "numCells": {
           "type": "integer",
           "format": "int64"
+        },
+        "endTime": {
+          "type": "integer",
+          "format": "int64"
         }
-      },
-      "description": "Human-readable parameters for our GJSM model."
+      }
     },
     "Progress": {
       "type": "object",

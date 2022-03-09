@@ -1,0 +1,227 @@
+<MorpheusModel version="4">
+    <Description>
+        <Title>Example-ExcitableMedium-3D</Title>
+        <Details>Simulates the Barkley model of an excitable medium, see: http://www.scholarpedia.org/article/Barkley_model
+Derived from FitzHugh-Nagumo model and Hogdkin-Huxley model.
+
+TIFF images can be viewed with external tools such as Fiji / ImageJ (http://fiji.sc/Fiji) or BioView3D (http://www.dimin.net/software/bioview3d/). The latter also reads the OME header for 3D, 4D and 5D images.
+VTK filed can be viewed with external tools such as ParaView  (https://www.paraview.org/).
+
+2D model using CPM cells</Details>
+    </Description>
+    <Global>
+        <!--    <Disabled>
+        <Field value="if( l.x>=s.x/2-5 and l.x&lt;=s.x/2+5, 1, 0 )" symbol="u">
+            <Diffusion rate="0.5"/>
+        </Field>
+    </Disabled>
+-->
+        <!--    <Disabled>
+        <Field value="if(l.x&lt;=s.x/2 , 1, 0)" symbol="v">
+            <Diffusion rate="0.5"/>
+        </Field>
+    </Disabled>
+-->
+        <!--    <Disabled>
+        <System solver="Runge-Kutta [fixed, O(4)]" time-step="0.05">
+            <DiffEqn symbol-ref="u">
+                <Expression>(1/e)*u*(1-u)*(u-((v+b)/a))</Expression>
+            </DiffEqn>
+            <DiffEqn symbol-ref="v">
+                <Expression>u-v</Expression>
+            </DiffEqn>
+            <Constant value="0.02" symbol="e"/>
+            <Constant value="0.8" symbol="a"/>
+            <Constant value="0.01" symbol="b"/>
+        </System>
+    </Disabled>
+-->
+        <Constant value="0.0" symbol="u"/>
+        <Constant value="0.0" symbol="v"/>
+    </Global>
+    <Space>
+        <Lattice class="cubic">
+            <Size value="238,238,238" symbol="s"/>
+            <BoundaryConditions>
+                <Condition type="noflux" boundary="-x"/>
+                <Condition type="noflux" boundary="x"/>
+                <Condition type="noflux" boundary="-y"/>
+                <Condition type="noflux" boundary="y"/>
+                <Condition type="periodic" boundary="x"/>
+                <Condition type="periodic" boundary="z"/>
+            </BoundaryConditions>
+            <NodeLength value="1.0"/>
+            <Neighborhood>
+                <Order>1</Order>
+            </Neighborhood>
+        </Lattice>
+        <SpaceSymbol name="position in space" symbol="l"/>
+    </Space>
+    <Time>
+        <StartTime value="0"/>
+        <StopTime value="5"/>
+        <SaveInterval value="0"/>
+        <TimeSymbol symbol="time"/>
+    </Time>
+    <Analysis>
+        <!--    <Disabled>
+        <Gnuplotter time-step="5">
+            <Terminal name="png" size="600 600 0"/>
+            <Plot>
+                <Field symbol-ref="u"/>
+            </Plot>
+        </Gnuplotter>
+    </Disabled>
+-->
+        <!--    <Disabled>
+        <TiffPlotter timelapse="true" compression="false" format="32bit" time-step="0.5" OME-header="true">
+            <Channel symbol-ref="u"/>
+            <Channel symbol-ref="v"/>
+        </TiffPlotter>
+    </Disabled>
+-->
+        <VtkPlotter mode="binary" time-step="1">
+            <Channel symbol-ref="u"/>
+            <Channel symbol-ref="v"/>
+            <Channel symbol-ref="cell.id"/>
+        </VtkPlotter>
+        <!--    <Disabled>
+        <Logger time-step="1">
+            <Input>
+                <Symbol symbol-ref="u"/>
+                <Symbol symbol-ref="v"/>
+            </Input>
+            <Output>
+                <TextOutput/>
+            </Output>
+            <Plots>
+                <Plot title="space plot" time-step="1">
+                    <Style line-width="3.0" style="lines"/>
+                    <Terminal terminal="png"/>
+                    <X-axis>
+                        <Symbol symbol-ref="l.x"/>
+                    </X-axis>
+                    <Y-axis minimum="0" maximum="3.5">
+                        <Symbol symbol-ref="u"/>
+                        <Symbol symbol-ref="v"/>
+                    </Y-axis>
+                    <Range>
+                        <Time mode="current"/>
+                    </Range>
+                </Plot>
+                <Disabled>
+                    <Plot title="time-space plot" time-step="1">
+                        <Style style="points"/>
+                        <Terminal terminal="png"/>
+                        <X-axis>
+                            <Symbol symbol-ref="time"/>
+                        </X-axis>
+                        <Y-axis>
+                            <Symbol symbol-ref="space.x"/>
+                        </Y-axis>
+                        <Color-bar>
+                            <Symbol symbol-ref="a"/>
+                        </Color-bar>
+                        <Disabled>
+                            <Range>
+                                <Time mode="all"/>
+                            </Range>
+                        </Disabled>
+                    </Plot>
+                </Disabled>
+            </Plots>
+        </Logger>
+    </Disabled>
+-->
+        <Gnuplotter time-step="1">
+            <Plot slice="85">
+                <Cells value="u">
+                    <ColorMap>
+                        <Color value="0" color="white"/>
+                        <Color value="0.5" color="yellow"/>
+                        <Color value="2" color="red"/>
+                    </ColorMap>
+                </Cells>
+            </Plot>
+            <Terminal name="png" size="1200,1200,0"/>
+            <Plot slice="85">
+                <Cells value="v">
+                    <ColorMap>
+                        <Color value="0" color="white"/>
+                        <Color value="0.5" color="yellow"/>
+                        <Color value="1" color="red"/>
+                    </ColorMap>
+                </Cells>
+            </Plot>
+            <!--    <Disabled>
+        <Plot slice="85">
+            <Cells value="cell.id"/>
+        </Plot>
+    </Disabled>
+-->
+        </Gnuplotter>
+        <ModelGraph include-tags="#untagged" format="svg" reduced="false"/>
+    </Analysis>
+    <CellTypes>
+        <CellType name="cells" class="biological">
+            <Property value="0.0" symbol="u_n"/>
+            <Property value="0.5" symbol="Du"/>
+            <NeighborhoodReporter>
+                <Input value="u" scaling="cell"/>
+                <Output mapping="average" symbol-ref="u_n"/>
+            </NeighborhoodReporter>
+            <System solver="Runge-Kutta [fixed, O(4)]" time-step="0.05">
+                <DiffEqn symbol-ref="u">
+                    <Expression>(1/e)*u*(1-u)*(u-((v+b)/a)) + Du*(0.5*u_n-0.5*u)</Expression>
+                </DiffEqn>
+                <DiffEqn symbol-ref="v">
+                    <Expression>u-v</Expression>
+                </DiffEqn>
+                <Constant value="0.02" symbol="e"/>
+                <Constant value="0.8" symbol="a"/>
+                <Constant value="0.01" symbol="b"/>
+            </System>
+            <VolumeConstraint strength="1" target="100-80*v"/>
+            <Property value="if( cell.center.x>=s.x/2-10 and cell.center.x&lt;=s.x/2+10 and cell.center.z>=s.z/2-10 and cell.center.z&lt;=s.z/2+10 and cell.center.y&lt;=s.y*(1/4+0.2) , 1, 0 )" symbol="u"/>
+            <Property value="if(cell.center.x&lt;=s.x/2 and cell.center.z&lt;=(3/4)*s.z, 1, 0)&#xa;" symbol="v"/>
+            <!--    <Disabled>
+        <VolumeConstraint strength="1" target="100"/>
+    </Disabled>
+-->
+        </CellType>
+        <CellType name="medium" class="medium"/>
+    </CellTypes>
+    <CellPopulations>
+        <Population type="cells" size="20000">
+            <InitRectangle mode="random" number-of-cells="20000">
+                <Dimensions size="s.x*0.43, s.y*0.43,s.z*0.43" origin="s.x*0.29,s.y*0.29,s.z*0.29"/>
+            </InitRectangle>
+            <!--    <Disabled>
+        <InitVoronoi/>
+    </Disabled>
+-->
+        </Population>
+    </CellPopulations>
+    <CPM>
+        <Interaction>
+            <Contact value="10-5*u" type1="cells" type2="cells"/>
+            <Contact value="10" type1="cells" type2="medium"/>
+            <!--    <Disabled>
+        <Contact value="10" type1="cells" type2="cells"/>
+    </Disabled>
+-->
+        </Interaction>
+        <ShapeSurface scaling="norm">
+            <Neighborhood>
+                <Order>2</Order>
+            </Neighborhood>
+        </ShapeSurface>
+        <MonteCarloSampler stepper="edgelist">
+            <MCSDuration value="0.1"/>
+            <MetropolisKinetics temperature="5"/>
+            <Neighborhood>
+                <Order>2</Order>
+            </Neighborhood>
+        </MonteCarloSampler>
+    </CPM>
+</MorpheusModel>

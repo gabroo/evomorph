@@ -4,10 +4,12 @@ import "common.proto";
 
 option go_package = ".;pb";
 
+
 // Request to start a job.
 message StartRequest {
   string model = 1;  // MorpheusML model path
-  string out = 3;  // Output directory for simulation data.
+  string out = 2;  // Output directory for simulation data.
+  Params params = 3;
 }
 
 // Reply after starting a job.
