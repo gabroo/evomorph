@@ -9,6 +9,11 @@ enum StatusType {
   ERROR = 2;
 }
 
+message Params { 
+  uint32 num_cells = 1; 
+  uint32 end_time = 2;
+}
+
 message Status { StatusType status = 1; }
 
 // Message to identify a job by its ID.

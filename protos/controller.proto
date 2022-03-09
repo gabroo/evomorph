@@ -5,7 +5,7 @@ import "common.proto";
 option go_package = ".;pb";
 
 // Human-readable parameters for our GJSM model.
-message Params { uint32 num_cells = 1; }
+
 
 // Payload for running a simulation.
 message RunRequest {

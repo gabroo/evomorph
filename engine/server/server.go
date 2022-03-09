@@ -8,8 +8,7 @@ import (
 	"os"
 	"syscall"
 
-	etree "github.com/beevik/etree"
-	"math/rand"
+	"github.com/beevik/etree"
 	"strconv"
 
 	"os/exec"
@@ -42,8 +41,9 @@ func (s *service) Start(ctx context.Context, rq *pb.StartRequest) (*pb.StartRepl
 		return nil, errors.New("s.jobs is nil in Start")
 	}
 
-	model, out := rq.Model, rq.Out
-	id, err := startJob(model, out, s.jobs)
+	model, out, params := rq.Model, rq.Out, rq.Params
+	// had to change here to get this to compile even though it isn't used right now -MD
+	id, err := startJob(model, out, s.jobs, params)
 
 	// select appropriate status
 	status := pb.StatusType_OK
@@ -61,7 +61,7 @@ func (s *service) Start(ctx context.Context, rq *pb.StartRequest) (*pb.StartRepl
 }
 
 // Top-level runner; executes simulations and invokes file watcher.
-func startJob(model string, out string, jobs map[string]*os.Process) (string, error) {
+func startJob(model string, out string, jobs map[string]*os.Process, params *pb.Params) (string, error) {
 	// each job gets a UUID
 	id := uuid.New().String()
 	if id == "" {
@@ -74,29 +74,6 @@ func startJob(model string, out string, jobs map[string]*os.Process) (string, er
 		return id, err
 	}
 
-	// Load model
-	doc := etree.NewDocument()
-	if err := doc.ReadFromFile(model); err != nil {
-		panic(err)
-	}
-
-	// Random number placeholders for now
-	a_cells := rand.Intn(101)
-	b_cells := rand.Intn(101)
-
-	// Find each number-of-cells attribute and set value
-	for _, e := range doc.FindElements("//Population") {
-		if e.SelectAttrValue("type", "") == "A"{
-			e.SelectElement("InitCircle").SelectAttr("number-of-cells").Value = strconv.Itoa(a_cells)
-		}
-		if e.SelectAttrValue("type", "") == "B"{
-			e.SelectElement("InitCircle").SelectAttr("number-of-cells").Value = strconv.Itoa(b_cells)
-		}
-	}
-
-	// Write to output directory
-	doc.WriteToFile(out + "/three_layer_modified")
-
 	// we invoke Morpheus via shell script
 	sh, err := exec.LookPath(SCRIPT_PATH)
 	if err != nil {
@@ -104,8 +81,11 @@ func startJob(model string, out string, jobs map[string]*os.Process) (string, er
 	}
 	
 	// Change model path to individual simulation's modified xml
-	model = out + "/three_layer_modified"
-	
+	model = xmlConvert(model, out, params)
+	if err != nil {
+		return id, err
+	}
+
 	cmd := exec.Command(sh, "-i", model, "-o", out)
 	logfile := fmt.Sprintf("%s/%s", out, LOG_FILE)
 	file, err := os.Create(logfile)
@@ -130,6 +110,28 @@ func startJob(model string, out string, jobs map[string]*os.Process) (string, er
 	jobs[id] = cmd.Process
 	log.Printf("START (%s): length %d\n", id, len(jobs))
 	return id, err
+}
+
+func xmlConvert(model string, out string, params *pb.Params) (string){
+	// Load model
+	doc := etree.NewDocument()
+	if err := doc.ReadFromFile(model); err != nil {
+		panic(err)
+	}
+
+	for _, e := range doc.FindElements("//StopTime") {
+		e.SelectAttr("value").Value = strconv.FormatUint(uint64(params.EndTime), 10)
+	}
+	for _, e := range doc.FindElements("//Population") {
+		e.SelectAttr("size").Value = strconv.FormatUint(uint64(params.NumCells), 10)
+		e.SelectElement("InitRectangle").SelectAttr("number-of-cells").Value = strconv.FormatUint(uint64(params.NumCells), 10)
+	}
+
+	// Write to output directory
+	model_path := out + "/barkley3d_coupling.xml"
+	doc.WriteToFile(model_path)
+
+	return model_path
 }
 
 // Engine:Stop(Uuid)
